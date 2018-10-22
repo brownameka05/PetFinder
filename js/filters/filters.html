@@ -9,18 +9,20 @@
 </head>
 
 <body>
-  <div class="filtersContainer">
-    <div class="filter-animal">
+  <div id="filtersContainer">
+    <div id="filter-animal">
       Cats:
       <input type="checkbox" name="checkbox-cat" id="checkbox-cat">
       Dogs:
       <input type="checkbox" name="checkbox-dog" id="checkbox-dog">
     </div>
-    <div class="filter-breed">
+
+    <div id="filter-breed">
       <label for="textbox-breed">Breed</label>
       <input type="text" name="textbox-breed" id="textbox-breed">
     </div>
-    <div class="filter-size">
+
+    <div id="filter-size">
       <label for="select-size">Size</label>
       <select id="select-size">
         <option value="small">Small</option>
@@ -29,25 +31,21 @@
         <option value="extraLarge">Extra Lage</option>
       </select>
     </div>
-    <div class="filter-sex">
+    <div id="filter-sex">
       <label for="select-sex">Sex</label>
       <select id="select-sex">
         <option value="female">Female</option>
         <option value="male">Male</option>
       </select>
     </div>
-    <div class="filter-location">
+    <div id="filter-location">
       <label for="textbox-location">Location (ZipCode)</label>
       <input type="text" name="textbox-location" id="textbox-location">
     </div>
-    <div class="filters-listMapToggle">
-      <button class="filters-list">List</button>
-      <button class="filters-map">Map</button>
-    </div>
+    <div id="filters-listMapToggle">
+      <button id="filters-list">List</button>
+      <button id="filters-map">Map</button> </div>
   </div>
 </body>
-
-<script src="filtersState.js"></script>
-<script src="filtersUpdate.js"></script>
 
 </html>

@@ -1,27 +1,49 @@
 // Document Selectors
-const catCheckbox = document.getElementById("checkbox-cat")
-const dogCheckbox = document.getElementById("checkbox-dog")
-const breedTextBox = document.getElementById("textbox-breed")
+const typeSelector = document.getElementById("select-type")
+const breedSelector = document.getElementById("select-breed")
 const sizeSelector = document.getElementById("select-size")
 const sexSelector = document.getElementById("select-sex")
 const locationSelector = document.getElementById("textbox-location")
 const listViewButton = document.getElementById("filters-list")
 const mapViewButton = document.getElementById("filters-map")
 
-dogCheckbox.addEventListener("change", e => {
-  petFilters = setFilters(petFilters, {
-    animal: {
-      dog: !petFilters.animal.dog,
-      cat: petFilters.animal.cat
-    }
-  })
+typeSelector.addEventListener("change", e => {
+  console.log(e.target)
+  // setFilters(petFilters, {})
 })
 
-catCheckbox.addEventListener("change", e => {
-  petFilters = setFilters(petFilters, {
-    animal: {
-      dog: petFilters.animal.dog,
-      cat: !petFilters.animal.cat
-    }
-  })
+const eventHandler = (filterObj, field) => {
+  return function(data) {
+    petFilters = setFilters(petFilters, {
+      field: [data, ...filterObj[field]]
+    })
+  }
+}
+
+$("#select-type").selectize({
+  plugins: ["remove_button"],
+  sortField: "text",
+  create: true,
+  // passes the value as the agument
+  onItemAdd: eventHandler(petFilters, "animals")
+})
+
+$("#select-breed").selectize({
+  plugins: ["remove_button"],
+  sortField: "text"
+})
+
+$("#select-size").selectize({
+  plugins: ["remove_button"],
+  sortField: "text"
+})
+
+$("#select-sex").selectize({
+  plugins: ["remove_button"],
+  sortField: "text"
+})
+
+$("#select-age").selectize({
+  plugins: ["remove_button"],
+  sortField: "text"
 })
