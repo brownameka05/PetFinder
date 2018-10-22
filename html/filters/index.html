@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Adoption</title>
+</head>
+
+<body>
+  <div class="filtersContainer">
+    <div class="filter-animal">
+      Cats:
+      <input type="checkbox" name="checkbox-cat" id="checkbox-cat">
+      Dogs:
+      <input type="checkbox" name="checkbox-dog" id="checkbox-dog">
+    </div>
+    <div class="filter-breed">
+      <label for="textbox-breed">Breed</label>
+      <input type="text" name="textbox-breed" id="textbox-breed">
+    </div>
+    <div class="filter-size">
+      <label for="select-size">Size</label>
+      <select id="select-size">
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+        <option value="extraLarge">Extra Lage</option>
+      </select>
+    </div>
+    <div class="filter-sex">
+      <label for="select-sex">Sex</label>
+      <select id="select-sex">
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+      </select>
+    </div>
+    <div class="filter-location">
+      <label for="textbox-location">Location (ZipCode)</label>
+      <input type="text" name="textbox-location" id="textbox-location">
+    </div>
+    <div class="filters-listMapToggle">
+      <button class="filters-list">List</button>
+      <button class="filters-map">Map</button>
+    </div>
+  </div>
+</body>
+
+<script src="filtersState.js"></script>
+<script src="filtersUpdate.js"></script>
+
+</html>
