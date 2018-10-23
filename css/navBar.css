@@ -1,3 +1,5 @@
+
+
 .nav {
   text-align: left;
 
@@ -9,7 +11,6 @@
   justify-content: center;
   padding-bottom:8%;
   display: flex;
-  position: fixed;
 }
 
 a:link, a:visited{
@@ -25,20 +26,12 @@ a:hover {
 
 body{
   margin: 0px;
-  background-color:white;
+  background-color: #4b4b4b;
 }
 
-.profileContainer{
+.petProfile{
   display: flex;
-  flex-direction:row;
+  margin-top: 20%;
+  align-content: flex-start;
 
-}
-
-.info{
-  margin: 20%;
-  border: 5px solid #65878F;
-  width: 50%;
-  height: 50%;
-  font-family: 'Concert One', cursive;
-  font-size: 20px;
 }
