@@ -1,0 +1,138 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+$button-bg-color: #1a9ceb;
+$button-border-color: #0073bb;
+
+#filtersContainer {
+  font-family: Montserrat;
+}
+
+.filters-list .open {
+  display: flex;
+  width: 80%;
+  -webkit-transition: height 0.5s linear;
+  -moz-transition: height 0.5s linear;
+  -ms-transition: height 0.5s linear;
+  -o-transition: height 0.5s linear;
+  transition: height 0.5s linear;
+}
+
+.filters-list {
+  display: none;
+}
+
+.filter-animal,
+.filter-breed,
+.filter-size,
+.filter-sex,
+.filter-age,
+#filter-location {
+  display: flex;
+  width: 80%;
+  text-align: middle;
+  margin: 1% 1%;
+}
+
+label {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectize-control {
+  width: 80%;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#filter-nav {
+  display: flex;
+  justify-content: flex-start;
+  width: 80%;
+}
+
+#filter-viewToggle {
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: auto;
+}
+
+.btn-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 4%;
+  padding-bottom: 10%;
+  margin-right: 20%;
+  height: 20%;
+  min-width: 100px;
+
+  background: $button-bg-color;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 18px;
+  border-radius: 3px;
+  box-shadow: 0 5px 0px darken($button-bg-color, 0%);
+  border-bottom: 2px solid darken($button-bg-color, 3%);
+
+  &:hover {
+    background: darken($button-bg-color, 5%);
+    box-shadow: 0 4px 1px darken($button-bg-color, 5%);
+    border-bottom: 2px solid darken($button-bg-color, 8%);
+    transition: all 0.1s ease-in;
+  }
+
+  &:active {
+    transform: translateY(4px);
+    border-bottom-width: 2px;
+    box-shadow: none;
+  }
+}
+
+#filtersContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Start Burger Button */
+#burger-btn {
+  display: inline-block;
+  cursor: pointer;
+}
+
+#burger-top,
+#burger-mid,
+#burger-bot {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change #burger-top {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+/* Fade out the second bar */
+.change #burger-mid {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.change #burger-bot {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+/* End Burger Button*/
