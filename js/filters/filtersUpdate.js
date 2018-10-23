@@ -8,6 +8,11 @@ const listViewButton = document.getElementById("filters-list")
 const mapViewButton = document.getElementById("filters-map")
 const filtersList = document.getElementsByClassName("filters-list")[0]
 
+const selectizeConfig = {
+  plugins: ["remove_button", "restore_on_backspace"],
+  sortField: "text"
+}
+
 const updateType = () => {
   return function(data) {
     petFilters = setFilters(petFilters, {
@@ -17,9 +22,7 @@ const updateType = () => {
 }
 
 $("#select-type").selectize({
-  plugins: ["remove_button"],
-  sortField: "text",
-  create: true,
+  ...selectizeConfig,
   onItemAdd: updateType()
 })
 
@@ -32,8 +35,7 @@ const updateBreeds = () => {
 }
 
 $("#select-breed").selectize({
-  plugins: ["remove_button"],
-  sortField: "text",
+  ...selectizeConfig,
   onItemAdd: updateBreeds()
 })
 
@@ -46,8 +48,7 @@ const updateSizes = () => {
 }
 
 $("#select-size").selectize({
-  plugins: ["remove_button"],
-  sortField: "text",
+  ...selectizeConfig,
   onItemAdd: updateSizes()
 })
 
@@ -60,8 +61,7 @@ const updateSexes = () => {
 }
 
 $("#select-sex").selectize({
-  plugins: ["remove_button"],
-  sortField: "text",
+  ...selectizeConfig,
   onItemAdd: updateSexes()
 })
 
@@ -74,8 +74,7 @@ const updateAges = () => {
 }
 
 $("#select-age").selectize({
-  plugins: ["remove_button"],
-  sortField: "text",
+  ...selectizeConfig,
   onItemAdd: updateAges()
 })
 
@@ -87,11 +86,13 @@ const updateLocation = () => {
   }
 }
 
+// TODO: Make so only 1 input.
+
 $("#textbox-location").selectize({
-  plugins: ["remove_button"],
-  sortField: "text",
+  ...selectizeConfig,
+  create: true,
   onItemAdd: updateLocation(),
-  maxItems: 1
+  placeholder: "ZipCode"
 })
 
 const toggleBurger = e => {

@@ -24,7 +24,7 @@ const filtersHTML = /*html*/ `
 
 <div class="filters-list">
 <div class="filter-animal">
-<label for="select-type">Type</label>
+<label class="filter-label"for="select-type">Type</label>
 <select id="select-type" class="demo-default" multiple>
   <option value="">Select an animal type...</option>
   <option value="dog">Dogs</option>
@@ -33,7 +33,7 @@ const filtersHTML = /*html*/ `
 </div>
 
 <div class="filter-breed">
-<label for="select-breed">Breed</label>
+<label class="filter-label"for="select-breed">Breed</label>
 <select id="select-breed" class="demo-default" multiple>
   <option value="">Select a breed...</option>
   <option value="a">Pit Bull</option>
@@ -43,7 +43,7 @@ const filtersHTML = /*html*/ `
 </div>
 
 <div class="filter-size">
-<label for="select-size">Size</label>
+<label class="filter-label"for="select-size">Size</label>
 <select id="select-size" class="demo-default" multiple>
   <option value="">Size</option>
   <option value="small">Small</option>
@@ -53,17 +53,8 @@ const filtersHTML = /*html*/ `
 </select>
 </div>
 
-<div class="filter-sex">
-<label for="select-sex">Sex</label>
-<select id="select-sex" class="demo-default" multiple>
-  <option value="">Sex<option>
-  <option value="female">Female</option>
-  <option value="male">Male</option>
-</select>
-</div>
-
 <div class="filter-age">
-  <label for="select-age">Age</label>
+  <label class="filter-label"for="select-age">Age</label>
   <select id="select-age" class="demo-default" multiple>
     <option value="">Age<option>
     <option value="Baby">Baby</option>
@@ -73,8 +64,17 @@ const filtersHTML = /*html*/ `
   </select>
 </div>
 
+<div class="filter-sex">
+<label class="filter-label" for="select-sex">Sex</label>
+<select id="select-sex" class="demo-default" multiple>
+  <option value="">Sex<option>
+  <option value="female">Female</option>
+  <option value="male">Male</option>
+</select>
+</div>
+
 <div id="filter-location">
-  <label for="textbox-location">ZipCode</label>
+  <label class="filter-label"for="textbox-location">ZipCode</label>
   <input type="text" name="textbox-location" id="textbox-location">
 </div>
 </div>
