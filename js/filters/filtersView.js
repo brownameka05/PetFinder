@@ -1,16 +1,21 @@
-const filtersContainer = document.getElementById('filtersContainer');
+const filtersContainer = document.getElementById("filtersContainer")
 
 // <div id="burger-btn" onclick=toggleBurger(this)>
 //   <div id="burger-top"></div>
 //   <div id="burger-mid"></div>
 //   <div id="burger-bot"></div>
 // </div>
+/* <div id="filter-filtersToggle" onclick=toggleBurger(this)>
+    <button class="btn-filter">Filters</button>
+    </div> */
 const filtersHTML = /*html*/ `
 
 <div id="filter-nav">
-<div id="filter-filtersToggle" onclick=toggleBurger(this)>
-    <button class="btn-filter">Filters</button>
-    </div>
+<div id="burger-btn" onclick=toggleBurger(this)>
+  <div id="burger-top"></div>
+  <div id="burger-mid"></div>
+  <div id="burger-bot"></div>
+</div>
   <div id="filter-viewToggle">
     <button class="btn-filter">List</button>
     <button class="btn-filter">Map</button>
@@ -73,6 +78,6 @@ const filtersHTML = /*html*/ `
   <input type="text" name="textbox-location" id="textbox-location">
 </div>
 </div>
-    `;
+    `
 
-filtersContainer.innerHTML = filtersHTML;
+filtersContainer.innerHTML = filtersHTML

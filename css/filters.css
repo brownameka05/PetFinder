@@ -3,17 +3,18 @@
   font-family: Montserrat;
 }
 
-.filters-list.open {
-  width: 80%;
-  max-height: 500px;
-  overflow: hidden;
-  margin-top: 1em;
-  transition: max-height 0.25s ease-in;
-}
-
 .filters-list {
   width: 80%;
   max-height: 0px;
+  overflow: hidden;
+  margin-top: 1em;
+  transition: max-height 0.25s ease-out;
+}
+
+.filters-list.open {
+  width: 80%;
+  height: auto;
+  max-height: 500px;
   overflow: hidden;
   margin-top: 1em;
   transition: max-height 0.25s ease-out;
@@ -49,13 +50,13 @@ label {
 #filter-nav {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
   width: 80%;
 }
 
 #filter-viewToggle {
   display: flex;
   justify-content: space-evenly;
+  width: 10em;
   margin-left: auto;
 }
 
@@ -63,9 +64,6 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 20%;
-  height: 20%;
-  width: auto;
   background: #1a9ceb;
   border: none;
   outline: none;
@@ -74,19 +72,6 @@ label {
   font-weight: 800;
   font-size: 18px;
   border-radius: 3px;
-  box-shadow: 0 5px 0px #1a9ceb;
-  border-bottom: 2px solid #1494e2;
-}
-.btn-filter:hover {
-  background: #138ed9;
-  box-shadow: 0 4px 1px #138ed9;
-  border-bottom: 2px solid #1285cb;
-  transition: all 0.1s ease-in;
-}
-.btn-filter:active {
-  transform: translateY(4px);
-  border-bottom-width: 2px;
-  box-shadow: none;
 }
 
 #filtersContainer {
@@ -97,8 +82,7 @@ label {
 }
 
 /* Start Burger Button */
-#burger-btn,
-#filter-filtersToggle {
+#burger-btn {
   display: inline-block;
   cursor: pointer;
 }
