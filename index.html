@@ -5,27 +5,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="node_modules/selectize/dist/css/selectize.default.css">
+
+  <!-- Start JQuery -->
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <!-- End JQuery -->
+
+  <!-- Start Selectize -->
+  <link rel="stylesheet" href="node_modules/selectize/dist/css/selectize.default.css">
   <script src="node_modules/selectize/dist/js/standalone/selectize.min.js"></script>
-  <title>Document</title>
+  <!-- End Selectize -->
+
+  <!-- Start Filters-->
+  <link rel="stylesheet" href="css/filters.css">
+  <!-- End Filters-->
+
+  <title>Pet Overflow</title>
 </head>
 
 <body>
 
-  <div id="filtersContainer">
-  </div>
-</body>
-<script>
-  $('#textbox-breed').selectize({
-    plugins: ['remove_button'],
-    sortField: 'text'
-  });
-</script>
+  <div id="filtersContainer" />
 
+</body>
+
+
+<!-- Start Filters-->
 <script src="js/filters/filtersView.js"></script>
 <script src="js/filters/filtersState.js"></script>
 <script src="js/filters/filtersUpdate.js"></script>
-
+<!-- End Filters-->
 
 </html>
