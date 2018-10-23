@@ -1,0 +1,120 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+$button-bg-color: #1a9ceb;
+$button-border-color: #0073bb;
+
+#filtersContainer {
+  font-family: Montserrat;
+}
+
+.filters-list {
+  width: 80%;
+  max-height: 0px;
+  overflow: hidden;
+  margin-top: 1em;
+  transition: max-height 0.25s ease-out;
+}
+
+.filters-list.open {
+  width: 80%;
+  height: auto;
+  max-height: 500px;
+  overflow: hidden;
+  margin-top: 1em;
+  transition: max-height 0.25s ease-out;
+}
+
+.filter-animal,
+.filter-breed,
+.filter-size,
+.filter-sex,
+.filter-age,
+#filter-location {
+  display: flex;
+  width: 80%;
+  text-align: middle;
+  margin: 1% 1%;
+}
+
+label {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectize-control {
+  width: 80%;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#filter-nav {
+  display: flex;
+  justify-content: flex-start;
+  width: 80%;
+}
+
+#filter-viewToggle {
+  display: flex;
+  justify-content: space-evenly;
+  width: 10em;
+  margin-left: auto;
+}
+
+.btn-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $button-bg-color;
+  border: none;
+  outline: none;
+  color: white;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 18px;
+  border-radius: 3px;
+}
+
+#filtersContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Start Burger Button */
+#burger-btn {
+  display: inline-block;
+  cursor: pointer;
+}
+
+#burger-top,
+#burger-mid,
+#burger-bot {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change #burger-top {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+/* Fade out the second bar */
+.change #burger-mid {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.change #burger-bot {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+/* End Burger Button*/

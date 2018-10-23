@@ -1,35 +1,50 @@
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <style>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+<style>
 @import url('https://fonts.googleapis.com/css?family=Concert+One');
 
 </style>
+=======
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Start JQuery -->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <!-- End JQuery -->
+
+  <!-- Start Selectize -->
+  <link rel="stylesheet" href="node_modules/selectize/dist/css/selectize.default.css">
+  <script src="node_modules/selectize/dist/js/standalone/selectize.min.js"></script>
+  <!-- End Selectize -->
+
+  <!-- Start Filters-->
+  <link rel="stylesheet" href="css/filters.css">
+  <!-- End Filters-->
+
+  <title>Pet Overflow</title>
+>>>>>>> filterComponent
 </head>
-
-<div class= "Nav">
-  <h2>
-    <img src="petoverflow.png" width="338px" ALIGN=”top”>
-  <a href= "https://www.petfinder.com/pet-adoption/">  About </a>
-  <a href= "https://www.petfinder.com/"> Search </a>
-  <a href = "ExampleLink.png"> Contact </a>
-  <a href = "https://www.petfinder.com/"> Login </a>
-
+<body>
+    <div class= "Nav">
+      <h2>
+        <img src="petoverflow.png" width="338px" ALIGN=”top”>
+      <a href= "https://www.petfinder.com/pet-adoption/">  About </a>
+      <a href= "https://www.petfinder.com/"> Search </a>
+      <a href = "ExampleLink.png"> Contact </a>
+      <a href = "https://www.petfinder.com/"> Login </a>
 </h2>
 </div>
-
-<body>
-
-
-
-
-
-
-
-
+  <div id="filtersContainer" />
 
 </body>
 
-
+<!-- Start Filters-->
+<script src="js/filters/filtersView.js"></script>
+<script src="js/filters/filtersState.js"></script>
+<script src="js/filters/filtersUpdate.js"></script>
+<!-- End Filters-->
 
 </html>
