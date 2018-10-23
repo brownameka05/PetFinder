@@ -94,8 +94,3 @@ $("#textbox-location").selectize({
   onItemAdd: updateLocation(),
   placeholder: "ZipCode"
 })
-
-const toggleBurger = e => {
-  e.classList.toggle("change")
-  filtersList.classList.toggle("open")
-}

@@ -80,4 +80,9 @@ const filtersHTML = /*html*/ `
 </div>
     `
 
+const toggleBurger = e => {
+  e.classList.toggle("change")
+  filtersList.classList.toggle("open")
+}
+
 filtersContainer.innerHTML = filtersHTML

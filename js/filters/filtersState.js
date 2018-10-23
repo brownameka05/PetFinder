@@ -1,5 +1,4 @@
 let petFilters = {
-  key: "",
   animals: [],
   breeds: [],
   sizes: [], // S, M, L or XL
