@@ -14,9 +14,8 @@
 .filters-list.open {
   width: 80%;
   height: auto;
+  padding-bottom: 2em;
   max-height: 500px;
-  overflow: hidden;
-  margin-top: 1em;
   transition: max-height 0.25s ease-out;
 }
 
@@ -30,23 +29,36 @@
   width: 80%;
   text-align: middle;
   margin: 1% 1%;
+  z-index: 1;
 }
 
-label {
+.filter-label {
   width: 20%;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
+  margin-right: 1%;
+  font-size: 100%;
 }
 
+@media screen and (max-width: 600px) {
+  .filter-label {
+    display: none;
+  }
+}
 .selectize-control {
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+@media screen and (max-width: 600px) {
+  .selectize-control {
+    width: 100%;
+  }
+}
 #filter-nav {
   display: flex;
   justify-content: flex-start;
