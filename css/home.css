@@ -1,0 +1,104 @@
+
+/************************ CAROUSEL *************************/
+
+.carousel-item {
+    height: 40vw;
+}
+
+.carousel-caption{
+    background-color: rgba(0,0,0,.2);
+  
+}
+.carousel-caption h5{
+    color: orange;
+    font-weight: bold;
+    text-align: left;
+    padding: .5rem;
+    font-size: 40px;
+    margin-left: -15%;
+    margin-top: -45%;
+}
+
+.carousel-caption p{
+
+    text-align: left;
+    padding: .5rem;
+    margin-left: -15%;
+}
+
+
+.social {
+    font-size: 150%;
+}
+
+.top-position{
+    top: 0;
+}
+
+.opaque-box {
+    height: 12%;
+    width: 100%;
+    margin-left: -15%;
+    background-color: rgba(255, 255, 255, 0.66);
+}
+
+.fa-cat {
+    font-size: 400%;
+    color: black;
+    margin-top: -1%;
+    margin-right: 85%;
+}
+
+.caption {
+    width: 100%;
+}
+
+#cap1 {
+    color: #ff9c23;
+    font-weight: bold;
+    line-height: 99%;
+    font-size: 2rem;
+    width: 100%;
+}
+
+
+.sub-caption {
+    font-size: 130%;
+    color: white;
+    margin-top: 20%;
+    margin-left: -45%;
+    width: 100%;
+}
+
+#clickhere {
+    background-color: rgba(0, 0, 0, 0.41);
+    color: orange;
+    margin-left: -85%;
+  
+}
+
+
+#logo {
+    width: 6%;
+    margin-top: -.95%;
+    margin-right: 85%;
+    color: aqua;
+}
+
+.slide2{
+    transform: translateY(-9%);
+}
+
+.slide3{
+    transform: translateY(-40%);
+}
+
+.section3 {
+    height: 500px;
+    background-color: #dddddd;
+}
+
+
+
+
+
