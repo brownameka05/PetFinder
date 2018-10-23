@@ -20,7 +20,6 @@ $("#select-type").selectize({
   plugins: ["remove_button"],
   sortField: "text",
   create: true,
-  // passes the value as the agument
   onItemAdd: updateType()
 })
 
@@ -91,7 +90,8 @@ const updateLocation = () => {
 $("#textbox-location").selectize({
   plugins: ["remove_button"],
   sortField: "text",
-  onItemAdd: updateLocation()
+  onItemAdd: updateLocation(),
+  maxItems: 1
 })
 
 const toggleBurger = e => {
