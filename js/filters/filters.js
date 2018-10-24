@@ -219,17 +219,11 @@ $("#textbox-location").selectize({
  *  State
  */
 let petFilters = {
-  key: "",
   animals: [],
-  breeds: [],
+//  breeds: [],
   sizes: [], // S, M, L or XL
   sexes: [], // M or F
-  location: "", // zipcode
   ages: [], // Baby, Young, Adult, Senior
-  offset: "", // set this to the value of lastOffset returned by a previous call to pet.find, and it will retrieve the next result set
-  count: 25,
-  output: "full", // or basic
-  format: "json"
 }
 
 const shelterFilters = {

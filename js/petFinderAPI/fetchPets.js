@@ -82,16 +82,10 @@ const convertLonLat = shelterObj => {
 
 // Initialize Page Data
 
-let petData = {
-  dogBreeds: [],
-  catBreeds: [],
-  currentPets: []
-}
-
-const initPage = async petData => {
+const initPage = async () => {
+  let petData = {}
   petData.dogBreeds = await getAllBreedsOf("dog")
   petData.catBreeds = await getAllBreedsOf("cat")
   petData.currentPets = await getPetsAtLocation("77025")
+  return petData 
 }
-
-initPage(petData)
