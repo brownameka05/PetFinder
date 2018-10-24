@@ -1,5 +1,4 @@
 function populateSearchResults(resultsObject){
-    let count = 1;
     for(key in resultsObject){
         petObject = resultsObject[key]
         petLiteral = `

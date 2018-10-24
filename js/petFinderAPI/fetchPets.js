@@ -9,48 +9,49 @@ const METHODS = {
   getShelters: "shelter.find", // returns a collection of shelters
   getShelter: "shelter.get" // returns a shelter
 }
+const FETCH_CONFIG = {}
 
 // filters -> query string
 const createQuery = (method, key, args) => {
-  return `${BASE_URL}${method}?format=json&key=${key}&${args}`
+  return `${BASE_URL}${method}?format=json&key=${key}&${args}&callback=?`
 }
 
 // animal ("dog" or "cat") -> Promise(breeds list)
 const getAllBreedsOf = async animal => {
   const query = createQuery(METHODS.breedList, key, `animal=${animal}`)
-  return fetch(query)
-    .then(res => res.json())
+  return $.getJSON(query)
     .then(json => json.petfinder.breeds.breed.map(obj => Object.values(obj)[0]))
+    .catch(err => console.log(err))
 }
 
-// location, offset, count -> json/object
+// location, offset, count -> Promise(object)
 const getPetsAtLocation = (location, offset = 0, count = 100) => {
   const query = createQuery(
     METHODS.getPets,
     key,
     `location=${location}&offset=${offset}&count=${count}`
   )
-  return fetch(query)
-    .then(res => res.json())
-    .then(json => {
-      return [json.petfinder.pets.pet, offset + count]
-    })
+  return $.getJSON(query)
+    .then(json => json.petfinder.pets.pet)
+    .then(pets => pets.map(flattenPetObj))
+    .catch(err => console.log(err))
 }
 
-// location, offset, count -> json/object
+// location, offset, count -> Promise(object)
 const getSheltersAtLocation = (location, offset = 0, count = 25) => {
   const query = createQuery(
     METHODS.getShelters,
     key,
     `location=${location}&offset=${offset}&count=${count}`
   )
-  return fetch(query)
-    .then(res => res.json())
+  return $.getJSON(query)
     .then(json => json.petfinder.shelters.shelter)
     .then(sheltersList =>
       sheltersList.map(flattenShelterObj).map(convertLonLat)
     )
 }
+
+//[json.petfinder.pets.pet, offset + count];
 
 // Helpers
 const flattenShelterObj = shelter => {
@@ -61,12 +62,36 @@ const flattenShelterObj = shelter => {
   }, {})
 }
 
+const flattenPetObj = pet => {
+  const petKeys = Object.keys(pet)
+  return petKeys.reduce((obj, key) => {
+    if (Object.keys(pet[key]).includes("$t")) {
+      obj[key] = Object.values(pet[key])[0]
+    } else {
+      obj[key] = pet[key]
+    }
+    return obj
+  }, {})
+}
+
 const convertLonLat = shelterObj => {
   shelterObj.longitude = parseFloat(shelterObj.longitude)
   shelterObj.latitude = parseFloat(shelterObj.latitude)
   return shelterObj
 }
 
-// Tests
-getSheltersAtLocation("77025").then(data => console.log(data))
-console.log("hello")
+// Initialize Page Data
+
+let petData = {
+  dogBreeds: [],
+  catBreeds: [],
+  currentPets: []
+}
+
+const initPage = async petData => {
+  petData.dogBreeds = await getAllBreedsOf("dog")
+  petData.catBreeds = await getAllBreedsOf("cat")
+  petData.currentPets = await getPetsAtLocation("77025")
+}
+
+initPage(petData)
