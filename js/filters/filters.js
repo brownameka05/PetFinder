@@ -21,8 +21,8 @@ const filtersHTML = /*html*/ `
     <i class="fas fa-filter"></i>
   </button>
   <div id="filter-viewToggle">
-    <button class="btn-filter"><i class="fas fa-list"></i></button> 
-    <button class="btn-filter"> 
+    <button id="btn-listView" class="btn-filter"><i class="fas fa-list"></i></button> 
+    <button id="btn-mapView" class="btn-filter"> 
     <i class="fas fa-map-marked-alt"></i>
     </button>
   </div>
@@ -205,6 +205,17 @@ const updateLocation = () => {
     })
   }
 }
+
+$("#btn-listView").click((e) => {
+  $("#map").css("height", 0)
+  $("#results").css("z-index", 1)
+})
+
+$("#btn-mapView").click((e) => {
+  console.log("clicked")
+  $("#map").height("500px")
+  $("#results").css("z-index", 1)
+})
 
 // TODO: Make so only 1 input.
 
