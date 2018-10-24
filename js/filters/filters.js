@@ -219,20 +219,17 @@ $("#textbox-location").selectize({
  *  State
  */
 let petFilters = {
-  animals: [],
-//  breeds: [],
-  sizes: [], // S, M, L or XL
-  sexes: [], // M or F
-  ages: [], // Baby, Young, Adult, Senior
+  animal: [],
+  // breeds: [],
+  size: [], // S, M, L or XL
+  sex: [], // M or F
+  age: ["Baby", "Young"] // Baby, Young, Adult, Senior
 }
 
 const shelterFilters = {
-  key: "",
   location: "", // zipCode
   name: "", // shelter name
-  offset: "",
-  count: 25,
-  format: "json"
+  offset: ""
 }
 
 const searchViewState = {
