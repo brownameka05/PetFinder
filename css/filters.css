@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
-#filtersContainer {
+#filters {
+  width: 90%;
   font-family: Montserrat;
 }
 
@@ -49,7 +50,7 @@
   }
 }
 .selectize-control {
-  width: 100%;
+  width: 80%;
   margin-left: auto;
   display: flex;
   justify-content: center;
@@ -58,9 +59,10 @@
 
 @media screen and (max-width: 600px) {
   .selectize-control {
-    width: 100%;
+    width: 80%;
   }
 }
+
 #filter-nav {
   display: flex;
   justify-content: flex-start;
@@ -69,7 +71,6 @@
 #filter-viewToggle {
   display: flex;
   justify-content: space-evenly;
-  width: 10em;
   margin-left: auto;
 }
 
@@ -77,14 +78,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #1a9ceb;
   border: none;
   outline: none;
-  color: white;
-  font-family: inherit;
-  font-weight: 800;
-  font-size: 18px;
-  border-radius: 3px;
+  color: #212121;
+  font-size: 2em;
+  cursor: pointer;
+  background: white;
+}
+
+.btn-filter:hover {
+  color: gray;
+}
+
+.fa-list {
+  margin-right: 1em;
 }
 
 #filtersContainer {
@@ -92,6 +99,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#btn-apply {
+  border: none;
+  outline: none;
+  background: #ffbc42;
+  padding: 0.5em 1em;
+  margin-top: 1em;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 1em;
+  color: white;
+}
+
+#btn-apply:hover {
+  background: orange;
 }
 
 /* Start Burger Button */

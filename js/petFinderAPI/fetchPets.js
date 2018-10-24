@@ -80,13 +80,18 @@ const convertLonLat = shelterObj => {
   return shelterObj
 }
 
-// Tests
-// getSheltersAtLocation("77025").then(data => {
-//   console.log("success")
-//   console.log(data)
-// })
+// Initialize Page Data
 
-// getPetsAtLocation("77025").then(data => {
-//   console.log("success")
-//   console.log(data)
-// })
+let petData = {
+  dogBreeds: [],
+  catBreeds: [],
+  currentPets: []
+}
+
+const initPage = async petData => {
+  petData.dogBreeds = await getAllBreedsOf("dog")
+  petData.catBreeds = await getAllBreedsOf("cat")
+  petData.currentPets = await getPetsAtLocation("77025")
+}
+
+initPage(petData)
