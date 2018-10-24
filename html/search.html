@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
+
+    <!-- Start JQuery -->
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- End JQuery -->
+
+    <!-- Start Selectize -->
+    <link rel="stylesheet" href="../node_modules/selectize/dist/css/selectize.default.css">
+    <script src="../node_modules/selectize/dist/js/standalone/selectize.min.js"></script>
+    <!-- End Selectize -->
+
+    <!-- Start Filters-->
+    <link rel="stylesheet" href="../css/filters.css">
+    <!-- End Filters-->
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/filters.css" />
     <title>Document</title>
 </head>
+
 <body>
-    <div id = "container">
-        <div id = "navbar">
-    
+    <div id="container">
+        <div id="navbar">
+
         </div>
-        <div id = "search">
-            <div id = "filters">
+        <div id="search">
+            <div id="filters">
 
             </div>
-            <div id = "results">
+            <div id="results">
 
             </div>
         </div>
     </div>
 </body>
-<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src = "../js/script.js"></script>
+
+<script src="../js/script.js"></script>
+<script src="../js/petFinderAPI/secrets.js"></script>
+<script src="../js/petFinderAPI/fetchPets.js"></script>
+<script src="../js/filters/filters.js"></script>
+
 </html>
