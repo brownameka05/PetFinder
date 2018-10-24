@@ -34,11 +34,12 @@ const getPetsAtLocation = (location, offset = 0, count = 100) => {
     `location=${location}&offset=${offset}&count=${count}`
   );
   return $.getJSON(query)
-    .then((json) => {
-      return [json.petfinder.pets.pet, offset + count];
-    })
+    .then((json) => json.petfinder.pets.pet)
+    .then((pets) => pets.map(flattenPetObj))
     .catch((err) => console.log(err));
 };
+
+//return [json.petfinder.pets.pet, offset + count];
 
 // location, offset, count -> json/object
 const getSheltersAtLocation = (location, offset = 0, count = 25) => {
@@ -59,6 +60,18 @@ const flattenShelterObj = (shelter) => {
   const shelterKeys = Object.keys(shelter);
   return shelterKeys.reduce((obj, key) => {
     obj[key] = shelter[key] ? Object.values(shelter[key])[0] : '';
+    return obj;
+  }, {});
+};
+
+const flattenPetObj = (pet) => {
+  const petKeys = Object.keys(pet);
+  return petKeys.reduce((obj, key) => {
+    if (Object.keys(pet[key]).includes('$t')) {
+      obj[key] = Object.values(pet[key])[0];
+    } else {
+      obj[key] = pet[key];
+    }
     return obj;
   }, {});
 };
