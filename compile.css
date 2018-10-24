@@ -2,6 +2,11 @@
     font-weight: bolder;
 }
 
+.navbarhead{
+  position: fixed;
+}
+
+
 
 .nav-link {
     font-size: 85%;
