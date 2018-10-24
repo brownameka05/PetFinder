@@ -1,3 +1,21 @@
+function populateSearchResults(resultsObject){
+    for(key in resultsObject){
+        petObject = resultsObject[key]
+        petLiteral = `
+        <div class="card">
+            <img class="card-img" src="https://lh5.googleusercontent.com/-2cuebuSKiRU/AAAAAAAAAAI/AAAAAAAAAEU/PibNivK-4U4/photo.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">${petObject.name}</h5>
+                <p class="card-text">Age: ${petObject.age}</p>
+                <button onclick = class = "learnMore" id = "${key}">More about ${petObject.name}</button>
+            </div>
+        </div>
+        `
+        $("#results").append(petLiteral)
+    }
+}
+
+
 petObject = {
     chico : {
         name: "Chico",

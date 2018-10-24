@@ -1,33 +1,30 @@
 /**
  * Views
  */
-const filtersContainer = document.getElementById("filtersContainer")
+const filtersContainer = document.getElementById("filters")
 
-// <div id="burger-btn" onclick=toggleBurger(this)>
-//   <div id="burger-top"></div>
-//   <div id="burger-mid"></div>
-//   <div id="burger-bot"></div>
-// </div>
-/* <div id="filter-filtersToggle" onclick=toggleBurger(this)>
-    <button class="btn-filter">Filters</button>
-    </div> */
-
-const toggleBurger = e => {
+/**
+ * Onclick Handlers
+ */
+const toggleFilter = e => {
   e.classList.toggle("change")
   filtersList.classList.toggle("open")
 }
 
-const filtersHTML = /*html*/ `
+const renderFilteredPets = e => {
+  console.log(petData.dogBreeds)
+}
 
+const filtersHTML = /*html*/ `
 <div id="filter-nav">
-<div id="burger-btn" onclick=toggleBurger(this)>
-  <div id="burger-top"></div>
-  <div id="burger-mid"></div>
-  <div id="burger-bot"></div>
-</div>
+  <button class="btn-filter" onclick=toggleFilter(this)>
+    <i class="fas fa-filter"></i>
+  </button>
   <div id="filter-viewToggle">
-    <button class="btn-filter">List</button>
-    <button class="btn-filter">Map</button>
+    <button class="btn-filter"><i class="fas fa-list"></i></button> 
+    <button class="btn-filter"> 
+    <i class="fas fa-map-marked-alt"></i>
+    </button>
   </div>
 </div> 
 
@@ -45,9 +42,6 @@ const filtersHTML = /*html*/ `
 <label class="filter-label"for="select-breed">Breed</label>
 <select id="select-breed" class="demo-default" multiple>
   <option value="">Select a breed...</option>
-  <option value="a">Pit Bull</option>
-  <option value="b">Boxer</option>
-  <option value="c">Huskey</option>
 </select>
 </div>
 
@@ -86,6 +80,10 @@ const filtersHTML = /*html*/ `
   <label class="filter-label"for="textbox-location">ZipCode</label>
   <input type="text" name="textbox-location" id="textbox-location">
 </div>
+
+<div id="apply-button">
+  <button id="btn-apply" onclick=renderFilteredPets()>Apply</button>
+</div>
 </div>
     `
 
@@ -118,7 +116,9 @@ const updateType = () => {
 
 $("#select-type").selectize({
   ...selectizeConfig,
-  onItemAdd: updateType()
+  onItemAdd: updateType(),
+  placeholder: "Type",
+  closeAfterSelect: true
 })
 
 const updateBreeds = () => {
@@ -131,7 +131,32 @@ const updateBreeds = () => {
 
 $("#select-breed").selectize({
   ...selectizeConfig,
-  onItemAdd: updateBreeds()
+  onItemAdd: updateBreeds(),
+  placeholder: "Breed",
+  theme: "links",
+  maxItems: null,
+  valueField: "id",
+  searchField: "title",
+  options: [{ id: 1, name: 1 }, { id: 2, name: 2 }, { id: 3, name: 3 }],
+  render: {
+    option: function(data, escape) {
+      return (
+        '<div class="option">' +
+        '<span class="title">' +
+        escape(data.name) +
+        "</div>"
+      )
+    },
+    item: function(data, escape) {
+      return (
+        '<div class="item"><a href="' +
+        escape(data.url) +
+        '">' +
+        escape(data.title) +
+        "</a></div>"
+      )
+    }
+  }
 })
 
 const updateSizes = () => {
@@ -187,7 +212,7 @@ $("#textbox-location").selectize({
   ...selectizeConfig,
   create: true,
   onItemAdd: updateLocation(),
-  placeholder: "ZipCode"
+  placeholder: "Zip"
 })
 
 /**
