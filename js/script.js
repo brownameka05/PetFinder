@@ -37,8 +37,8 @@ const petMatch = (filters, pet) => {
 
 function populateSearchResults(currentPets, filter) {
   const pets = filterPets(currentPets, filter)
-  Object.keys(pets)
-    .map(key => currentPets[key])
+  const petHtml = Object.keys(pets)
+    .map(key => pets[key])
     .slice(0, 25)
     .map(pet => {
       petLiteral = `
@@ -47,17 +47,25 @@ function populateSearchResults(currentPets, filter) {
             <div class="card-body">
                 <h5 class="card-title">${pet.name}</h5>
                 <p class="card-text">Age: ${pet.age}</p>
-                <button onclick = class = "learnMore" id = "${
+                <button class = "learnMore" id = "${
                   pet.id
                 }">More about ${pet.name}</button>
             </div>
-        </div>
-        `
-      $("#results").append(petLiteral)
+        </div> `
+        return petLiteral
+      //$("#results").append(petLiteral)
     })
+    console.log(petHtml.length)
+    $("#results").html(petHtml.reduce((a, b) => a + b))
 }
 
-initPage().then(results => {
-  populateSearchResults(results.currentPets, petFilters)
-  setSheltersOnMap(results.shelters)
+initPage().then(petData => {
+  populateSearchResults(petData.currentPets, petFilters)
+  setSheltersOnMap(petData.shelters)
+
+  $("#btn-apply").click((e) => {
+    console.log("clicked")
+    $("#results").html("")
+    populateSearchResults(petData.currentPets, petFilters)})
+
 })

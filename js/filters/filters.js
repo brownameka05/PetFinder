@@ -11,8 +11,8 @@ const toggleFilter = e => {
   filtersList.classList.toggle("open")
 }
 
-const renderFilteredPets = e => {
-  console.log(petData.dogBreeds)
+const renderFilteredPets = (e) => {
+  populateSearchResults(petData.currentPets, petFilters)
 }
 
 const filtersHTML = /*html*/ `
@@ -82,7 +82,7 @@ const filtersHTML = /*html*/ `
 </div>
 
 <div id="apply-button">
-  <button id="btn-apply" onclick=renderFilteredPets()>Apply</button>
+  <button id="btn-apply">Apply</button>
 </div>
 </div>
     `
@@ -109,7 +109,7 @@ const selectizeConfig = {
 const updateType = () => {
   return function(data) {
     petFilters = setFilters(petFilters, {
-      animals: [data, ...petFilters.animals]
+      animal: [data, ...petFilters.animals]
     })
   }
 }
@@ -161,8 +161,9 @@ $("#select-breed").selectize({
 
 const updateSizes = () => {
   return function(data) {
+    console.log("ran")
     petFilters = setFilters(petFilters, {
-      sizes: [data, ...petFilters.sizes]
+      size: [data, ...petFilters.size]
     })
   }
 }
@@ -175,7 +176,7 @@ $("#select-size").selectize({
 const updateSexes = () => {
   return function(data) {
     petFilters = setFilters(petFilters, {
-      sexes: [data, ...petFilters.sexes]
+      sex: [data, ...petFilters.sex]
     })
   }
 }
@@ -187,9 +188,11 @@ $("#select-sex").selectize({
 
 const updateAges = () => {
   return function(data) {
+    console.log(petFilters.age)
     petFilters = setFilters(petFilters, {
-      ages: [data, ...petFilters.ages]
+      age: [data, ...petFilters.age]
     })
+    console.log(petFilters.age)
   }
 }
 
@@ -208,12 +211,12 @@ const updateLocation = () => {
 
 $("#btn-listView").click((e) => {
   $("#map").css("height", 0)
-  $("#results").css("z-index", 1)
+  $("#results").show()
 })
 
 $("#btn-mapView").click((e) => {
-  $("#map").height("500px")
-  $("#results").css("z-index", 1)
+  $("#map").height("80vh")
+  $("#results").hide()
 })
 
 // TODO: Make so only 1 input.
@@ -233,18 +236,13 @@ let petFilters = {
   // breeds: [],
   size: [], // S, M, L or XL
   sex: [], // M or F
-  age: ["Baby", "Young"] // Baby, Young, Adult, Senior
+  age: [] // Baby, Young, Adult, Senior
 }
 
 const shelterFilters = {
   location: "", // zipCode
   name: "", // shelter name
   offset: ""
-}
-
-const searchViewState = {
-  map: false,
-  list: true
 }
 
 const setFilters = (filters, modFilter) => {

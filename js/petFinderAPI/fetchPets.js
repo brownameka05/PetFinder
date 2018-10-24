@@ -38,7 +38,7 @@ const getPetsAtLocation = (location, offset = 0, count = 100) => {
 }
 
 // location, offset, count -> Promise(object)
-const getSheltersAtLocation = (location, offset = 0, count = 25) => {
+const getSheltersAtLocation = (location, offset = 0, count = 100) => {
   const query = createQuery(
     METHODS.getShelters,
     key,
