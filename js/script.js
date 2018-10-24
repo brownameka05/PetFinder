@@ -37,7 +37,6 @@ const petMatch = (filters, pet) => {
 
 function populateSearchResults(currentPets, filter) {
   const pets = filterPets(currentPets, filter)
-  console.log(pets)
   Object.keys(pets)
     .map(key => currentPets[key])
     .slice(0, 25)
@@ -58,6 +57,7 @@ function populateSearchResults(currentPets, filter) {
     })
 }
 
-initPage().then(results =>
+initPage().then(results => {
   populateSearchResults(results.currentPets, petFilters)
-)
+  setSheltersOnMap(results.shelters)
+})

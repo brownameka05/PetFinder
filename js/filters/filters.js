@@ -212,7 +212,6 @@ $("#btn-listView").click((e) => {
 })
 
 $("#btn-mapView").click((e) => {
-  console.log("clicked")
   $("#map").height("500px")
   $("#results").css("z-index", 1)
 })

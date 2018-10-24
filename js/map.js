@@ -1,4 +1,3 @@
-
 var map;
 
 function initMap(){
@@ -24,7 +23,6 @@ function initMap(){
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
-    // setSheltersOnMap(locationArray)
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -35,16 +33,57 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 function setSheltersOnMap(shelterArray){
-    for(let index = 0; index < shelterArray.length; index++){
-        let latitude = shelterArray[index].latitude
-        let longitude = shelterArray[index].longitude
+  Object.keys(shelterArray)
+    .map(key => shelterArray[key])
+    .map(shelter => {
+        console.log(shelter.name)
+        let latitude = shelter.latitude
+        let longitude = shelter.longitude
         let location = new google.maps.LatLng(latitude, longitude)
+        let contentString = `
+        <b>${shelter.name}</b>
+        <p>${shelter.email}</p>
+        <p>${shelter.phone ? shelter.phone : ""}</p>
+        `
+        let infowindow = new google.maps.InfoWindow({
+            content: contentString 
+        })
         let marker = new google.maps.Marker({
             position: location, 
-            map: map
+            map: map,
+            title: shelter.name,
+            name: shelter.name
         })
-    }
+        marker.addListener("mouseover", function(){
+            infowindow.open(map, marker);
+            marker.addListener("mouseout", function(){
+                infowindow.close();
+            })
+        })
+        marker.addListener("mouseout", function(){
+            infowindow.close();
+        })
+        marker.addListener("click", function(){
+            infowindow.open(map, marker);
+            google.maps.event.clearListeners(marker, "mouseout")
+        })
+    })
 }
+
+// address1: "8620 Stella Link Road"
+// address2: undefined
+// city: "Houston"
+// country: "US"
+// email: "adopt@houstonpetsalive.org"
+// fax: undefined
+// id: "TX1950"
+// latitude: 29.69
+// longitude: -95.4343
+// name: "Houston Pets Alive!"
+// phone: "(832) 786-9310"
+// state: "TX"
+// zip: "77025"
+
 
 
 

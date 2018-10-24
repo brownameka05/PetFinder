@@ -87,5 +87,6 @@ const initPage = async () => {
   petData.dogBreeds = await getAllBreedsOf("dog")
   petData.catBreeds = await getAllBreedsOf("cat")
   petData.currentPets = await getPetsAtLocation("77025")
+  petData.shelters = await getSheltersAtLocation("77025")
   return petData
 }
