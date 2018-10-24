@@ -22,11 +22,11 @@ const filtersHTML = /*html*/ `
   </button>
   <div id="filter-viewToggle">
     <button class="btn-filter"><i class="fas fa-list"></i></button> 
-    <button class="btn-filter"> 
+    <button class="btn-filter">
     <i class="fas fa-map-marked-alt"></i>
     </button>
   </div>
-</div> 
+</div>
 
 <div class="filters-list">
 <div class="filter-animal">
