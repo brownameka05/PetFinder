@@ -56,6 +56,7 @@ function populateSearchResults(currentPets, filter) {
             <div class="card-body">
                 <h5 class="card-title">${pet.name}</h5>
                 <p class="card-text">Age: ${pet.age}</p>
+                <p class="card-text">Breed: ${pet.breed[0]}</p>
                 <button class = "learnMore" id = "${pet.id}">More about ${
         pet.name
       }</button>
@@ -75,7 +76,9 @@ initPage().then(petData => {
   $("#btn-apply").click(e => {
     $("#results").html("")
     populateSearchResults(petData.currentPets, petFilters)
+    initializeBreedFilter(petData, petFilters)
   })
 
-  initializeBreedFilter(petData)
+  initializeBreedFilter(petData, petFilters)
+  initializeTypeFilter(petData)
 })

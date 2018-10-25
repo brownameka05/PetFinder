@@ -107,26 +107,36 @@ const selectizeConfig = {
   closeAfterSelect: true
 }
 
-const updateType = msg => {
+const updateType = (msg, petData) => {
   return function(data) {
     if (msg === "add") {
       petFilters = setFilters(petFilters, {
         animal: [data, ...petFilters.animal]
       })
+      const $select = $("#select-breed").selectize()
+      const control = $select[0].selectize
+      control.clearOptions()
+      updateOptions(petData, petFilters, control)
     } else if (msg === "remove") {
       petFilters = setFilters(petFilters, {
         animal: petFilters.animal.filter(i => i !== data)
       })
+      const $select = $("#select-breed").selectize()
+      const control = $select[0].selectize
+      control.clearOptions()
+      updateOptions(petData, petFilters, control)
     }
   }
 }
 
-$("#select-type").selectize({
-  ...selectizeConfig,
-  onItemAdd: updateType("add"),
-  onItemRemove: updateType("remove"),
-  placeholder: "Type"
-})
+const initializeTypeFilter = petData => {
+  $("#select-type").selectize({
+    ...selectizeConfig,
+    onItemAdd: updateType("add", petData),
+    onItemRemove: updateType("remove", petData),
+    placeholder: "Type"
+  })
+}
 
 const updateBreeds = msg => {
   return function(data) {
@@ -146,8 +156,31 @@ const toObj = (k, vs) => {
   return vs.map((v, i) => ({ breed: v }))
 }
 
+const updateOptions = ({ dogBreeds, catBreeds }, petFilters, controller) => {
+  const catBreedObj = toObj("breed", catBreeds)
+  const dogBreedObj = toObj("breed", dogBreeds)
+  let options = [...catBreedObj, ...dogBreedObj]
+  if (petFilters.animal.length === 1) {
+    if (petFilters.animal[0] === "Cat") {
+      options = [...catBreedObj]
+    } else if (petFilters.animal[0] === "Dog") {
+      options = [...dogBreedObj]
+    }
+  }
+  options.forEach(option => controller.addOption(option))
+}
+
 const initializeBreedFilter = ({ dogBreeds, catBreeds }, petFilters) => {
-  const options = [...toObj("breed", catBreeds), ...toObj("breed", dogBreeds)]
+  const catBreedObj = toObj("breed", catBreeds)
+  const dogBreedObj = toObj("breed", dogBreeds)
+  let options = [...catBreedObj, ...dogBreedObj]
+  if (petFilters.animal.length === 1) {
+    if (petFilters.animal[0] === "Cat") {
+      options = [...catBreedObj]
+    } else if (petFilters.animal[0] === "Dog") {
+      options = [...dogBreedObj]
+    }
+  }
   $("#select-breed").selectize({
     ...selectizeConfig,
     onItemAdd: updateBreeds("add"),
