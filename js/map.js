@@ -11,20 +11,20 @@ function initMap() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        }
-        geocoder
-          .geocode({ location: pos }, res => {
-            g(res[0])
-          })
-          .then()
-        console.log(location)
-        console.log("prestart")
-        startUp()
-        map.setCenter(pos)
-        map.setZoom(12)
+        // var pos = {
+        //   lat: position.coords.latitude,
+        //   lng: position.coords.longitude
+        // }
+        // geocoder
+        //   .geocode({ location: pos }, res => {
+        //     g(res[0])
+        //   })
+        //   .then()
+        // console.log(location)
+        // console.log("prestart")
+        // startUp()
+        // map.setCenter(pos)
+        // map.setZoom(12)
       },
       function() {
         handleLocationError(true, infoWindow, map.getCenter())
