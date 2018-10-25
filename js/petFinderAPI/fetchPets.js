@@ -25,7 +25,7 @@ const getAllBreedsOf = async animal => {
 }
 
 // location, offset, count -> Promise(object)
-const getPetsAtLocation = (location, offset = 0, count = 100) => {
+const getPetsAtLocation = (location, offset = 0, count = 250) => {
   const query = createQuery(
     METHODS.getPets,
     key,
@@ -34,11 +34,26 @@ const getPetsAtLocation = (location, offset = 0, count = 100) => {
   return $.getJSON(query)
     .then(json => json.petfinder.pets.pet)
     .then(pets => pets.map(flattenPetObj))
+    .then(pets => pets.map(pet => extractImages(pet)))
+    .then(pets => pets.map(pet => extractBreeds(pet)))
     .catch(err => console.log(err))
+}
+const extractImages = pet => {
+  pet.imgUrls = pet.media.photos
+    ? pet.media.photos.photo.map(photo => photo["$t"])
+    : undefined
+  return pet
+}
+
+const extractBreeds = pet => {
+  pet.breed = pet.breeds.breed.length
+    ? pet.breeds.breed.map(obj => obj["$t"])
+    : [pet.breeds.breed["$t"]]
+  return pet
 }
 
 // location, offset, count -> Promise(object)
-const getSheltersAtLocation = (location, offset = 0, count = 25) => {
+const getSheltersAtLocation = (location, offset = 0, count = 50) => {
   const query = createQuery(
     METHODS.getShelters,
     key,
@@ -82,16 +97,11 @@ const convertLonLat = shelterObj => {
 
 // Initialize Page Data
 
-let petData = {
-  dogBreeds: [],
-  catBreeds: [],
-  currentPets: []
-}
-
-const initPage = async petData => {
+const initPage = async () => {
+  let petData = {}
   petData.dogBreeds = await getAllBreedsOf("dog")
   petData.catBreeds = await getAllBreedsOf("cat")
   petData.currentPets = await getPetsAtLocation("77025")
+  petData.shelters = await getSheltersAtLocation("77025")
+  return petData
 }
-
-initPage(petData)
