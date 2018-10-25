@@ -36,7 +36,6 @@ function setSheltersOnMap(shelterArray){
   Object.keys(shelterArray)
     .map(key => shelterArray[key])
     .map(shelter => {
-        console.log(shelter.name)
         let latitude = shelter.latitude
         let longitude = shelter.longitude
         let location = new google.maps.LatLng(latitude, longitude)
