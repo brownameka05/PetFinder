@@ -44,14 +44,12 @@ const fineOne = (haystack, arr) => {
   })
 }
 
-function populateSearchResults(currentPets, filter) {
+function populateSearchResults(currentPets, filter, from, to) {
   const pets = filterPets(currentPets, filter)
-  console.log(pets)
-  console.log(filter)
   const petHtml = Object.keys(pets)
     .map(key => pets[key])
 
-    .slice(0, 24)
+    .slice(from, to)
     .map(pet => {
       petLiteral = `
         <div class="card">
@@ -73,7 +71,12 @@ function populateSearchResults(currentPets, filter) {
 }
 
 initPage().then(petData => {
-  populateSearchResults(petData.currentPets, petFilters)
+  populateSearchResults(
+    petData.currentPets,
+    petFilters,
+    offSetState.from,
+    offSetState.to
+  )
   setSheltersOnMap(petData.shelters)
 
   $("#btn-apply").click(e => {
@@ -82,6 +85,39 @@ initPage().then(petData => {
     initializeBreedFilter(petData, petFilters)
   })
 
+  $("#btn-next").click(e => {
+    $("#results").html("")
+    offSetState = setOffSet(offSetState, 24)
+    setBackButtonCSS()
+    populateSearchResults(
+      petData.currentPets,
+      petFilters,
+      offSetState.from,
+      offSetState.to
+    )
+  })
+
+  $("#btn-back").click(e => {
+    $("#results").html("")
+    offSetState = setOffSet(offSetState, 24, "back")
+    setBackButtonCSS()
+    populateSearchResults(
+      petData.currentPets,
+      petFilters,
+      offSetState.from,
+      offSetState.to
+    )
+  })
+
   initializeBreedFilter(petData, petFilters)
   initializeTypeFilter(petData)
 })
+
+const setBackButtonCSS = () => {
+  if (offSetState.from === 0) {
+    $("#btn-back").css("background", "lightgray")
+    $("#btn-back:active").css("background", "lightgray")
+  } else {
+    $("#btn-back").css("background", "#343a40")
+  }
+}

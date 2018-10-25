@@ -158,17 +158,21 @@ const updateBreeds = msg => {
       petFilters = setFilters(petFilters, {
         breed: petFilters.breed.filter(i => i !== data)
       })
+    } else if (msg === "clear") {
+      petFilters = setFilters(petFilters, {
+        breed: []
+      })
     }
   }
 }
 
-const toObj = (k, vs) => {
-  return vs.map((v, i) => ({ breed: v }))
+const toBreedObj = vs => {
+  return vs.map(v => ({ breed: v }))
 }
 
 const updateOptions = ({ dogBreeds, catBreeds }, petFilters, controller) => {
-  const catBreedObj = toObj("breed", catBreeds)
-  const dogBreedObj = toObj("breed", dogBreeds)
+  const catBreedObj = toBreedObj(catBreeds)
+  const dogBreedObj = toBreedObj(dogBreeds)
   let options = [...catBreedObj, ...dogBreedObj]
   if (petFilters.animal.length === 1) {
     if (petFilters.animal[0] === "Cat") {
@@ -185,8 +189,8 @@ const updateOptions = ({ dogBreeds, catBreeds }, petFilters, controller) => {
 }
 
 const initializeBreedFilter = ({ dogBreeds, catBreeds }, petFilters) => {
-  const catBreedObj = toObj("breed", catBreeds)
-  const dogBreedObj = toObj("breed", dogBreeds)
+  const catBreedObj = toBreedObj(catBreeds)
+  const dogBreedObj = toBreedObj(dogBreeds)
   let options = [...catBreedObj, ...dogBreedObj]
   if (petFilters.animal.length === 1) {
     if (petFilters.animal[0] === "Cat") {
@@ -199,7 +203,7 @@ const initializeBreedFilter = ({ dogBreeds, catBreeds }, petFilters) => {
     ...selectizeConfig,
     onItemAdd: updateBreeds("add"),
     onItemRemove: updateBreeds("remove"),
-    onClear: updateSizes("clear"),
+    onClear: updateBreeds("clear"),
     placeholder: "Breed",
     options: options,
     maxItems: null,
@@ -312,17 +316,18 @@ $("#btn-clear").click(e => {
     let control = $select[0].selectize
     control.clear((silent = false))
   })
-  console.log(petFilters)
 })
 
 $("#btn-listView").click(e => {
   $("#map").css("height", 0)
   $("#results").show()
+  $("#container-next-btn").show()
 })
 
 $("#btn-mapView").click(e => {
   $("#map").height("80vh")
   $("#results").hide()
+  $("#container-next-btn").hide()
 })
 
 /**
@@ -340,6 +345,27 @@ const shelterFilters = {
   location: "", // zipCode
   name: "", // shelter name
   offset: ""
+}
+
+let offSetState = {
+  from: 0,
+  to: 24
+}
+
+const setOffSet = (offSetState, n, dir = "forward") => {
+  if (dir === "forward") {
+    return {
+      from: offSetState.to,
+      to: offSetState.to + n
+    }
+  } else if (dir === "back" && offSetState.from !== 0) {
+    return {
+      from: offSetState.from - n,
+      to: offSetState.to - n
+    }
+  } else {
+    return offSetState
+  }
 }
 
 const setFilters = (filters, modFilter) => {
