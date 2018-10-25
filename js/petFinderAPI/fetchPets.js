@@ -25,7 +25,12 @@ const getAllBreedsOf = async animal => {
 }
 
 // location, offset, count -> Promise(object)
-const getPetsAtLocation = (location, offset = 0, count = 250) => {
+const getPetsAtLocation = (
+  location,
+  offset = queryParams.offsetPets,
+  count = queryParams.nPets
+) => {
+  console.log(count)
   const query = createQuery(
     METHODS.getPets,
     key,
@@ -53,7 +58,11 @@ const extractBreeds = pet => {
 }
 
 // location, offset, count -> Promise(object)
-const getSheltersAtLocation = (location, offset = 0, count = 50) => {
+const getSheltersAtLocation = (
+  location,
+  offset = queryParams.offsetShelters,
+  count = queryParams.nShelters
+) => {
   const query = createQuery(
     METHODS.getShelters,
     key,
@@ -65,8 +74,6 @@ const getSheltersAtLocation = (location, offset = 0, count = 50) => {
       sheltersList.map(flattenShelterObj).map(convertLonLat)
     )
 }
-
-//[json.petfinder.pets.pet, offset + count];
 
 // Helpers
 const flattenShelterObj = shelter => {
@@ -96,8 +103,7 @@ const convertLonLat = shelterObj => {
 }
 
 // Initialize Page Data
-
-const initPage = async () => {
+const initPage = async loctation => {
   let petData = {}
   petData.dogBreeds = await getAllBreedsOf("dog")
   petData.catBreeds = await getAllBreedsOf("cat")
