@@ -27,35 +27,35 @@ const getAllBreedsOf = async (animal) => {
 };
 
 // location, offset, count -> Promise(object)
-const getPetsAtLocation = (location, offset = 0, count = 100) => {
+const getPetsAtLocation = (location, offset = 0, count = 250) => {
   const query = createQuery(
     METHODS.getPets,
     key,
     `location=${location}&offset=${offset}&count=${count}`
   );
   return $.getJSON(query)
-    .then((json) => json.petfinder.pets.pet)
-    .then((pets) => pets.map(flattenPetObj))
-    .then((pets) => pets.map((pet) => extractImages(pet)))
-    .then((pets) => pets.map((pet) => extractBreeds(pet)))
-    .catch((err) => console.log(err));
-};
-const extractImages = (pet) => {
-  pet.imgUrls = pet.media.photos
-    ? pet.media.photos.photo.map((photo) => photo['$t'])
-    : undefined;
-  return pet;
-};
+    .then(json => json.petfinder.pets.pet)
+    .then(pets => pets.map(flattenPetObj))
+    .then(pets => pets.map(pet => extractImages(pet)))
+    .then(pets => pets.map(pet => extractBreeds(pet)))
+    .catch(err => console.log(err))
+}
+const extractImages = pet => {
+  pet.imgUrls = pet.medigita.photos
+    ? pet.media.photos.photo.map(photo => photo["$t"])
+    : undefined
+  return pet
+}
 
-const extractBreeds = (pet) => {
+const extractBreeds = pet => {
   pet.breed = pet.breeds.breed.length
-    ? pet.breeds.breed.map((obj) => obj['$t'])
-    : [pet.breeds.breed['$t']];
-  return pet;
-};
+    ? pet.breeds.breed.map(obj => obj["$t"])
+    : [pet.breeds.breed["$t"]]
+  return pet
+}
 
 // location, offset, count -> Promise(object)
-const getSheltersAtLocation = (location, offset = 0, count = 100) => {
+const getSheltersAtLocation = (location, offset = 0, count = 50) => {
   const query = createQuery(
     METHODS.getShelters,
     key,
