@@ -1,15 +1,15 @@
 /**
  * Views
  */
-const filtersContainer = document.getElementById("filters")
+const filtersContainer = document.getElementById('filters');
 
 /**
  * Onclick Handlers
  */
-const toggleFilter = e => {
-  e.classList.toggle("change")
-  filtersList.classList.toggle("open")
-}
+const toggleFilter = (e) => {
+  e.classList.toggle('change');
+  filtersList.classList.toggle('open');
+};
 
 const renderFilteredPets = e => {
   populateSearchResults(petData.currentPets, petFilters)
@@ -86,21 +86,21 @@ const filtersHTML = /*html*/ `
   <button id="btn-clear">Clear</button>
 </div>
 </div>
-    `
+    `;
 
-filtersContainer.innerHTML = filtersHTML
+filtersContainer.innerHTML = filtersHTML;
 
 /**
  * Update
  */
-const typeSelector = document.getElementById("select-type")
-const breedSelector = document.getElementById("select-breed")
-const sizeSelector = document.getElementById("select-size")
-const sexSelector = document.getElementById("select-sex")
-const locationSelector = document.getElementById("textbox-location")
-const listViewButton = document.getElementById("filters-list")
-const mapViewButton = document.getElementById("filters-map")
-const filtersList = document.getElementsByClassName("filters-list")[0]
+const typeSelector = document.getElementById('select-type');
+const breedSelector = document.getElementById('select-breed');
+const sizeSelector = document.getElementById('select-size');
+const sexSelector = document.getElementById('select-sex');
+const locationSelector = document.getElementById('textbox-location');
+const listViewButton = document.getElementById('filters-list');
+const mapViewButton = document.getElementById('filters-map');
+const filtersList = document.getElementsByClassName('filters-list')[0];
 
 const selectizeConfig = {
   plugins: ["remove_button", "restore_on_backspace"],
@@ -130,6 +130,7 @@ const updateType = (msg, petData) => {
   }
 }
 
+<<<<<<< HEAD
 const initializeTypeFilter = petData => {
   $("#select-type").selectize({
     ...selectizeConfig,
@@ -138,6 +139,14 @@ const initializeTypeFilter = petData => {
     placeholder: "Type"
   })
 }
+=======
+$('#select-type').selectize({
+  ...selectizeConfig,
+  onItemAdd: updateType("add"),
+  onItemRemove: updateType("remove"),
+  placeholder: "Type"
+})
+>>>>>>> 3930b9e489c622d89369ba4ec75b7727d442b789
 
 const updateBreeds = msg => {
   return function(data) {
@@ -209,7 +218,7 @@ const updateSizes = msg => {
   }
 }
 
-$("#select-size").selectize({
+$('#select-size').selectize({
   ...selectizeConfig,
   onItemAdd: updateSizes("add"),
   onItemRemove: updateSizes("remove")
@@ -229,7 +238,7 @@ const updateSexes = msg => {
   }
 }
 
-$("#select-sex").selectize({
+$('#select-sex').selectize({
   ...selectizeConfig,
   onItemAdd: updateSexes("add"),
   onItemRemove: updateSexes("remove")
@@ -249,7 +258,7 @@ const updateAges = msg => {
   }
 }
 
-$("#select-age").selectize({
+$('#select-age').selectize({
   ...selectizeConfig,
   onItemAdd: updateAges("add"),
   onItemRemove: updateAges("remove")
@@ -259,16 +268,16 @@ const updateLocation = () => {
   return function(data) {
     petFilters = setFilters(petFilters, {
       location: data
-    })
-  }
-}
+    });
+  };
+};
 
 $("#textbox-location").selectize({
   ...selectizeConfig,
   create: true,
   onItemAdd: updateLocation(),
-  placeholder: "Zip"
-})
+  placeholder: 'Zip'
+});
 
 $("#btn-clearItems").click(e => {})
 
@@ -303,5 +312,5 @@ const setFilters = (filters, modFilter) => {
   return {
     ...filters,
     ...modFilter
-  }
-}
+  };
+};

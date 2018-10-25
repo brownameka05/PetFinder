@@ -1,27 +1,27 @@
 const filterPets = (currentPets, filter) => {
   if (areFiltersEmpty(filter)) {
-    return currentPets
+    return currentPets;
   }
   return Object.keys(currentPets)
     .map(function(key) {
-      return currentPets[key]
+      return currentPets[key];
     })
-    .filter(pet => petMatch(filter, pet))
-}
+    .filter((pet) => petMatch(filter, pet));
+};
 
-const areFiltersEmpty = obj => {
-  let isEmpty = true
+const areFiltersEmpty = (obj) => {
+  let isEmpty = true;
   for (k in obj) {
     if (obj[k].length !== 0) {
-      isEmpty = false
+      isEmpty = false;
     }
   }
-  return isEmpty
-}
+  return isEmpty;
+};
 
-const isFilterEmpty = filterCategory => {
-  return filterCategory.length === 0
-}
+const isFilterEmpty = (filterCategory) => {
+  return filterCategory.length === 0;
+};
 
 // filter, pet -> bool
 const petMatch = (filters, pet) => {
@@ -32,8 +32,8 @@ const petMatch = (filters, pet) => {
       }
     }
   }
-  return true
-}
+  return true;
+};
 
 const fineOne = (haystack, arr) => {
   if (typeof arr === "string") {
@@ -45,11 +45,14 @@ const fineOne = (haystack, arr) => {
 }
 
 function populateSearchResults(currentPets, filter) {
-  const pets = filterPets(currentPets, filter)
+  const pets = filterPets(currentPets, filter);
+  console.log(pets);
+  console.log(filter);
   const petHtml = Object.keys(pets)
-    .map(key => pets[key])
+    .map((key) => pets[key])
+
     .slice(0, 25)
-    .map(pet => {
+    .map((pet) => {
       petLiteral = `
         <div class="card">
             <img class="card-imkg" src="${pet.imgUrls[2]}" alt="Card image cap">
