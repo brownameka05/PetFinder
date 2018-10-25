@@ -1,19 +1,19 @@
 /**
  * Views
  */
-const filtersContainer = document.getElementById("filters")
+const filtersContainer = document.getElementById('filters');
 
 /**
  * Onclick Handlers
  */
-const toggleFilter = e => {
-  e.classList.toggle("change")
-  filtersList.classList.toggle("open")
-}
+const toggleFilter = (e) => {
+  e.classList.toggle('change');
+  filtersList.classList.toggle('open');
+};
 
-const renderFilteredPets = e => {
-  console.log(petData.dogBreeds)
-}
+const renderFilteredPets = (e) => {
+  populateSearchResults(petData.currentPets, petFilters);
+};
 
 const filtersHTML = /*html*/ `
 <div id="filter-nav">
@@ -33,8 +33,8 @@ const filtersHTML = /*html*/ `
 <label class="filter-label"for="select-type">Type</label>
 <select id="select-type" class="demo-default" multiple>
   <option value="">Select an animal type...</option>
-  <option value="dog">Dogs</option>
-  <option value="cat">Cats</option>
+  <option value="Dog">Dogs</option>
+  <option value="Cat">Cats</option>
 </select>
 </div>
 
@@ -49,10 +49,10 @@ const filtersHTML = /*html*/ `
 <label class="filter-label"for="select-size">Size</label>
 <select id="select-size" class="demo-default" multiple>
   <option value="">Size</option>
-  <option value="small">Small</option>
-  <option value="medium">Medium</option>
-  <option value="large">Large</option>
-  <option value="extraLarge">Extra Lage</option>
+  <option value="S">Small</option>
+  <option value="M">Medium</option>
+  <option value="L">Large</option>
+  <option value="XL">Extra Lage</option>
 </select>
 </div>
 
@@ -71,8 +71,8 @@ const filtersHTML = /*html*/ `
 <label class="filter-label" for="select-sex">Sex</label>
 <select id="select-sex" class="demo-default" multiple>
   <option value="">Sex<option>
-  <option value="female">Female</option>
-  <option value="male">Male</option>
+  <option value="F">Female</option>
+  <option value="M">Male</option>
 </select>
 </div>
 
@@ -82,61 +82,68 @@ const filtersHTML = /*html*/ `
 </div>
 
 <div id="apply-button">
-  <button id="btn-apply" onclick=renderFilteredPets()>Apply</button>
+  <button id="btn-apply">Apply</button>
 </div>
 </div>
-    `
+    `;
 
-filtersContainer.innerHTML = filtersHTML
+filtersContainer.innerHTML = filtersHTML;
 
 /**
  * Update
  */
-const typeSelector = document.getElementById("select-type")
-const breedSelector = document.getElementById("select-breed")
-const sizeSelector = document.getElementById("select-size")
-const sexSelector = document.getElementById("select-sex")
-const locationSelector = document.getElementById("textbox-location")
-const listViewButton = document.getElementById("filters-list")
-const mapViewButton = document.getElementById("filters-map")
-const filtersList = document.getElementsByClassName("filters-list")[0]
+const typeSelector = document.getElementById('select-type');
+const breedSelector = document.getElementById('select-breed');
+const sizeSelector = document.getElementById('select-size');
+const sexSelector = document.getElementById('select-sex');
+const locationSelector = document.getElementById('textbox-location');
+const listViewButton = document.getElementById('filters-list');
+const mapViewButton = document.getElementById('filters-map');
+const filtersList = document.getElementsByClassName('filters-list')[0];
 
 const selectizeConfig = {
-  plugins: ["remove_button", "restore_on_backspace"],
-  sortField: "text"
-}
-
-const updateType = () => {
-  return function(data) {
-    petFilters = setFilters(petFilters, {
-      animals: [data, ...petFilters.animals]
-    })
-  }
-}
-
-$("#select-type").selectize({
-  ...selectizeConfig,
-  onItemAdd: updateType(),
-  placeholder: "Type",
+  plugins: ['remove_button', 'restore_on_backspace'],
+  sortField: 'text',
   closeAfterSelect: true
-})
+};
+
+const updateType = (msg) => {
+  return function(data) {
+    if (msg === 'add') {
+      petFilters = setFilters(petFilters, {
+        animal: [data, ...petFilters.animal]
+      });
+    } else if (msg === 'remove') {
+      petFilters = setFilters(petFilters, {
+        animal: petFilters.animal.filter((i) => i !== data)
+      });
+    }
+  };
+};
+
+$('#select-type').selectize({
+  ...selectizeConfig,
+  onItemAdd: updateType('add'),
+  onItemRemove: updateType('remove'),
+  placeholder: 'Type'
+});
 
 const updateBreeds = () => {
   return function(data) {
     petFilters = setFilters(petFilters, {
-      breeds: [data, ...petFilters.breeds]
-    })
-  }
-}
+      breed: [data, ...petFilters.breed]
+    });
+  };
+};
 
-$("#select-breed").selectize({
+$('#select-breed').selectize({
   ...selectizeConfig,
   onItemAdd: updateBreeds(),
-  placeholder: "Breed",
-  theme: "links",
+  placeholder: 'Breed',
+  theme: 'links',
   maxItems: null,
-  valueField: "id",
-  searchField: "title",
+  valueField: 'id',
+  searchField: 'title',
   options: [{ id: 1, name: 1 }, { id: 2, name: 2 }, { id: 3, name: 3 }],
   render: {
     option: function(data, escape) {
@@ -144,8 +151,8 @@ $("#select-breed").selectize({
         '<div class="option">' +
         '<span class="title">' +
         escape(data.name) +
-        "</div>"
-      )
+        '</div>'
+      );
     },
     item: function(data, escape) {
       return (
@@ -153,77 +160,98 @@ $("#select-breed").selectize({
         escape(data.url) +
         '">' +
         escape(data.title) +
-        "</a></div>"
-      )
+        '</a></div>'
+      );
     }
   }
-})
+});
 
-const updateSizes = () => {
+const updateSizes = (msg) => {
   return function(data) {
-    petFilters = setFilters(petFilters, {
-      sizes: [data, ...petFilters.sizes]
-    })
-  }
-}
+    if (msg === 'add') {
+      petFilters = setFilters(petFilters, {
+        size: [data, ...petFilters.size]
+      });
+    } else if (msg === 'remove') {
+      petFilters = setFilters(petFilters, {
+        size: petFilters.size.filter((i) => i !== data)
+      });
+    }
+  };
+};
 
-$("#select-size").selectize({
+$('#select-size').selectize({
   ...selectizeConfig,
-  onItemAdd: updateSizes()
-})
+  onItemAdd: updateSizes('add'),
+  onItemRemove: updateSizes('remove')
+});
 
-const updateSexes = () => {
+const updateSexes = (msg) => {
   return function(data) {
-    petFilters = setFilters(petFilters, {
-      sexes: [data, ...petFilters.sexes]
-    })
-  }
-}
+    if (msg === 'add') {
+      petFilters = setFilters(petFilters, {
+        sex: [data, ...petFilters.sex]
+      });
+    } else if (msg === 'remove') {
+      petFilters = setFilters(petFilters, {
+        sex: petFilters.sex.filter((i) => i !== data)
+      });
+    }
+  };
+};
 
-$("#select-sex").selectize({
+$('#select-sex').selectize({
   ...selectizeConfig,
-  onItemAdd: updateSexes()
-})
+  onItemAdd: updateSexes('add'),
+  onItemRemove: updateSexes('remove')
+});
 
-const updateAges = () => {
+const updateAges = (msg) => {
   return function(data) {
-    petFilters = setFilters(petFilters, {
-      ages: [data, ...petFilters.ages]
-    })
-  }
-}
+    if (msg === 'add') {
+      petFilters = setFilters(petFilters, {
+        age: [data, ...petFilters.age]
+      });
+    } else if (msg === 'remove') {
+      petFilters = setFilters(petFilters, {
+        age: petFilters.age.filter((i) => i !== data)
+      });
+    }
+  };
+};
 
-$("#select-age").selectize({
+$('#select-age').selectize({
   ...selectizeConfig,
-  onItemAdd: updateAges()
-})
+  onItemAdd: updateAges('add'),
+  onItemRemove: updateAges('remove')
+});
 
 const updateLocation = () => {
   return function(data) {
     petFilters = setFilters(petFilters, {
       location: data
-    })
-  }
-}
+    });
+  };
+};
 
-$("#btn-listView").click((e) => {
-  $("#map").css("height", 0)
-  $("#results").css("z-index", 1)
-})
+$('#btn-listView').click((e) => {
+  $('#map').css('height', 0);
+  $('#results').show();
+});
 
-$("#btn-mapView").click((e) => {
-  $("#map").height("500px")
-  $("#results").css("z-index", 1)
-})
+$('#btn-mapView').click((e) => {
+  $('#map').height('80vh');
+  $('#results').hide();
+});
 
 // TODO: Make so only 1 input.
 
-$("#textbox-location").selectize({
+$('#textbox-location').selectize({
   ...selectizeConfig,
   create: true,
   onItemAdd: updateLocation(),
-  placeholder: "Zip"
-})
+  placeholder: 'Zip'
+});
 
 /**
  *  State
@@ -233,23 +261,18 @@ let petFilters = {
   // breeds: [],
   size: [], // S, M, L or XL
   sex: [], // M or F
-  age: ["Baby", "Young"] // Baby, Young, Adult, Senior
-}
+  age: [] // Baby, Young, Adult, Senior
+};
 
 const shelterFilters = {
-  location: "", // zipCode
-  name: "", // shelter name
-  offset: ""
-}
-
-const searchViewState = {
-  map: false,
-  list: true
-}
+  location: '', // zipCode
+  name: '', // shelter name
+  offset: ''
+};
 
 const setFilters = (filters, modFilter) => {
   return {
     ...filters,
     ...modFilter
-  }
-}
+  };
+};
