@@ -135,7 +135,7 @@ h1 {
 .slide {
   display: inline-block;
   width: 100%;
-  height: 450px;
+  height: 65vh;
   flex-shrink: 0;
   transition: 1s ease-in-out transform;
   backface-visibility: hidden;
@@ -207,22 +207,21 @@ p {
 }
 
 .home {
-  height: 1000px;
   position: relative;
 }
 
 .slide1 {
-  background: url("images/saddoggy2.jpg") bottom center;
+  background: url("../images/saddoggy2.jpg") bottom center;
   background-size: cover;
 }
 
 .slide2 {
-  background: url("images/DogsCatsSnuggling850.jpg") center;
+  background: url("../images/DogsCatsSnuggling850.jpg") center;
   background-size: cover;
 }
 
 .slide3 {
-  background: url("images/cat-and-dogs-for-adoption-minnesota.jpg") bottom;
+  background: url("../images/cat-and-dogs-for-adoption-minnesota.jpg") bottom;
   background-size: cover;
 }
 

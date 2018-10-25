@@ -51,11 +51,11 @@ function populateSearchResults(currentPets, filter) {
   const petHtml = Object.keys(pets)
     .map(key => pets[key])
 
-    .slice(0, 25)
+    .slice(0, 24)
     .map(pet => {
       petLiteral = `
         <div class="card">
-            <img class="card-imkg" src="${pet.imgUrls[2]}" alt="Card image cap">
+            <img class="card-img" src="${pet.imgUrls[3]}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">${pet.name}</h5>
                 <p class="card-text">Age: ${pet.age}</p>
