@@ -45,7 +45,6 @@ const fineOne = (haystack, arr) => {
 }
 
 function populateSearchResults(currentPets, filter) {
-
   const pets = filterPets(currentPets, filter);
   console.log(pets);
   console.log(filter);
