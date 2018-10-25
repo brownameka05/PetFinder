@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/filters.css">
   <link rel="stylesheet" href="css/search.css">
   <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/map.css" />
   <title>Pet Overflow</title>
 </head>
 
@@ -137,10 +138,14 @@
 
   <!----------------------------SEARCH CONTAINER------------------------------->
   <div class="section1">
-    <div id="container">
-      <div id="navbar">
 
+    <div id="search">
+
+      <div id="filters"></div>
+      <!-- Show map when toggled-->
+      <div id="map">
       </div>
+<<<<<<< HEAD
       <div  id="search">
         <div  id="filters"></div>
         <!-- Show map when toggled-->
@@ -149,6 +154,11 @@
         <div id="pet"></div>
         <div id="results"></div>
       </div>
+=======
+      <!-- Show pet info page when clicked -->
+      <div id="pet"></div>
+      <div id="results"></div>
+>>>>>>> 4d60534fa14afbc3bf608e402b775b0948369b76
     </div>
   </div>
   <!----------------------------SEARCH CONTAINER END---------------------------->
@@ -229,10 +239,14 @@
 
 
 </body>
-<script src="js/script.js"></script>
 <script src="js/petFinderAPI/secrets.js"></script>
 <script src="js/petFinderAPI/fetchPets.js"></script>
 <script src="js/filters/filters.js"></script>
+<script src="js/script.js"></script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhBf1IBwP55iVx4L8MBe_UPwiDjhXrYdg&callback=initMap"></script>
+<script src="js/map.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
   crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"

@@ -1,72 +1,4 @@
-function populateSearchResults(resultsObject){
-    for(key in resultsObject){
-        petObject = resultsObject[key]
-        petLiteral = `
-        <div class="card">
-            <img class="card-img" src="https://lh5.googleusercontent.com/-2cuebuSKiRU/AAAAAAAAAAI/AAAAAAAAAEU/PibNivK-4U4/photo.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">${petObject.name}</h5>
-                <p class="card-text">Age: ${petObject.age}</p>
-                <button onclick = class = "learnMore" id = "${key}">More about ${petObject.name}</button>
-            </div>
-        </div>
-        `
-        $("#results").append(petLiteral)
-    }
-}
-
-
-petObject = {
-    chico : {
-        name: "Chico",
-        age: 12
-    }, 
-    bruce : {
-        name: "Bruce",
-        age: 2
-    },
-    bailey : {
-        name: "Bailey",
-        age: 12
-    }, 
-    lucy : {
-        name: "Lucy",
-        age: 2
-    }, 
-    charlie : {
-        name: "Charlie",
-        age: 2
-    },
-    molly : {
-        name: "Molly",
-        age: 12
-    }, 
-    max : {
-        name: "Max",
-        age: 2
-    }
-}
-
-locationArray = [{latitude : 29.7527665, longitude : -95.33904369999999}, {latitude : 29.7227665, longitude : -95.32904369999999}]
-
-var map
-
-function populateSearchResults(resultsObject){
-    for(key in resultsObject){
-        petObject = resultsObject[key]
-        petLiteral = `
-        <div class="card">
-            <img class="card-img" src="https://lh5.googleusercontent.com/-2cuebuSKiRU/AAAAAAAAAAI/AAAAAAAAAEU/PibNivK-4U4/photo.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">${petObject.name}</h5>
-                <p class="card-text">Age: ${petObject.age}</p>
-                <button onclick = class = "learnMore" id = "${key}">More about ${petObject.name}</button>
-            </div>
-        </div>
-        `
-        $("#results").append(petLiteral)
-    }
-}
+var map;
 
 function initMap(){
     map = new google.maps.Map($("#map")[0], {
@@ -91,7 +23,6 @@ function initMap(){
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
-    setSheltersOnMap(locationArray)
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -102,18 +33,58 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 function setSheltersOnMap(shelterArray){
-    for(let index = 0; index < shelterArray.length; index++){
-        let latitude = shelterArray[index].latitude
-        let longitude = shelterArray[index].longitude
+  Object.keys(shelterArray)
+    .map(key => shelterArray[key])
+    .map(shelter => {
+        let latitude = shelter.latitude
+        let longitude = shelter.longitude
         let location = new google.maps.LatLng(latitude, longitude)
+        let contentString = `
+        <b>${shelter.name}</b>
+        <p>${shelter.email}</p>
+        <p>${shelter.phone ? shelter.phone : ""}</p>
+        `
+        let infowindow = new google.maps.InfoWindow({
+            content: contentString 
+        })
         let marker = new google.maps.Marker({
             position: location, 
-            map: map
+            map: map,
+            title: shelter.name,
+            name: shelter.name
         })
-    }
+        marker.addListener("mouseover", function(){
+            infowindow.open(map, marker);
+            marker.addListener("mouseout", function(){
+                infowindow.close();
+            })
+        })
+        marker.addListener("mouseout", function(){
+            infowindow.close();
+        })
+        marker.addListener("click", function(){
+            infowindow.open(map, marker);
+            google.maps.event.clearListeners(marker, "mouseout")
+        })
+    })
 }
 
-populateSearchResults(petObject)
+// address1: "8620 Stella Link Road"
+// address2: undefined
+// city: "Houston"
+// country: "US"
+// email: "adopt@houstonpetsalive.org"
+// fax: undefined
+// id: "TX1950"
+// latitude: 29.69
+// longitude: -95.4343
+// name: "Houston Pets Alive!"
+// phone: "(832) 786-9310"
+// state: "TX"
+// zip: "77025"
+
+
+
 
 
 
