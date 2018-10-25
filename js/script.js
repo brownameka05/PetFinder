@@ -27,12 +27,21 @@ const isFilterEmpty = filterCategory => {
 const petMatch = (filters, pet) => {
   for (filterKey in filters) {
     if (!isFilterEmpty(filters[filterKey])) {
-      if (!filters[filterKey].includes(pet[filterKey])) {
+      if (!fineOne(filters[filterKey], pet[filterKey])) {
         return false
       }
     }
   }
   return true
+}
+
+const fineOne = (haystack, arr) => {
+  if (typeof arr === "string") {
+    arr = [arr]
+  }
+  return arr.some(v => {
+    return haystack.indexOf(v) >= 0
+  })
 }
 
 function populateSearchResults(currentPets, filter) {
@@ -43,29 +52,30 @@ function populateSearchResults(currentPets, filter) {
     .map(pet => {
       petLiteral = `
         <div class="card">
-            <img class="card-imkg" src="https://lh5.googleusercontent.com/-2cuebuSKiRU/AAAAAAAAAAI/AAAAAAAAAEU/PibNivK-4U4/photo.jpg" alt="Card image cap">
+            <img class="card-imkg" src="${pet.imgUrls[2]}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">${pet.name}</h5>
                 <p class="card-text">Age: ${pet.age}</p>
-                <button class = "learnMore" id = "${
-                  pet.id
-                }">More about ${pet.name}</button>
+                <button class = "learnMore" id = "${pet.id}">More about ${
+        pet.name
+      }</button>
             </div>
         </div> `
-        return petLiteral
-      //$("#results").append(petLiteral)
+      return petLiteral
     })
-    console.log(petHtml.length)
-    $("#results").html(petHtml.reduce((a, b) => a + b))
+  $("#results").html(
+    petHtml.length > 0 ? petHtml.reduce((a, b) => a + b) : "No matching pets :("
+  )
 }
 
 initPage().then(petData => {
   populateSearchResults(petData.currentPets, petFilters)
   setSheltersOnMap(petData.shelters)
 
-  $("#btn-apply").click((e) => {
-    console.log("clicked")
+  $("#btn-apply").click(e => {
     $("#results").html("")
-    populateSearchResults(petData.currentPets, petFilters)})
+    populateSearchResults(petData.currentPets, petFilters)
+  })
 
+  initializeBreedFilter(petData)
 })

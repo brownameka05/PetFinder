@@ -11,7 +11,7 @@ const toggleFilter = e => {
   filtersList.classList.toggle("open")
 }
 
-const renderFilteredPets = (e) => {
+const renderFilteredPets = e => {
   populateSearchResults(petData.currentPets, petFilters)
 }
 
@@ -33,8 +33,8 @@ const filtersHTML = /*html*/ `
 <label class="filter-label"for="select-type">Type</label>
 <select id="select-type" class="demo-default" multiple>
   <option value="">Select an animal type...</option>
-  <option value="dog">Dogs</option>
-  <option value="cat">Cats</option>
+  <option value="Dog">Dogs</option>
+  <option value="Cat">Cats</option>
 </select>
 </div>
 
@@ -49,10 +49,10 @@ const filtersHTML = /*html*/ `
 <label class="filter-label"for="select-size">Size</label>
 <select id="select-size" class="demo-default" multiple>
   <option value="">Size</option>
-  <option value="small">Small</option>
-  <option value="medium">Medium</option>
-  <option value="large">Large</option>
-  <option value="extraLarge">Extra Lage</option>
+  <option value="S">Small</option>
+  <option value="M">Medium</option>
+  <option value="L">Large</option>
+  <option value="XL">Extra Large</option>
 </select>
 </div>
 
@@ -71,8 +71,8 @@ const filtersHTML = /*html*/ `
 <label class="filter-label" for="select-sex">Sex</label>
 <select id="select-sex" class="demo-default" multiple>
   <option value="">Sex<option>
-  <option value="female">Female</option>
-  <option value="male">Male</option>
+  <option value="F">Female</option>
+  <option value="M">Male</option>
 </select>
 </div>
 
@@ -103,102 +103,122 @@ const filtersList = document.getElementsByClassName("filters-list")[0]
 
 const selectizeConfig = {
   plugins: ["remove_button", "restore_on_backspace"],
-  sortField: "text"
+  sortField: "text",
+  closeAfterSelect: true
 }
 
-const updateType = () => {
+const updateType = msg => {
   return function(data) {
-    petFilters = setFilters(petFilters, {
-      animal: [data, ...petFilters.animals]
-    })
+    if (msg === "add") {
+      petFilters = setFilters(petFilters, {
+        animal: [data, ...petFilters.animal]
+      })
+    } else if (msg === "remove") {
+      petFilters = setFilters(petFilters, {
+        animal: petFilters.animal.filter(i => i !== data)
+      })
+    }
   }
 }
 
 $("#select-type").selectize({
   ...selectizeConfig,
-  onItemAdd: updateType(),
-  placeholder: "Type",
-  closeAfterSelect: true
+  onItemAdd: updateType("add"),
+  onItemRemove: updateType("remove"),
+  placeholder: "Type"
 })
 
-const updateBreeds = () => {
+const updateBreeds = msg => {
   return function(data) {
-    petFilters = setFilters(petFilters, {
-      breeds: [data, ...petFilters.breeds]
-    })
+    if (msg === "add") {
+      petFilters = setFilters(petFilters, {
+        breed: [data, ...petFilters.breed]
+      })
+    } else if (msg === "remove") {
+      petFilters = setFilters(petFilters, {
+        breed: petFilters.breed.filter(i => i !== data)
+      })
+    }
   }
 }
 
-$("#select-breed").selectize({
-  ...selectizeConfig,
-  onItemAdd: updateBreeds(),
-  placeholder: "Breed",
-  theme: "links",
-  maxItems: null,
-  valueField: "id",
-  searchField: "title",
-  options: [{ id: 1, name: 1 }, { id: 2, name: 2 }, { id: 3, name: 3 }],
-  render: {
-    option: function(data, escape) {
-      return (
-        '<div class="option">' +
-        '<span class="title">' +
-        escape(data.name) +
-        "</div>"
-      )
-    },
-    item: function(data, escape) {
-      return (
-        '<div class="item"><a href="' +
-        escape(data.url) +
-        '">' +
-        escape(data.title) +
-        "</a></div>"
-      )
-    }
-  }
-})
+const toObj = (k, vs) => {
+  return vs.map((v, i) => ({ breed: v }))
+}
 
-const updateSizes = () => {
+const initializeBreedFilter = ({ dogBreeds, catBreeds }, petFilters) => {
+  const options = [...toObj("breed", catBreeds), ...toObj("breed", dogBreeds)]
+  $("#select-breed").selectize({
+    ...selectizeConfig,
+    onItemAdd: updateBreeds("add"),
+    onItemRemove: updateBreeds("remove"),
+    placeholder: "Breed",
+    options: options,
+    maxItems: null,
+    valueField: "breed",
+    labelField: "breed",
+    searchField: ["breed"]
+  })
+}
+
+const updateSizes = msg => {
   return function(data) {
-    console.log("ran")
-    petFilters = setFilters(petFilters, {
-      size: [data, ...petFilters.size]
-    })
+    if (msg === "add") {
+      petFilters = setFilters(petFilters, {
+        size: [data, ...petFilters.size]
+      })
+    } else if (msg === "remove") {
+      petFilters = setFilters(petFilters, {
+        size: petFilters.size.filter(i => i !== data)
+      })
+    }
   }
 }
 
 $("#select-size").selectize({
   ...selectizeConfig,
-  onItemAdd: updateSizes()
+  onItemAdd: updateSizes("add"),
+  onItemRemove: updateSizes("remove")
 })
 
-const updateSexes = () => {
+const updateSexes = msg => {
   return function(data) {
-    petFilters = setFilters(petFilters, {
-      sex: [data, ...petFilters.sex]
-    })
+    if (msg === "add") {
+      petFilters = setFilters(petFilters, {
+        sex: [data, ...petFilters.sex]
+      })
+    } else if (msg === "remove") {
+      petFilters = setFilters(petFilters, {
+        sex: petFilters.sex.filter(i => i !== data)
+      })
+    }
   }
 }
 
 $("#select-sex").selectize({
   ...selectizeConfig,
-  onItemAdd: updateSexes()
+  onItemAdd: updateSexes("add"),
+  onItemRemove: updateSexes("remove")
 })
 
-const updateAges = () => {
+const updateAges = msg => {
   return function(data) {
-    console.log(petFilters.age)
-    petFilters = setFilters(petFilters, {
-      age: [data, ...petFilters.age]
-    })
-    console.log(petFilters.age)
+    if (msg === "add") {
+      petFilters = setFilters(petFilters, {
+        age: [data, ...petFilters.age]
+      })
+    } else if (msg === "remove") {
+      petFilters = setFilters(petFilters, {
+        age: petFilters.age.filter(i => i !== data)
+      })
+    }
   }
 }
 
 $("#select-age").selectize({
   ...selectizeConfig,
-  onItemAdd: updateAges()
+  onItemAdd: updateAges("add"),
+  onItemRemove: updateAges("remove")
 })
 
 const updateLocation = () => {
@@ -209,12 +229,12 @@ const updateLocation = () => {
   }
 }
 
-$("#btn-listView").click((e) => {
+$("#btn-listView").click(e => {
   $("#map").css("height", 0)
   $("#results").show()
 })
 
-$("#btn-mapView").click((e) => {
+$("#btn-mapView").click(e => {
   $("#map").height("80vh")
   $("#results").hide()
 })
@@ -233,7 +253,7 @@ $("#textbox-location").selectize({
  */
 let petFilters = {
   animal: [],
-  // breeds: [],
+  breed: [],
   size: [], // S, M, L or XL
   sex: [], // M or F
   age: [] // Baby, Young, Adult, Senior
