@@ -30,7 +30,7 @@
 
 
   <!----------------------------- NAVBAR ---------------------------------->
-  <div class="sticky-top">
+  <div class="">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Pet Overflow</a>
       <button class="navbar-toggler" type="button">
@@ -141,71 +141,73 @@
 
       <div id="filters"></div>
       <!-- Show map when toggled-->
-      <div id="map">
-      </div>
+      <div id="map"></div>
       <!-- Show pet info page when clicked -->
       <div id="pet"></div>
       <div id="results"></div>
       <div id="container-next-btn">
-        <button id="btn-back">
-          < Back</button> <button id="btn-next">Next >
-        </button>
-      </div </div> </div> <!----------------------------SEARCH CONTAINER END---------------------------->
+        <a class="button" id="btn-back" href="#section1"><i class="fas fa-arrow-left"></i></a>
+        <a class="button" id="btn-next" href="#section1"><i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!----------------------------SEARCH CONTAINER END---------------------------->
 
 
 
-      <!--------------------------------- FOOTER ----------------------------------->
+  <!--------------------------------- FOOTER ----------------------------------->
 
-      <footer class="page-footer font-small teal pt-4">
+  <footer class="page-footer font-small teal pt-4">
 
-        <!-- Footer Text -->
-        <div class="container-fluid text-center text-md-left">
+    <!-- Footer Text -->
+    <div class="container-fluid text-center text-md-left">
 
-          <!-- Grid row -->
-          <div class="row">
+      <!-- Grid row -->
+      <div class="row">
 
-            <!-- Grid column -->
-            <div class="col-md-6 mt-md-0 mt-3">
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
 
-              <!-- Content -->
-              <p class="text-uppercase font-weight-bold">Footer text 1</p>
-              <div class="ft1">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
-                  repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae
-                  harum esse fugiat. Itaque, culpa?</p>
-              </div>
-            </div>
-            <!-- Grid column -->
-
-            <hr class="clearfix w-100 d-md-none pb-3">
-
-            <!-- Grid column -->
-            <div class="col-md-6 mb-md-0 mb-3">
-
-              <!-- Content -->
-              <p class="text-uppercase font-weight-bold">Footer text 2</p>
-              <div class="ft2">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi earum
-                  commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam omnis quos ipsam, aspernatur id
-                  excepturi hic.</p>
-              </div>
-            </div>
-            <!-- Grid column -->
-
+          <!-- Content -->
+          <p class="text-uppercase font-weight-bold">Footer text 1</p>
+          <div class="ft1">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
+              repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae
+              harum esse fugiat. Itaque, culpa?</p>
           </div>
-          <!-- Grid row -->
-
         </div>
-        <!-- Footer Text -->
+        <!-- Grid column -->
 
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2018 Copyright:
-          <a href="https://mdbootstrap.com/bootstrap-tutorial/">PetOverflow.com</a>
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mb-md-0 mb-3">
+
+          <!-- Content -->
+          <p class="text-uppercase font-weight-bold">Footer text 2</p>
+          <div class="ft2">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi earum
+              commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam omnis quos ipsam, aspernatur id
+              excepturi hic.</p>
+          </div>
         </div>
-        <!-- Copyright -->
+        <!-- Grid column -->
 
-      </footer>
-      <!--------------------------------- FOOTER END -------------------------------->
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Text -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://mdbootstrap.com/bootstrap-tutorial/">PetOverflow.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!--------------------------------- FOOTER END -------------------------------->
 </body>
 
 <script src="js/petFinderAPI/secrets.js"></script>

@@ -9,6 +9,7 @@
 
 #container-next-btn {
   margin: 2em;
+  overflow: hidden;
 }
 
 #btn-next,
@@ -25,6 +26,6 @@
   color: white;
 }
 
-#btn-next:active #btn-bac:active {
-  background: gray;
+#btn-back {
+  background: lightgray;
 }

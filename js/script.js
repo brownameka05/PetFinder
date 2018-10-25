@@ -88,7 +88,7 @@ initPage().then(petData => {
   $("#btn-next").click(e => {
     $("#results").html("")
     offSetState = setOffSet(offSetState, 24)
-    console.log(offSetState)
+    setBackButtonCSS()
     populateSearchResults(
       petData.currentPets,
       petFilters,
@@ -100,7 +100,7 @@ initPage().then(petData => {
   $("#btn-back").click(e => {
     $("#results").html("")
     offSetState = setOffSet(offSetState, 24, "back")
-    console.log(offSetState)
+    setBackButtonCSS()
     populateSearchResults(
       petData.currentPets,
       petFilters,
@@ -112,3 +112,12 @@ initPage().then(petData => {
   initializeBreedFilter(petData, petFilters)
   initializeTypeFilter(petData)
 })
+
+const setBackButtonCSS = () => {
+  if (offSetState.from === 0) {
+    $("#btn-back").css("background", "lightgray")
+    $("#btn-back:active").css("background", "lightgray")
+  } else {
+    $("#btn-back").css("background", "#343a40")
+  }
+}

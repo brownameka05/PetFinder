@@ -321,11 +321,13 @@ $("#btn-clear").click(e => {
 $("#btn-listView").click(e => {
   $("#map").css("height", 0)
   $("#results").show()
+  $("#container-next-btn").show()
 })
 
 $("#btn-mapView").click(e => {
   $("#map").height("80vh")
   $("#results").hide()
+  $("#container-next-btn").hide()
 })
 
 /**
@@ -356,11 +358,13 @@ const setOffSet = (offSetState, n, dir = "forward") => {
       from: offSetState.to,
       to: offSetState.to + n
     }
-  } else if (dir === "back") {
+  } else if (dir === "back" && offSetState.from !== 0) {
     return {
       from: offSetState.from - n,
       to: offSetState.to - n
     }
+  } else {
+    return offSetState
   }
 }
 

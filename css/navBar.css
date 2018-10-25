@@ -1,22 +1,20 @@
-
-
 .nav {
   text-align: left;
-
-  word-spacing:50px;
+  word-spacing: 50px;
   font-size: 40px;
-  background-color:#65878F;
+  background-color: #65878f;
   width: 100%;
   height: 20%;
   justify-content: center;
-  padding-bottom:8%;
+  padding-bottom: 8%;
   display: flex;
 }
 
-a:link, a:visited{
-  color:white;
+a:link,
+a:visited {
+  color: white;
   text-decoration: none;
-  font-family: 'Concert One', cursive;
+  font-family: "Concert One", cursive;
 }
 
 a:hover {
@@ -24,14 +22,13 @@ a:hover {
   text-decoration: none;
 }
 
-body{
+body {
   margin: 0px;
   background-color: #4b4b4b;
 }
 
-.petProfile{
+.petProfile {
   display: flex;
   margin-top: 20%;
   align-content: flex-start;
-
 }
