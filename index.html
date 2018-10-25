@@ -2,125 +2,218 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="compile.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-    crossorigin="anonymous">
-  <style>@import url('https://fonts.googleapis.com/css?family=Concert+One');</style>
-  <link rel="shortcut icon" type="image/png" href="images/favicon.png">
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <link rel="stylesheet" href="node_modules/selectize/dist/css/selectize.default.css">
-  <script src="node_modules/selectize/dist/js/standalone/selectize.min.js"></script>
-  <link rel="stylesheet" href="css/filters.css">
-  <link rel="stylesheet" href="css/search.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <link rel="stylesheet" type="text/css" href="css/map.css" />
-  <title>Pet Overflow</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500" rel="stylesheet">
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/selectize/dist/js/standalone/selectize.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous"> -->
+
+    <link rel="stylesheet" href="node_modules/selectize/dist/css/selectize.default.css">
+    <link rel="stylesheet" href="css/filters.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/map.css" />
+    <link rel="stylesheet" type="text/css" href="css/overflow.css" />
+
+    <title>Pet Overflow</title>
 </head>
 
 <body>
 
-<center><img id="map-img" src="mapimg.png"></center>
+    <!----------------------------- NAVBAR ---------------------------------->
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Pet Overflow</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-
-  <!----------------------------SEARCH CONTAINER------------------------------->
-  <div class="section1">
-
-    <div id="search">
-
-      <div id="filters"></div>
-      <!-- Show map when toggled-->
-      <div id="map">
-      </div>
-<<<<<<< HEAD
-      <div id="search">
-        <div id="filters"></div>
-        <!-- Show map when toggled-->
-        <div id="map"></div>
-        <!-- Show pet info page when clicked -->
-        <div id="pet"></div>
-        <div class="resultsContainer" id="results"></div>
-      </div>
-    </div>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">SEARCH</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">PROGRAMS & SERVICES</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">GET INVOLVED</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">ABOUT US</a>
+      </li>
+    </ul>
   </div>
-  <!----------------------------SEARCH CONTAINER END---------------------------->
+</nav>
 
+    
+    <!---------------------------------NAVBAR------------------------------------->
+    <!---------------------------------HEADER/CAROSEL------------------------------------->
 
+    <div class="home">
+        <div class="parallax-slider">
+            <div class="slider-wrapper">
+                <div class="slide slide1 slide-active">
+                    <div class="content">
+                        <div class="container">
+                            <div class="col-md-6 caption">
+                                <h1>SEARCH OUR DATABSE OF FURRY FRIENDS</h1>
+                                <p>Over 2 million sheltered animals have been <br>adopted though our site. For more information <br>about
+                                    our process, click below.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide slide2">
+                    <div class="content">
+                        <div class="container">
 
-  <!--------------------------------- FOOTER ----------------------------------->
+                            <div class="col-md-6 caption">
+                                <h1>SEARCH OUR DATABSE OF FURRY FRIENDS</h1>
+                                <p>Over 2 million sheltered animals have been <br>adopted though our site. For more information <br>about
+                                    our
+                                    process, click below.</p>
 
-  <footer class="page-footer font-small teal pt-4">
-
-    <!-- Footer Text -->
-    <div class="container-fluid text-center text-md-left">
-
-      <!-- Grid row -->
-      <div class="row">
-
-        <!-- Grid column -->
-        <div class="col-md-6 mt-md-0 mt-3">
-
-          <!-- Content -->
-          <p class="text-uppercase font-weight-bold">Footer text 1</p>
-          <div class="ft1">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
-              repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae
-              harum esse fugiat. Itaque, culpa?</p>
-          </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide slide3">
+                    <div class="content">
+                        <div class="container">
+                            <div class="col-md-6 caption">
+                                <h1>SEARCH OUR DATABSE OF FURRY FRIENDS</h1>
+                                <p>Over 2 million sheltered animals have been <br>adopted though our site. For more information <br>about
+                                    our
+                                    process, click below.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-indicator">
+                <ol>
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </div>
         </div>
-        <!-- Grid column -->
-
-        <hr class="clearfix w-100 d-md-none pb-3">
-
-        <!-- Grid column -->
-        <div class="col-md-6 mb-md-0 mb-3">
-
-          <!-- Content -->
-          <p class="text-uppercase font-weight-bold">Footer text 2</p>
-          <div class="ft2">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi earum
-              commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam omnis quos ipsam, aspernatur id
-              excepturi hic.</p>
-          </div>
+        <div class="container section2">
+            <div class="row">
+                <div class="col-md-12" style="margin-top:40px">
+                    <p>Vestibulum quis ex fermentum, venenatis dui quis, elementum orci. Proin eget elit neque. In nunc lectus,
+                        pulvinar nec scelerisque eget, ornare vel tellus. Nulla tristique nisi lacus, quis finibus lorem pretium a.
+                        Nullam consectetur est arcu, rhoncus
+                        laoreet velit tristique ac. Quisque feugiat sed lectus in eleifend. Pellentesque ac sem vehicula, mattis
+                        quam nec, finibus est. Morbi sollicitudin rutrum consequat. Donec feugiat lectus enim, pretium rutrum orci
+                        dictum vitae.</p>
+                </div>
+            </div>
         </div>
-        <!-- Grid column -->
-
-      </div>
-      <!-- Grid row -->
-
     </div>
-    <!-- Footer Text -->
+    <!----------------------------END HEADER/CAROSEL----------------------------->
 
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
-      <a href="https://mdbootstrap.com/bootstrap-tutorial/">PetOverflow.com</a>
+
+    <!----------------------------SEARCH CONTAINER------------------------------->
+    <div id="section1">
+
+        <div id="search">
+
+            <div id="filters"></div>
+            <!-- Show map when toggled-->
+            <div id="map">
+            </div>
+
+            <div id="search">
+                <div id="filters"></div>
+                <!-- Show map when toggled-->
+                <div id="map"></div>
+                <!-- Show pet info page when clicked -->
+                <div id="pet"></div>
+                <div class="resultsContainer" id="results"></div>
+            </div>
+
+            <!-- Show pet info page when clicked -->
+            <div id="pet"></div>
+            <div id="results"></div>
+        </div>
     </div>
-    <!-- Copyright -->
-
-  </footer>
-  <!--------------------------------- FOOTER END -------------------------------->
+    <!----------------------------SEARCH CONTAINER END---------------------------->
 
 
+    <img id="cat" src="images/kitten.png" width=400px>
 
 
+    <!--------------------------------- FOOTER ----------------------------------->
 
+    <footer class="page-footer font-small teal pt-4">
 
+        <!-- Footer Text -->
+        <div class="container-fluid text-center text-md-left">
 
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-0 mt-3">
+
+                    <!-- Content -->
+                    <p class="text-uppercase font-weight-bold">Footer text 1</p>
+                    <div class="ft1">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
+                            repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae
+                            harum esse fugiat. Itaque, culpa?</p>
+                    </div>
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <!-- Grid column -->
+                <div class="col-md-6 mb-md-0 mb-3">
+
+                    <!-- Content -->
+                    <p class="text-uppercase font-weight-bold">Footer text 2</p>
+                    <div class="ft2">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi earum
+                            commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam omnis quos ipsam, aspernatur id
+                            excepturi hic.</p>
+                    </div>
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Text -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+            <a href="https://mdbootstrap.com/bootstrap-tutorial/">AmekaBrown.com</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!--------------------------------- FOOTER END -------------------------------->
 </body>
+
 <script src="js/petFinderAPI/secrets.js"></script>
 <script src="js/petFinderAPI/fetchPets.js"></script>
 <script src="js/filters/filters.js"></script>
 <script src="js/script.js"></script>
+<script src="js/overflow.js"></script>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhBf1IBwP55iVx4L8MBe_UPwiDjhXrYdg&callback=initMap"></script>
 <script src="js/map.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-  crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </html>
