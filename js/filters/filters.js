@@ -229,6 +229,13 @@ const updateLocation = () => {
   }
 }
 
+$("#textbox-location").selectize({
+  ...selectizeConfig,
+  create: true,
+  onItemAdd: updateLocation(),
+  placeholder: "Zip"
+})
+
 $("#btn-listView").click(e => {
   $("#map").css("height", 0)
   $("#results").show()
@@ -237,15 +244,6 @@ $("#btn-listView").click(e => {
 $("#btn-mapView").click(e => {
   $("#map").height("80vh")
   $("#results").hide()
-})
-
-// TODO: Make so only 1 input.
-
-$("#textbox-location").selectize({
-  ...selectizeConfig,
-  create: true,
-  onItemAdd: updateLocation(),
-  placeholder: "Zip"
 })
 
 /**
