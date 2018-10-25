@@ -21,8 +21,13 @@ const filtersHTML = /*html*/ `
     <i class="fas fa-filter"></i>
   </button>
   <div id="filter-viewToggle">
+<<<<<<< HEAD
     <button class="btn-filter"><i class="fas fa-list"></i></button> 
     <button class="btn-filter">
+=======
+    <button id="btn-listView" class="btn-filter"><i class="fas fa-list"></i></button> 
+    <button id="btn-mapView" class="btn-filter"> 
+>>>>>>> 35c1344b957bf4d229f2735b802f5b07ba2ff2bf
     <i class="fas fa-map-marked-alt"></i>
     </button>
   </div>
@@ -206,6 +211,16 @@ const updateLocation = () => {
   }
 }
 
+$("#btn-listView").click((e) => {
+  $("#map").css("height", 0)
+  $("#results").css("z-index", 1)
+})
+
+$("#btn-mapView").click((e) => {
+  $("#map").height("500px")
+  $("#results").css("z-index", 1)
+})
+
 // TODO: Make so only 1 input.
 
 $("#textbox-location").selectize({
@@ -219,26 +234,17 @@ $("#textbox-location").selectize({
  *  State
  */
 let petFilters = {
-  key: "",
-  animals: [],
-  breeds: [],
-  sizes: [], // S, M, L or XL
-  sexes: [], // M or F
-  location: "", // zipcode
-  ages: [], // Baby, Young, Adult, Senior
-  offset: "", // set this to the value of lastOffset returned by a previous call to pet.find, and it will retrieve the next result set
-  count: 25,
-  output: "full", // or basic
-  format: "json"
+  animal: [],
+  // breeds: [],
+  size: [], // S, M, L or XL
+  sex: [], // M or F
+  age: ["Baby", "Young"] // Baby, Young, Adult, Senior
 }
 
 const shelterFilters = {
-  key: "",
   location: "", // zipCode
   name: "", // shelter name
-  offset: "",
-  count: 25,
-  format: "json"
+  offset: ""
 }
 
 const searchViewState = {
