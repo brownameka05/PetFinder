@@ -39,7 +39,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-          <a class="nav-link" href="#">SEARCH</a>
+          <a class="nav-link" href="#search">SEARCH</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">PROGRAMS & SERVICES</a>
@@ -126,26 +126,25 @@
   <!----------------------------SEARCH CONTAINER------------------------------->
   <div id="section1">
 
-    <div id="search">
 
+
+    <div id="search">
       <div id="filters"></div>
       <!-- Show map when toggled-->
-      <div id="map">
-      </div>
-
-      <div id="search">
-        <div id="filters"></div>
-        <!-- Show map when toggled-->
-        <div id="map"></div>
-        <!-- Show pet info page when clicked -->
-        <div id="pet"></div>
-        <div class="resultsContainer" id="results"></div>
-      </div>
-
+      <div id="map"></div>
       <!-- Show pet info page when clicked -->
       <div id="pet"></div>
-      <div id="results"></div>
+      <div class="resultsContainer" id="results"></div>
+      <div id="container-next-btn">
+        <a class="button" id="btn-back" href="#section1"><i class="fas fa-arrow-left"></i></a>
+        <a class="button" id="btn-next" href="#section1"><i class="fas fa-arrow-right"></i></a>
+      </div>
     </div>
+
+    <!-- Show pet info page when clicked -->
+    <div id="pet"></div>
+    <div id="results"></div>
+  </div>
   </div>
   <!----------------------------SEARCH CONTAINER END---------------------------->
 

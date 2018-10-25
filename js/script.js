@@ -1,60 +1,60 @@
 const filterPets = (currentPets, filter) => {
   if (areFiltersEmpty(filter)) {
-    return currentPets
+    return currentPets;
   }
   return Object.keys(currentPets)
     .map(function(key) {
-      return currentPets[key]
+      return currentPets[key];
     })
-    .filter(pet => petMatch(filter, pet))
-}
+    .filter((pet) => petMatch(filter, pet));
+};
 
-const areFiltersEmpty = obj => {
-  let isEmpty = true
+const areFiltersEmpty = (obj) => {
+  let isEmpty = true;
   for (k in obj) {
     if (obj[k].length !== 0) {
-      isEmpty = false
+      isEmpty = false;
     }
   }
-  return isEmpty
-}
+  return isEmpty;
+};
 
-const isFilterEmpty = filterCategory => {
-  return filterCategory.length === 0
-}
+const isFilterEmpty = (filterCategory) => {
+  return filterCategory.length === 0;
+};
 
 // filter, pet -> bool
 const petMatch = (filters, pet) => {
   for (filterKey in filters) {
     if (!isFilterEmpty(filters[filterKey])) {
       if (!fineOne(filters[filterKey], pet[filterKey])) {
-        return false
+        return false;
       }
     }
   }
-  return true
-}
+  return true;
+};
 
 const fineOne = (haystack, arr) => {
-  if (typeof arr === "string") {
-    arr = [arr]
+  if (typeof arr === 'string') {
+    arr = [arr];
   }
-  return arr.some(v => {
-    return haystack.indexOf(v) >= 0
-  })
-}
+  return arr.some((v) => {
+    return haystack.indexOf(v) >= 0;
+  });
+};
 
 function populateSearchResults(currentPets, filter, from, to) {
-  const pets = filterPets(currentPets, filter)
+  const pets = filterPets(currentPets, filter);
   const petHtml = Object.keys(pets)
-    .map(key => pets[key])
+    .map((key) => pets[key])
 
     .slice(from, to)
-    .map(pet => {
+    .map((pet) => {
       petLiteral = `
         <div class="card">
             <img class="card-img" src="${
-              pet.imgUrls ? pet.imgUrls[3] : "#"
+              pet.imgUrls ? pet.imgUrls[3] : '#'
             }" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">${pet.name}</h5>
@@ -64,67 +64,65 @@ function populateSearchResults(currentPets, filter, from, to) {
         pet.name
       }</button>
             </div>
-        </div> `
-      return petLiteral
-    })
-  $("#results").html(
-    petHtml.length > 0 ? petHtml.reduce((a, b) => a + b) : "No matching pets :("
-  )
+        </div> `;
+      return petLiteral;
+    });
+  $('#results').html(
+    petHtml.length > 0 ? petHtml.reduce((a, b) => a + b) : 'No matching pets :('
+  );
 }
 
 const setBackButtonCSS = () => {
   if (offSetState.from === 0) {
-    $("#btn-back").css("background", "lightgray")
-    $("#btn-back:active").css("background", "lightgray")
+    $('#btn-back').css('background', 'lightgray');
+    $('#btn-back:active').css('background', 'lightgray');
   } else {
-    $("#btn-back").css("background", "#343a40")
+    $('#btn-back').css('background', '#343a40');
   }
-}
+};
 
-const startUp = async () => {
-  initPage()
-    .then(petData => {
+initPage()
+  .then((petData) => {
+    populateSearchResults(
+      petData.currentPets,
+      petFilters,
+      offSetState.from,
+      offSetState.to
+    );
+    setSheltersOnMap(petData.shelters);
+
+    $('#btn-apply').click((e) => {
+      $('#results').html('');
+      populateSearchResults(petData.currentPets, petFilters);
+      initializeBreedFilter(petData, petFilters);
+      console.log(shelterFilters);
+    });
+
+    $('#btn-next').click((e) => {
+      $('#results').html('');
+      offSetState = setOffSet(offSetState, 24);
+      setBackButtonCSS();
       populateSearchResults(
         petData.currentPets,
         petFilters,
         offSetState.from,
         offSetState.to
-      )
-      setSheltersOnMap(petData.shelters)
+      );
+    });
 
-      $("#btn-apply").click(e => {
-        $("#results").html("")
-        populateSearchResults(petData.currentPets, petFilters)
-        initializeBreedFilter(petData, petFilters)
-        console.log(shelterFilters)
-      })
+    $('#btn-back').click((e) => {
+      $('#results').html('');
+      offSetState = setOffSet(offSetState, 24, 'back');
+      setBackButtonCSS();
+      populateSearchResults(
+        petData.currentPets,
+        petFilters,
+        offSetState.from,
+        offSetState.to
+      );
+    });
 
-      $("#btn-next").click(e => {
-        $("#results").html("")
-        offSetState = setOffSet(offSetState, 24)
-        setBackButtonCSS()
-        populateSearchResults(
-          petData.currentPets,
-          petFilters,
-          offSetState.from,
-          offSetState.to
-        )
-      })
-
-      $("#btn-back").click(e => {
-        $("#results").html("")
-        offSetState = setOffSet(offSetState, 24, "back")
-        setBackButtonCSS()
-        populateSearchResults(
-          petData.currentPets,
-          petFilters,
-          offSetState.from,
-          offSetState.to
-        )
-      })
-
-      initializeBreedFilter(petData, petFilters)
-      initializeTypeFilter(petData)
-    })
-    .catch(err => console.log(err))
-}
+    initializeBreedFilter(petData, petFilters);
+    initializeTypeFilter(petData);
+  })
+  .catch((err) => console.log(err));

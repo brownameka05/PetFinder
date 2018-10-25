@@ -1,12 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 #filters {
   width: 100%;
+  display: flex;
+  flex-direction: column;
   font-family: Montserrat;
-  border-bottom: 2px solid #343a40;
   border-top: 2px solid #343a40;
-  padding-top: 1em;
-  padding-left: 1em;
-  padding-right: 1em;
+  border-bottom: 2px solid #343a40;
+  padding: 1em 1em 0 1em;
 }
 
 .filters-list {
@@ -27,6 +27,11 @@
   max-height: 500px;
   transition: all 0.2s ease-out;
 }
+@media screen and (max-width: 600px) {
+  .filter-list.open {
+    width: 100%;
+  }
+}
 
 .filter-animal,
 .filter-breed,
@@ -35,7 +40,7 @@
 .filter-age,
 #filter-location {
   display: flex;
-  width: 60%;
+  width: 80%;
   text-align: middle;
   margin: 0.5em;
 }
@@ -51,6 +56,7 @@
 
 @media screen and (max-width: 600px) {
   .filter-label {
+    width: 0em;
     display: none;
   }
 }
@@ -64,7 +70,8 @@
 
 @media screen and (max-width: 600px) {
   .selectize-control {
-    width: 80%;
+    width: 100%;
+    margin-left: 0;
   }
 }
 
