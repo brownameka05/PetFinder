@@ -104,7 +104,8 @@
   align-items: center;
 }
 
-#btn-apply {
+#btn-apply,
+#btn-clear {
   border: none;
   outline: none;
   background: #ffbc42;
@@ -117,7 +118,12 @@
   color: white;
 }
 
-#btn-apply:hover {
+#btn-apply {
+  background: #415e4a;
+}
+
+#btn-apply:hover,
+#btn-clear:hover {
   background: orange;
 }
 

@@ -83,7 +83,7 @@ const filtersHTML = /*html*/ `
 
 <div id="apply-button">
   <button id="btn-apply">Apply</button>
-  <button id="btn-clear">Clear</button>
+  <button id="btn-clear">Clear All</button>
 </div>
 </div>
     `
@@ -126,6 +126,14 @@ const updateType = (msg, petData) => {
       const control = $select[0].selectize
       control.clearOptions()
       updateOptions(petData, petFilters, control)
+    } else if (msg === "clear") {
+      petFilters = setFilters(petFilters, {
+        animal: []
+      })
+      const $select = $("#select-breed").selectize()
+      const control = $select[0].selectize
+      control.clearOptions()
+      updateOptions(petData, petFilters, control)
     }
   }
 }
@@ -135,6 +143,7 @@ const initializeTypeFilter = petData => {
     ...selectizeConfig,
     onItemAdd: updateType("add", petData),
     onItemRemove: updateType("remove", petData),
+    onClear: updateType("clear", petData),
     placeholder: "Type"
   })
 }
@@ -166,6 +175,10 @@ const updateOptions = ({ dogBreeds, catBreeds }, petFilters, controller) => {
       options = [...catBreedObj]
     } else if (petFilters.animal[0] === "Dog") {
       options = [...dogBreedObj]
+    } else if (msg === "clear") {
+      petFilters = setFilters(petFilters, {
+        size: []
+      })
     }
   }
   options.forEach(option => controller.addOption(option))
@@ -186,6 +199,7 @@ const initializeBreedFilter = ({ dogBreeds, catBreeds }, petFilters) => {
     ...selectizeConfig,
     onItemAdd: updateBreeds("add"),
     onItemRemove: updateBreeds("remove"),
+    onClear: updateSizes("clear"),
     placeholder: "Breed",
     options: options,
     maxItems: null,
@@ -205,6 +219,10 @@ const updateSizes = msg => {
       petFilters = setFilters(petFilters, {
         size: petFilters.size.filter(i => i !== data)
       })
+    } else if (msg === "clear") {
+      petFilters = setFilters(petFilters, {
+        size: []
+      })
     }
   }
 }
@@ -212,7 +230,8 @@ const updateSizes = msg => {
 $("#select-size").selectize({
   ...selectizeConfig,
   onItemAdd: updateSizes("add"),
-  onItemRemove: updateSizes("remove")
+  onItemRemove: updateSizes("remove"),
+  onClear: updateSizes("clear")
 })
 
 const updateSexes = msg => {
@@ -225,6 +244,10 @@ const updateSexes = msg => {
       petFilters = setFilters(petFilters, {
         sex: petFilters.sex.filter(i => i !== data)
       })
+    } else if (msg === "clear") {
+      petFilters = setFilters(petFilters, {
+        sex: []
+      })
     }
   }
 }
@@ -232,7 +255,8 @@ const updateSexes = msg => {
 $("#select-sex").selectize({
   ...selectizeConfig,
   onItemAdd: updateSexes("add"),
-  onItemRemove: updateSexes("remove")
+  onItemRemove: updateSexes("remove"),
+  onClear: updateSexes("clear")
 })
 
 const updateAges = msg => {
@@ -245,6 +269,10 @@ const updateAges = msg => {
       petFilters = setFilters(petFilters, {
         age: petFilters.age.filter(i => i !== data)
       })
+    } else if (msg === "clear") {
+      petFilters = setFilters(petFilters, {
+        age: []
+      })
     }
   }
 }
@@ -252,7 +280,8 @@ const updateAges = msg => {
 $("#select-age").selectize({
   ...selectizeConfig,
   onItemAdd: updateAges("add"),
-  onItemRemove: updateAges("remove")
+  onItemRemove: updateAges("remove"),
+  onClear: updateAges("clear")
 })
 
 const updateLocation = () => {
@@ -270,7 +299,21 @@ $("#textbox-location").selectize({
   placeholder: "Zip"
 })
 
-$("#btn-clearItems").click(e => {})
+$("#btn-clear").click(e => {
+  const selectors = [
+    "#select-sex",
+    "#select-age",
+    "#select-type",
+    "#select-breed",
+    "#select-size"
+  ]
+  selectors.forEach(element => {
+    let $select = $(element).selectize()
+    let control = $select[0].selectize
+    control.clear((silent = false))
+  })
+  console.log(petFilters)
+})
 
 $("#btn-listView").click(e => {
   $("#map").css("height", 0)
