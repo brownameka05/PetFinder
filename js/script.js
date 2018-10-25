@@ -2,48 +2,75 @@ function populateSearchResults(resultsObject){
     for(key in resultsObject){
         petObject = resultsObject[key]
         petLiteral = `
+
+    
         <div class="card">
-            <img class="card-img" src="https://lh5.googleusercontent.com/-2cuebuSKiRU/AAAAAAAAAAI/AAAAAAAAAEU/PibNivK-4U4/photo.jpg" alt="Card image cap">
+            <img class="card-img-top" src="/images/lab.jpg" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">${petObject.name}</h5>
-                <p class="card-text">Age: ${petObject.age}</p>
-                <button onclick = class = "learnMore" id = "${key}">More about ${petObject.name}</button>
+              <h5 class="card-title">${petObject.name}</h5>
+              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
-        </div>
+          </div>
         `
         $("#results").append(petLiteral)
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 petObject = {
-    chico : {
+    Chico : {
         name: "Chico",
         age: 12
     }, 
-    bruce : {
+    Bruce : {
         name: "Bruce",
         age: 2
     },
-    bailey : {
+    Bailey : {
         name: "Bailey",
         age: 12
     }, 
-    lucy : {
+    Lucy : {
         name: "Lucy",
         age: 2
     }, 
-    charlie : {
+    Charlie : {
         name: "Charlie",
         age: 2
     },
-    molly : {
+    Molly : {
         name: "Molly",
         age: 12
     }, 
-    max : {
+    Max : {
+        name: "Max",
+        age: 2
+    },
+    Baxter : {
         name: "Max",
         age: 2
     }
 }
 
 populateSearchResults(petObject)
+
+
+
+
+
