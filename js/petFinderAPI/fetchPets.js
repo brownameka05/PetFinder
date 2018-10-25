@@ -50,7 +50,7 @@ const extractImages = (pet) => {
 const extractBreeds = (pet) => {
   pet.breed = pet.breeds.breed.length
     ? pet.breeds.breed.map((obj) => obj['$t'])
-    : pet.breeds.breed['$t'];
+    : [pet.breeds.breed['$t']];
   return pet;
 };
 
