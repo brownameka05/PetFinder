@@ -36,15 +36,6 @@ const petMatch = (filters, pet) => {
 };
 
 const fineOne = (haystack, arr) => {
-  if (typeof arr === 'string') {
-    arr = [arr];
-  }
-  return arr.some((v) => {
-    return haystack.indexOf(v) >= 0;
-  });
-};
-
-const fineOne = (haystack, arr) => {
   if (typeof arr === "string") {
     arr = [arr]
   }
