@@ -46,16 +46,20 @@ const fineOne = (haystack, arr) => {
 
 function populateSearchResults(currentPets, filter) {
   const pets = filterPets(currentPets, filter)
+  console.log(pets)
+  console.log(filter)
   const petHtml = Object.keys(pets)
     .map(key => pets[key])
-    .slice(0, 25)
+
+    .slice(0, 24)
     .map(pet => {
       petLiteral = `
         <div class="card">
-            <img class="card-imkg" src="${pet.imgUrls[2]}" alt="Card image cap">
+            <img class="card-img" src="${pet.imgUrls[3]}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">${pet.name}</h5>
                 <p class="card-text">Age: ${pet.age}</p>
+                <p class="card-text">Breed: ${pet.breed[0]}</p>
                 <button class = "learnMore" id = "${pet.id}">More about ${
         pet.name
       }</button>
@@ -75,7 +79,9 @@ initPage().then(petData => {
   $("#btn-apply").click(e => {
     $("#results").html("")
     populateSearchResults(petData.currentPets, petFilters)
+    initializeBreedFilter(petData, petFilters)
   })
 
-  initializeBreedFilter(petData)
+  initializeBreedFilter(petData, petFilters)
+  initializeTypeFilter(petData)
 })
