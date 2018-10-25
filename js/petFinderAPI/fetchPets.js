@@ -9,6 +9,7 @@ const METHODS = {
   getShelters: "shelter.find", // returns a collection of shelters
   getShelter: "shelter.get" // returns a shelter
 }
+const FETCH_CONFIG = {}
 
 // filters -> query string
 const createQuery = (method, key, args) => {
@@ -37,7 +38,7 @@ const getPetsAtLocation = (location, offset = 0, count = 100) => {
 }
 
 // location, offset, count -> Promise(object)
-const getSheltersAtLocation = (location, offset = 0, count = 25) => {
+const getSheltersAtLocation = (location, offset = 0, count = 100) => {
   const query = createQuery(
     METHODS.getShelters,
     key,
@@ -79,13 +80,13 @@ const convertLonLat = shelterObj => {
   return shelterObj
 }
 
-// Tests
-// getSheltersAtLocation("77025").then(data => {
-//   console.log("success")
-//   console.log(data)
-// })
+// Initialize Page Data
 
-// getPetsAtLocation("77025").then(data => {
-//   console.log("success")
-//   console.log(data)
-// })
+const initPage = async () => {
+  let petData = {}
+  petData.dogBreeds = await getAllBreedsOf("dog")
+  petData.catBreeds = await getAllBreedsOf("cat")
+  petData.currentPets = await getPetsAtLocation("77025")
+  petData.shelters = await getSheltersAtLocation("77025")
+  return petData
+}
