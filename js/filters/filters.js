@@ -83,6 +83,7 @@ const filtersHTML = /*html*/ `
 
 <div id="apply-button">
   <button id="btn-apply">Apply</button>
+  <button id="btn-clear">Clear</button>
 </div>
 </div>
     `
@@ -268,6 +269,8 @@ $("#textbox-location").selectize({
   onItemAdd: updateLocation(),
   placeholder: "Zip"
 })
+
+$("#btn-clearItems").click(e => {})
 
 $("#btn-listView").click(e => {
   $("#map").css("height", 0)
