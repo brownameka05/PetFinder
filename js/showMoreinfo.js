@@ -16,10 +16,11 @@ function showMoreInfo(petID){
     console.log(pet)
     return thisPet = flattenPet(pet)
   }).then(function(newPet){
+    console.log(newPet)
     petLiteral = `
     <div id = "learnMore">
       <button onclick="closemyfunction(this)" id="btnInfo" > X </button>
-      <img src = \"${newPet.images[0]}\" />
+      <img src = \"${newPet.images[0].$t}\" />
       <h3>Name: ${newPet.name}</h3>
       <p>Breed: ${newPet.breed}</p>
       <p>Sex: ${newPet.sex}</p>
@@ -41,6 +42,7 @@ function showMoreInfo(petID){
       </div>
     </div>
     `
+    console.log(petLiteral)
     $("#section1").append(petLiteral)
 
   })
@@ -56,7 +58,6 @@ function flattenPet(pet){
     flatPet['size'] = pet.size
     flatPet['description'] = pet.description
     return getShelter(pet.shelterId).then(function(response){
-      console.log(response)
       flatPet['shelterInfo'] = flattenShelterResponse(response)
     })
     .then(function(){
