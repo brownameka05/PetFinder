@@ -2,7 +2,7 @@
 
 function closemyfunction(infoPet){
   infoPet.parentElement.parentElement.removeChild(infoPet.parentElement)
-  console.log(infoPet)
+
 }
 
 
@@ -13,14 +13,14 @@ function closemyfunction(infoPet){
 
 function showMoreInfo(petID){
   getPet(petID).then(function(pet){
-    console.log(pet)
+
     return thisPet = flattenPet(pet)
   }).then(function(newPet){
     console.log(newPet)
     petLiteral = `
     <div id = "learnMore">
       <button onclick="closemyfunction(this)" id="btnInfo" > X </button>
-      <img src = \"${newPet.images[0].$t}\" />
+      <img id="petPic" src = \"${newPet.images[1].$t}\" />
       <h3>Name: ${newPet.name}</h3>
       <p>Breed: ${newPet.breed}</p>
       <p>Sex: ${newPet.sex}</p>
