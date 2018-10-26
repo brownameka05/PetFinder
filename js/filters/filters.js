@@ -317,7 +317,6 @@ $("#btn-clear").click(e => {
 })
 
 $("#btn-listView").click(e => {
-  console.log("clicked")
   $("#map").css("height", 0)
   $("#results").show()
   $("#container-next-btn").show()
