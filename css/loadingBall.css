@@ -1,0 +1,119 @@
+#ball-container {
+  display: flex;
+  width: 100%;
+  height: 15em;
+  margin-top: 1em;
+}
+
+#ball {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  background-color: orange;
+  animation: bounce 0.5s cubic-bezier(0.5, 0.05, 1, 0.5);
+  /* animation-direction: alternate;
+  animation-iteration-count: infinite; */
+  animation: combined 3s linear infinite;
+  -webkit-animation: combined 3s linear infinite;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+#ball:before,
+#ball:after {
+  content: "";
+  position: absolute;
+
+  display: block;
+  height: 3em;
+  width: 3em;
+  border: solid 3px #fff;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+#ball:before {
+  left: 2em;
+}
+#ball:after {
+  right: 2em;
+}
+
+@keyframes bounce {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 200px, 0);
+  }
+}
+
+.ball {
+  width: 50px;
+  height: 50px;
+  color: white;
+  line-height: 50px;
+  font-size: 30px;
+  background: red;
+  border: 3px solid #000;
+  border-radius: 50%;
+  position: relative;
+  animation: combined 2s linear infinite;
+  -webkit-animation: combined 2s linear infinite;
+  left: 0;
+  top: 0;
+}
+
+@keyframes combined {
+  16%,
+  48%,
+  78% {
+    top: 190px;
+    animation-timing-function: ease-out;
+  }
+  32% {
+    top: 50px;
+    animation-timing-function: ease-in;
+  }
+  62% {
+    top: 100px;
+    animation-timing-function: ease-in;
+  }
+  90% {
+    top: 150px;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: rotate(360deg);
+    top: 190px;
+    animation-timing-function: ease-out;
+    left: 100%;
+  }
+}
+@-webkit-keyframes combined {
+  16%,
+  48%,
+  78% {
+    top: 190px;
+    -webkit-animation-timing-function: ease-out;
+  }
+  32% {
+    top: 50px;
+    -webkit-animation-timing-function: ease-in;
+  }
+  62% {
+    top: 100px;
+    -webkit-animation-timing-function: ease-in;
+  }
+  90% {
+    top: 150px;
+    -webkit-animation-timing-function: ease-in;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    top: 190px;
+    -webkit-animation-timing-function: ease-out;
+    left: 100%;
+  }
+}

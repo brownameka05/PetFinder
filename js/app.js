@@ -48,6 +48,7 @@ const setUpButtons = petData => {
 
 const search = loc => {
   getData(loc).then(petData => {
+    $("#ball-container").hide()
     populateSearchResults(
       petData.currentPets,
       petFilters,
@@ -72,8 +73,17 @@ $("#select-location-form").submit(e => {
     to: 24
   })
   $("#btn-filters").click(function(e) {
-    toggleFilter(this)
+    toggleFilter(e.target)
   })
+  if ($("#map").height() === 0) {
+    $("#ball-container").show()
+  }
   updateMapFromZip(shelterFilters.location)
   search(shelterFilters.location)
 })
+
+const onLoad = () => {
+  $("#ball-container").hide()
+}
+
+onLoad()
