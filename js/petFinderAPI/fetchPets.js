@@ -16,6 +16,21 @@ const createQuery = (method, key, args) => {
   return `${BASE_URL}${method}?format=json&key=${key}&${args}&callback=?`;
 };
 
+// return a single pet based on ID
+const getPet = (petID) => {
+  const query = createQuery(METHODS.getPet, key, `id=${petID}`);
+  return $.getJSON(query)
+  .then((json) => flattenPetObj(json.petfinder.pet))
+  .catch((err) => console.log(err));
+}
+
+const getShelter = (shelterID) => {
+  const query = createQuery(METHODS.getShelter, key, `id=${shelterID}`);
+  return $.getJSON(query)
+  .then((json) => (json))
+  .catch((err) => console.log(err))
+}
+
 // animal ("dog" or "cat") -> Promise(breeds list)
 const getAllBreedsOf = async (animal) => {
   const query = createQuery(METHODS.breedList, key, `animal=${animal}`);

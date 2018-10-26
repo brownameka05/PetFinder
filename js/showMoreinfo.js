@@ -1,16 +1,42 @@
 
 
 function showmoreinfo(petID){
-    /** stuff that gets pet using petID */
+  getPet(petID).then(function(pet){
+    return thisPet = flattenPet(pet)
+  }).then(function(newPet){
+    console.log(newPet)
+  })
 
-    infoLiteral = `
-    <div id="learnMore">
-    <img id="petPic" src="https://media.mwstatic.com/product-images/880x660/alt1/962/962441.jpg">
-    <h3>Name: Rex</h3>
-    <p>Age:3</p>
-    <div>
-    `
-  $("#section1").append(infoLiteral)
+}
 
+function flattenPet(pet){
+    let flatPet = {}
+    flatPet['name'] = pet.name
+    flatPet['images'] = pet.media.photos.photo
+    flatPet['breed'] = pet.breeds.breed.$t
+    flatPet['sex'] = pet.sex
+    flatPet['size'] = pet.size
+    flatPet['description'] = pet.description
+    return getShelter(pet.shelterId).then(function(response){
+      flatPet['shelterInfo'] = flattenShelterResponse(response)
+    })
+    .then(function(){
+      return flatPet
+    })
+}
 
+function flattenShelterResponse(apiResponse){
+  let shelter = apiResponse.petfinder.shelter
+  let newShelter = {}
+  newShelter['name'] = shelter.name.$t
+  if(!jQuery.isEmptyObject(shelter.phone)){
+    newShelter['phone'] = shelter.phone
+  }
+  if(!jQuery.isEmptyObject(shelter.email)){
+    newShelter['email'] = shelter.email.$t
+  }
+  if(!jQuery.isEmptyObject(shelter.latitude) && !jQuery.isEmptyObject(shelter.longiture)){
+    newShelter['geoLocation'] = {'latitude' : shelter.latitude, 'longitude' : shelter.longitude} 
+  }
+  return newShelter
 }
