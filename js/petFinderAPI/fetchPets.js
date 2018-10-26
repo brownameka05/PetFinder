@@ -103,13 +103,3 @@ const convertLonLat = (shelterObj) => {
   shelterObj.latitude = parseFloat(shelterObj.latitude);
   return shelterObj;
 };
-
-// Initialize Page Data
-const initPage = async () => {
-  let petData = {};
-  petData.dogBreeds = await getAllBreedsOf('dog');
-  petData.catBreeds = await getAllBreedsOf('cat');
-  petData.currentPets = await getPetsAtLocation('77025');
-  petData.shelters = await getSheltersAtLocation('77025');
-  return petData;
-};
