@@ -295,10 +295,10 @@ const updateLocation = () => {
   return function(data) {
     shelterFilters = setFilters(shelterFilters, {
       location: data
-    });
-    console.log(shelterFilters);
-  };
-};
+    })
+    console.log(shelterFilters)
+  }
+}
 
 $('#textbox-location').selectize({
   ...selectizeConfig,
@@ -345,11 +345,11 @@ let petFilters = {
   age: [] // Baby, Young, Adult, Senior
 };
 
-let shelterFilters = {
-  location: '', // zipCode
-  name: '', // shelter name
-  offset: ''
-};
+var shelterFilters = {
+  location: "", // zipCode
+  name: "", // shelter name
+  offset: ""
+}
 
 const setFilters = (filters, modFilter) => {
   return {

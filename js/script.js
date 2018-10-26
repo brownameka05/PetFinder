@@ -72,6 +72,20 @@ function populateSearchResults(currentPets, filter, from, to) {
   );
 }
 
+initPage().then(petData => {
+  populateSearchResults(petData.currentPets, petFilters)
+  setSheltersOnMap(petData.shelters)
+
+  $("#btn-apply").click(e => {
+    $("#results").html("")
+    populateSearchResults(petData.currentPets, petFilters)
+    initializeBreedFilter(petData, petFilters)
+    updateMapFromZip(shelterFilters.location)
+  })
+
+  initializeBreedFilter(petData, petFilters)
+  initializeTypeFilter(petData)
+})
 const setBackButtonCSS = () => {
   if (offSetState.from === 0) {
     $('#btn-back').css('background', 'lightgray');
