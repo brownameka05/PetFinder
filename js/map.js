@@ -17,9 +17,8 @@ function initMap() {
         }
         geocoder = new google.maps.Geocoder()
         geocoder.geocode({ location: pos }, res => {
-          $("#select-location:text").val(
-            `${res[0].address_components[7].long_name}`
-          )
+          const zip = res[0].address_components[7].long_name
+          $("#select-location:text").val(zip)
         })
         $("#select-location:text").val("${}")
         map.setCenter(pos)
