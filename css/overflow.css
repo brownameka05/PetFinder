@@ -3,20 +3,17 @@ body {
   position: relative;
 }
 
-.header {
-    background-color: #535353;
-    height: 50px;
-    margin-top: -1.9%;
-    font-weight: bold;
-    font-size: 120%;
-    color: #7fbad0;
-}
-
 /************************** SIDE NAV & CAROUSEL**********************/
 
 .navbar-brand{
     font-family: 'Permanent Marker', cursive;
-    font-size: 200%;
+    font-size: 150%;
+}
+
+.nav-link {
+    font-family: 'Permanent Marker', cursive;
+    font-weight: 100;
+    font-size: 14px;
 }
 
 .nav-menu {
@@ -85,6 +82,7 @@ body {
 .dropdown-container {
   position: relative;
 }
+
 .dropdown-container .caret {
   display: inline-block;
   position: absolute;
@@ -203,6 +201,13 @@ p {
   font-size: 100%;
 }
 
+.clickme {
+    background-color: rgba(13, 13, 13, 0.4);
+    color: #ffffff;
+    margin-left: 55%;
+    transform: translatey(-9px);
+}
+
 .slide-active .caption {
   transform: translatey(0);
   opacity: 1;
@@ -213,19 +218,19 @@ p {
 }
 
 .slide1 {
-  background: url("../images/saddoggy2.jpg") bottom center;
+  background: url("../images/cat-and-dogs-for-adoption-minnesota.jpg") bottom center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .slide2 {
-  background: url("../images/DogsCatsSnuggling850.jpg") center;
+  background: url("../images/saddoggy2_Fotor.jpg") center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .slide3 {
-  background: url("../images/cat-and-dogs-for-adoption-minnesota.jpg") bottom;
+  background: url("../images/DogsCatsSnuggling850_Fotor.jpg") center;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -263,6 +268,7 @@ p {
   border-top: 100px solid rgba(177, 177, 177, 0.19);
   border-bottom: 50px solid #343a40;
 }
+
 
 
 /************************ Footer *************************/
