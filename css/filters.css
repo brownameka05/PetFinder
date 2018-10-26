@@ -99,6 +99,7 @@
 
 #select-location-container {
   display: flex;
+  justify-content: center;
 }
 @media screen and (max-width: 600px) {
   #select-location-container {
@@ -168,7 +169,7 @@
 }
 @media screen and (max-width: 600px) {
   #select-location {
-    width: 60%;
+    width: 80%;
   }
 }
 

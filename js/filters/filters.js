@@ -85,6 +85,7 @@ const filtersHTML = /*html*/ `
 </div>
 
 <div id="clear-button">
+  <button id="btn-apply">Apply</button>
   <button id="btn-clear">Clear All</button>
 </div>
 </div>
