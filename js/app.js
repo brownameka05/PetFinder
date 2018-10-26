@@ -1,55 +1,77 @@
 // Initialize Page Data
-const initPage = async () => {
+const initPage = async (loc) => {
   let petData = {};
   petData.dogBreeds = await getAllBreedsOf('dog');
   petData.catBreeds = await getAllBreedsOf('cat');
-  petData.currentPets = await getPetsAtLocation('77025');
-  petData.shelters = await getSheltersAtLocation('77025');
+  petData.currentPets = await getPetsAtLocation(loc);
+  petData.shelters = await getSheltersAtLocation(loc);
   return petData;
 };
 
-initPage()
-  .then((petData) => {
-    populateSearchResults(
-      petData.currentPets,
-      petFilters,
-      offSetState.from,
-      offSetState.to
-    );
-    setSheltersOnMap(petData.shelters);
-
-    $('#btn-apply').click((e) => {
-      $('#results').html('');
-      populateSearchResults(petData.currentPets, petFilters);
+const doEverything = (loc) => {
+  console.log(loc);
+  initPage(loc)
+    .then((petData) => {
+      populateSearchResults(
+        petData.currentPets,
+        petFilters,
+        offSetState.from,
+        offSetState.to
+      );
+      setSheltersOnMap(petData.shelters);
       initializeBreedFilter(petData, petFilters);
-      console.log(shelterFilters);
-    });
+      initializeTypeFilter(petData);
 
-    $('#btn-next').click((e) => {
-      $('#results').html('');
-      offSetState = setOffSet(offSetState, 24);
-      setBackButtonCSS();
-      populateSearchResults(
-        petData.currentPets,
-        petFilters,
-        offSetState.from,
-        offSetState.to
-      );
-    });
+      $('#btn-apply').click((e) => {
+        $('#results').html('');
+        populateSearchResults(
+          petData.currentPets,
+          petFilters,
+          offSetState.from,
+          offSetState.to
+        );
+        initializeBreedFilter(petData, petFilters);
+        updateMapFromZip(shelterFilters.location);
+      });
 
-    $('#btn-back').click((e) => {
-      $('#results').html('');
-      offSetState = setOffSet(offSetState, 24, 'back');
-      setBackButtonCSS();
-      populateSearchResults(
-        petData.currentPets,
-        petFilters,
-        offSetState.from,
-        offSetState.to
-      );
-    });
+      $('#btn-next').click((e) => {
+        $('#results').html('');
+        offSetState = setOffSet(offSetState, 24);
+        setBackButtonCSS();
+        populateSearchResults(
+          petData.currentPets,
+          petFilters,
+          offSetState.from,
+          offSetState.to
+        );
+      });
 
-    initializeBreedFilter(petData, petFilters);
-    initializeTypeFilter(petData);
-  })
-  .catch((err) => console.log(err));
+      $('#btn-back').click((e) => {
+        $('#results').html('');
+        offSetState = setOffSet(offSetState, 24, 'back');
+        setBackButtonCSS();
+        populateSearchResults(
+          petData.currentPets,
+          petFilters,
+          offSetState.from,
+          offSetState.to
+        );
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+$('#select-location-form').submit((e) => {
+  e.preventDefault();
+  shelterFilters = setFilters(shelterFilters, {
+    location: e.currentTarget[0].value
+  });
+  shelterFilters = setFilters(shelterFilters, {
+    from: 0,
+    to: 24
+  });
+  updateMapFromZip(shelterFilters.location);
+  doEverything(shelterFilters.location);
+});
+
+doEverything('77025');

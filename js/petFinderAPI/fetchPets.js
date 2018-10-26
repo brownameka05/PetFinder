@@ -32,7 +32,6 @@ const getPetsAtLocation = (
   offset = queryParams.offsetPets,
   count = queryParams.nPets
 ) => {
-  console.log(count);
   const query = createQuery(
     METHODS.getPets,
     key,

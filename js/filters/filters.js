@@ -291,22 +291,6 @@ $('#select-age').selectize({
   onClear: updateAges('clear')
 });
 
-const updateLocation = () => {
-  return function(data) {
-    shelterFilters = setFilters(shelterFilters, {
-      location: data
-    })
-    console.log(shelterFilters)
-  }
-}
-
-$('#textbox-location').selectize({
-  ...selectizeConfig,
-  create: true,
-  onItemAdd: updateLocation(),
-  placeholder: 'Zip'
-});
-
 $('#btn-clear').click((e) => {
   const selectors = [
     '#select-sex',
@@ -346,10 +330,10 @@ let petFilters = {
 };
 
 var shelterFilters = {
-  location: "", // zipCode
-  name: "", // shelter name
-  offset: ""
-}
+  location: '', // zipCode
+  name: '', // shelter name
+  offset: ''
+};
 
 const setFilters = (filters, modFilter) => {
   return {
