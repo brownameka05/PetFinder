@@ -6,3 +6,26 @@
   width: 100%;
   margin-top: 1em;
 }
+
+#container-next-btn {
+  margin: 2em;
+  overflow: hidden;
+}
+
+#btn-next,
+#btn-back {
+  border: none;
+  outline: none;
+  background: #343a40;
+  padding: 0.5em 1em;
+  margin-top: 1em;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 1em;
+  color: white;
+}
+
+#btn-back {
+  background: lightgray;
+}
