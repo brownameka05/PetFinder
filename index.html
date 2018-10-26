@@ -17,10 +17,12 @@
 
   <link rel="stylesheet" href="node_modules/selectize/dist/css/selectize.default.css">
   <link rel="stylesheet" href="css/filters.css">
+
   <link rel="stylesheet" href="css/search.css">
   <link rel="stylesheet" type="text/css" href="css/style.css" />
   <link rel="stylesheet" type="text/css" href="css/map.css" />
   <link rel="stylesheet" type="text/css" href="css/overflow.css" />
+  <link rel="stylesheet" href="css/showInfo.css">
 
   <title>Pet Overflow</title>
 </head>
@@ -71,7 +73,7 @@
 
 
 
-  
+
 
   <!---------------------------------NAVBAR------------------------------------->
   <!---------------------------------HEADER/CAROSEL------------------------------------->
@@ -144,6 +146,11 @@
   <!----------------------------SEARCH CONTAINER------------------------------->
   <div id="section1">
 
+  
+
+
+
+
     <div id="search">
 
       <div id="filters"></div>
@@ -164,13 +171,13 @@
 
       <!-- Show pet info page when clicked -->
       <div id="pet"></div>
-      <div id="results"></div>
 
 
 
 
-
-    </div>
+      <div id="results">
+      </div>
+</div>
   </div>
   <!----------------------------SEARCH CONTAINER END---------------------------->
 
@@ -229,11 +236,13 @@
   </footer>
   <!--------------------------------- FOOTER END -------------------------------->
 </body>
-
+<script src="js/showMoreinfo.js"></script>
 <script src="js/petFinderAPI/secrets.js"></script>
 <script src="js/petFinderAPI/fetchPets.js"></script>
 <script src="js/filters/filters.js"></script>
 <script src="js/script.js"></script>
+
+
 <script src="js/overflow.js"></script>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhBf1IBwP55iVx4L8MBe_UPwiDjhXrYdg&callback=initMap"></script>
