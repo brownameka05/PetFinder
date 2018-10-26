@@ -286,9 +286,10 @@ $("#select-age").selectize({
 
 const updateLocation = () => {
   return function(data) {
-    petFilters = setFilters(petFilters, {
+    shelterFilters = setFilters(shelterFilters, {
       location: data
     })
+    console.log(shelterFilters)
   }
 }
 
@@ -336,7 +337,7 @@ let petFilters = {
   age: [] // Baby, Young, Adult, Senior
 }
 
-const shelterFilters = {
+var shelterFilters = {
   location: "", // zipCode
   name: "", // shelter name
   offset: ""

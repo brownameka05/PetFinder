@@ -80,6 +80,7 @@ initPage().then(petData => {
     $("#results").html("")
     populateSearchResults(petData.currentPets, petFilters)
     initializeBreedFilter(petData, petFilters)
+    updateMapFromZip(shelterFilters.location)
   })
 
   initializeBreedFilter(petData, petFilters)

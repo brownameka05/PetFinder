@@ -1,4 +1,5 @@
-var map;
+var maps
+var geocoder
 
 function initMap(){
     map = new google.maps.Map($("#map")[0], {
@@ -13,7 +14,6 @@ function initMap(){
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             }
-            console.log(pos)
             map.setCenter(pos)
             map.setZoom(12)
     }, function() {
@@ -23,6 +23,8 @@ function initMap(){
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
+
+    geocoder = new google.maps.Geocoder
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -69,19 +71,21 @@ function setSheltersOnMap(shelterArray){
     })
 }
 
-// address1: "8620 Stella Link Road"
-// address2: undefined
-// city: "Houston"
-// country: "US"
-// email: "adopt@houstonpetsalive.org"
-// fax: undefined
-// id: "TX1950"
-// latitude: 29.69
-// longitude: -95.4343
-// name: "Houston Pets Alive!"
-// phone: "(832) 786-9310"
-// state: "TX"
-// zip: "77025"
+function updateMapFromZip(zipCode){
+    geocoder.geocode({'address': zipCode}, function(results, status){
+        if(status === 'OK'){
+            if(results[0]){
+                console.log(results[0])
+                map.setCenter(results[0].geometry.location);
+                map.setZoom(12)
+            } else {
+                console.log("No results found.")
+            }
+        } else {
+            console.log("Geocoder failed due to: " + status)
+        }
+    })
+}
 
 
 
