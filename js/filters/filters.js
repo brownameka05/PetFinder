@@ -30,6 +30,7 @@ const filtersHTML = /*html*/ `
     <div id="input-error-message">Invalid Zip Code</div>
   </div>
   <div id="filter-viewToggle">
+
     <button id="btn-listView" class="btn-filter"><i class="fas fa-list"></i></button>
     <button id="btn-mapView" class="btn-filter">
     <i class="fas fa-map-marked-alt"></i>

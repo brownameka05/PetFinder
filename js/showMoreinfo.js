@@ -1,12 +1,26 @@
 
+
+function closemyfunction(infoPet){
+  infoPet.parentElement.parentElement.removeChild(infoPet.parentElement)
+
+}
+
+
+
+
+
+
+
 function showMoreInfo(petID){
   getPet(petID).then(function(pet){
+
     return thisPet = flattenPet(pet)
   }).then(function(newPet){
-    console.log(newPet)
+
     petLiteral = `
     <div id = "learnMore">
-      <img src = \"${newPet.images[0].$t}\" />
+      <button onclick="closemyfunction(this)" id="btnInfo" > X </button>
+      <img id="petPic" src = \"${newPet.images[1].$t}\" />
       <h3>Name: ${newPet.name}</h3>
       <p>Breed: ${newPet.breed}</p>
       <p>Sex: ${newPet.sex}</p>
@@ -20,6 +34,7 @@ function showMoreInfo(petID){
       petLiteral += `     <p>Phone: ${newPet.shelterInfo.phone}</p>`
     }
 
+
     if(!jQuery.isEmptyObject(newPet.shelterInfo.email)){
       petLiteral += `      <p>Email: ${newPet.shelterInfo.email}</p>`
     }
@@ -27,7 +42,6 @@ function showMoreInfo(petID){
       </div>
     </div>
     `
-    console.log(petLiteral)
     $("#section1").append(petLiteral)
 
   })
@@ -60,8 +74,11 @@ function flattenShelterResponse(apiResponse){
   if(!jQuery.isEmptyObject(shelter.email)){
     newShelter['email'] = shelter.email.$t
   }
-  if(!jQuery.isEmptyObject(shelter.latitude) && !jQuery.isEmptyObject(shelter.longitude)){
-    newShelter['geoLocation'] = {'latitude' : shelter.latitude.$t, 'longitude' : shelter.longitude.$t} 
+
+  if(shelter.latitude.$t && shelter.longitude.$t){
+    newShelter['geoLocation'] = {'latitude' : shelter.latitude.$t, 'longitude' : shelter.longitude.$t}
+
+
   }
   return newShelter
 }
