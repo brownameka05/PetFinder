@@ -8,6 +8,44 @@ const getData = async loc => {
   return petData
 }
 
+const setUpButtons = petData => {
+  $("#btn-apply").click(e => {
+    $("#results").html("")
+    populateSearchResults(
+      petData.currentPets,
+      petFilters,
+      offSetState.from,
+      offSetState.to
+    )
+    initializeBreedFilter(petData, petFilters)
+    updateMapFromZip(shelterFilters.location)
+  })
+
+  $("#btn-next").click(e => {
+    $("#results").html("")
+    offSetState = setOffSet(offSetState, 24)
+    setBackButtonCSS()
+    populateSearchResults(
+      petData.currentPets,
+      petFilters,
+      offSetState.from,
+      offSetState.to
+    )
+  })
+
+  $("#btn-back").click(e => {
+    $("#results").html("")
+    offSetState = setOffSet(offSetState, 24, "back")
+    setBackButtonCSS()
+    populateSearchResults(
+      petData.currentPets,
+      petFilters,
+      offSetState.from,
+      offSetState.to
+    )
+  })
+}
+
 const search = loc => {
   getData(loc).then(petData => {
     populateSearchResults(
@@ -19,43 +57,8 @@ const search = loc => {
     setSheltersOnMap(petData.shelters)
     initializeBreedFilter(petData, petFilters)
     initializeTypeFilter(petData)
+    setUpButtons(petData)
     getIniticalLocation()
-
-    $("#btn-apply").click(e => {
-      $("#results").html("")
-      populateSearchResults(
-        petData.currentPets,
-        petFilters,
-        offSetState.from,
-        offSetState.to
-      )
-      initializeBreedFilter(petData, petFilters)
-      updateMapFromZip(shelterFilters.location)
-    })
-
-    $("#btn-next").click(e => {
-      $("#results").html("")
-      offSetState = setOffSet(offSetState, 24)
-      setBackButtonCSS()
-      populateSearchResults(
-        petData.currentPets,
-        petFilters,
-        offSetState.from,
-        offSetState.to
-      )
-    })
-
-    $("#btn-back").click(e => {
-      $("#results").html("")
-      offSetState = setOffSet(offSetState, 24, "back")
-      setBackButtonCSS()
-      populateSearchResults(
-        petData.currentPets,
-        petFilters,
-        offSetState.from,
-        offSetState.to
-      )
-    })
   })
 }
 
