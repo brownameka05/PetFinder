@@ -29,13 +29,8 @@ const filtersHTML = /*html*/ `
     </form>
   </div>
   <div id="filter-viewToggle">
-
-    <button class="btn-filter"><i class="fas fa-list"></i></button>
-
-
-    
+    <button id="btn-listView" class="btn-filter"><i class="fas fa-list"></i></button>
     <button id="btn-mapView" class="btn-filter">
-
     <i class="fas fa-map-marked-alt"></i>
     </button>
   </div>
@@ -312,6 +307,7 @@ $("#btn-clear").click(e => {
 })
 
 $("#btn-listView").click(e => {
+  console.log("clicked")
   $("#map").css("height", 0)
   $("#results").show()
   $("#container-next-btn").show()
