@@ -28,47 +28,50 @@ function initMap(){
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map)
-
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(
+    browserHasGeolocation
+      ? 'Error: The Geolocation service failed.'
+      : "Error: Your browser doesn't support geolocation."
+  );
+  infoWindow.open(map);
 }
 
-function setSheltersOnMap(shelterArray){
+function setSheltersOnMap(shelterArray) {
   Object.keys(shelterArray)
-    .map(key => shelterArray[key])
-    .map(shelter => {
-        let latitude = shelter.latitude
-        let longitude = shelter.longitude
-        let location = new google.maps.LatLng(latitude, longitude)
-        let contentString = `
+    .map((key) => shelterArray[key])
+    .map((shelter) => {
+      let latitude = shelter.latitude;
+      let longitude = shelter.longitude;
+      let location = new google.maps.LatLng(latitude, longitude);
+      let contentString = `
         <b>${shelter.name}</b>
         <p>${shelter.email}</p>
-        <p>${shelter.phone ? shelter.phone : ""}</p>
-        `
-        let infowindow = new google.maps.InfoWindow({
-            content: contentString 
-        })
-        let marker = new google.maps.Marker({
-            position: location, 
-            map: map,
-            title: shelter.name,
-            name: shelter.name
-        })
-        marker.addListener("mouseover", function(){
-            infowindow.open(map, marker);
-            marker.addListener("mouseout", function(){
-                infowindow.close();
-            })
-        })
-        marker.addListener("mouseout", function(){
-            infowindow.close();
-        })
-        marker.addListener("click", function(){
-            infowindow.open(map, marker);
-            google.maps.event.clearListeners(marker, "mouseout")
-        })
-    })
+        <p>${shelter.phone ? shelter.phone : ''}</p>
+        `;
+      let infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      let marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: shelter.name,
+        name: shelter.name
+      });
+      marker.addListener('mouseover', function() {
+        infowindow.open(map, marker);
+        marker.addListener('mouseout', function() {
+          infowindow.close();
+        });
+      });
+      marker.addListener('mouseout', function() {
+        infowindow.close();
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+        google.maps.event.clearListeners(marker, 'mouseout');
+      });
+    });
 }
 
 function updateMapFromZip(zipCode){

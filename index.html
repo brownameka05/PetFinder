@@ -5,17 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500" rel="stylesheet">
-
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/selectize/dist/js/standalone/selectize.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <script src="lib/jquery.min.js"></script>
+  <script src="lib/selectize.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous"> -->
-
-  <link rel="stylesheet" href="node_modules/selectize/dist/css/selectize.default.css">
+  <link rel="stylesheet" href="lib/selectize.default.css">
   <link rel="stylesheet" href="css/filters.css">
   <link rel="stylesheet" href="css/search.css">
   <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -27,45 +26,34 @@
 
 <body>
 
-
-
   <!----------------------------- NAVBAR ---------------------------------->
-  <div class="sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Pet Overflow</a>
-      <button class="navbar-toggler" type="button">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#section1">SEARCH</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">PROGRAMS & SERVICES</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">GET INVOLVED</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">ABOUT US</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.twitter.com/"><i class="fab fa-twitter-square"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.pinterest.com/"><i class="fab fa-pinterest-square"></i></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Pet Overflow</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#search">SEARCH</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">PROGRAMS & SERVICES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">GET INVOLVED</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">ABOUT US</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
   <!---------------------------------NAVBAR------------------------------------->
   <!---------------------------------HEADER/CAROSEL------------------------------------->
 
@@ -78,8 +66,7 @@
               <div class="col-md-6 caption">
                 <h1>SEARCH OUR DATABSE OF FURRY FRIENDS</h1>
                 <p>Over 2 million sheltered animals have been <br>adopted though our site. For more information <br>about
-                  our
-                  process, click below.</p>
+                  our process, click below.</p>
               </div>
             </div>
           </div>
@@ -119,7 +106,7 @@
         </ol>
       </div>
     </div>
-    <div class="container">
+    <div class="container section2">
       <div class="row">
         <div class="col-md-12" style="margin-top:40px">
           <p>Vestibulum quis ex fermentum, venenatis dui quis, elementum orci. Proin eget elit neque. In nunc lectus,
@@ -134,22 +121,34 @@
   </div>
   <!----------------------------END HEADER/CAROSEL----------------------------->
 
+
   <!----------------------------SEARCH CONTAINER------------------------------->
   <div id="section1">
 
-    <div id="search">
 
+
+    <div id="search">
       <div id="filters"></div>
       <!-- Show map when toggled-->
-      <div id="map">
-      </div>
+      <div id="map"></div>
       <!-- Show pet info page when clicked -->
       <div id="pet"></div>
-      <div id="results"></div>
+      <div class="resultsContainer" id="results"></div>
+      <div id="container-next-btn">
+        <a class="button" id="btn-back" href="#section1"><i class="fas fa-arrow-left"></i></a>
+        <a class="button" id="btn-next" href="#section1"><i class="fas fa-arrow-right"></i></a>
+      </div>
     </div>
+
+    <!-- Show pet info page when clicked -->
+    <div id="pet"></div>
+    <div id="results"></div>
+  </div>
   </div>
   <!----------------------------SEARCH CONTAINER END---------------------------->
 
+
+  <img id="cat" src="images/hourAdoptGraphic2.png" width=300px>
 
 
   <!--------------------------------- FOOTER ----------------------------------->
@@ -198,7 +197,7 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2018 Copyright:
-      <a href="https://mdbootstrap.com/bootstrap-tutorial/">PetOverflow.com</a>
+      <a href="https://mdbootstrap.com/bootstrap-tutorial/">AmekaBrown.com</a>
     </div>
     <!-- Copyright -->
 
@@ -207,13 +206,14 @@
 </body>
 
 <script src="js/petFinderAPI/secrets.js"></script>
+<script src="js/petFinderAPI/queryState.js"></script>
 <script src="js/petFinderAPI/fetchPets.js"></script>
 <script src="js/filters/filters.js"></script>
 <script src="js/script.js"></script>
 <script src="js/overflow.js"></script>
-
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhBf1IBwP55iVx4L8MBe_UPwiDjhXrYdg&callback=initMap"></script>
 <script src="js/map.js"></script>
+<script src="js/app.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhBf1IBwP55iVx4L8MBe_UPwiDjhXrYdg&callback=initMap"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
   crossorigin="anonymous"></script>
