@@ -68,7 +68,6 @@ const search = loc => {
     initializeBreedFilter(petData, petFilters)
     initializeTypeFilter(petData)
     setUpButtons(petData)
-    getIniticalLocation()
   })
 }
 

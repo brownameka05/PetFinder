@@ -11,7 +11,7 @@ const resetOffSetState = () => {
 }
 
 let queryParams = {
-  nPets: 40,
+  nPets: 250,
   nShelters: 50,
   offsetPets: 0,
   offsetShelters: 0

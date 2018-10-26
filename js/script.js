@@ -59,7 +59,7 @@ function populateSearchResults(currentPets, filter, from, to) {
                 <h5 class="card-title">${pet.name}</h5>
                 <p class="card-text">Age: ${pet.age}</p>
                 <p class="card-text">Breed: ${pet.breed[0]}</p>
-                <button onclick="showmoreinfo(\'${pet.id}\')"">More about ${
+                <button onclick="showMoreInfo(\'${pet.id}\')"">More about ${
         pet.name
       }</button>
             </div>
