@@ -65,25 +65,34 @@ const search = loc => {
 
 $("#select-location-form").submit(e => {
   e.preventDefault()
-  shelterFilters = setFilters(shelterFilters, {
-    location: e.currentTarget[0].value
-  })
-  shelterFilters = setFilters(shelterFilters, {
-    from: 0,
-    to: 24
-  })
-  $("#btn-filters").click(function(e) {
-    toggleFilter(e.target)
-  })
-  if ($("#map").height() === 0) {
-    $("#ball-container").show()
+  if (/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(e.currentTarget[0].value)) {
+    $("#select-location").removeClass("error-border")
+    $("#input-error-message").hide()
+    shelterFilters = setFilters(shelterFilters, {
+      location: e.currentTarget[0].value
+    })
+    shelterFilters = setFilters(shelterFilters, {
+      from: 0,
+      to: 24
+    })
+    $("#btn-filters").click(function(e) {
+      toggleFilter(e.target)
+    })
+    if ($("#map").height() === 0) {
+      $("#ball-container").show()
+    }
+    updateMapFromZip(shelterFilters.location)
+    search(shelterFilters.location)
+  } else {
+    console.log("here")
+    $("#input-error-message").show()
+    $("#select-location").addClass("error-border")
   }
-  updateMapFromZip(shelterFilters.location)
-  search(shelterFilters.location)
 })
 
 const onLoad = () => {
   $("#ball-container").hide()
+  $("#input-error-message").hide()
 }
 
 onLoad()
