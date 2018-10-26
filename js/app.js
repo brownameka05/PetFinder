@@ -71,6 +71,9 @@ $("#select-location-form").submit(e => {
     from: 0,
     to: 24
   })
+  $("#btn-filters").click(function(e) {
+    toggleFilter(this)
+  })
   updateMapFromZip(shelterFilters.location)
   search(shelterFilters.location)
 })
