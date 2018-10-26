@@ -29,18 +29,9 @@ const filtersHTML = /*html*/ `
     </form>
   </div>
   <div id="filter-viewToggle">
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <button class="btn-filter"><i class="fas fa-list"></i></button> 
-    <button class="btn-filter">
-=======
-    <button id="btn-listView" class="btn-filter"><i class="fas fa-list"></i></button> 
-    <button id="btn-mapView" class="btn-filter"> 
->>>>>>> 4d60534fa14afbc3bf608e402b775b0948369b76
-=======
+
     <button id="btn-listView" class="btn-filter"><i class="fas fa-list"></i></button>
     <button id="btn-mapView" class="btn-filter">
->>>>>>> 997efb2f5f51c1af9f03b4b1f45e92a1c7ce80d9
     <i class="fas fa-map-marked-alt"></i>
     </button>
   </div>
