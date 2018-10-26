@@ -3,7 +3,7 @@ function showMoreInfo(petID){
   getPet(petID).then(function(pet){
     return thisPet = flattenPet(pet)
   }).then(function(newPet){
-    console.log(newPet)
+
     petLiteral = `
     <div id = "learnMore">
       <img src = \"${newPet.images[0].$t}\" />
@@ -27,7 +27,6 @@ function showMoreInfo(petID){
       </div>
     </div>
     `
-    console.log(petLiteral)
     $("#section1").append(petLiteral)
 
   })
@@ -60,7 +59,8 @@ function flattenShelterResponse(apiResponse){
   if(!jQuery.isEmptyObject(shelter.email)){
     newShelter['email'] = shelter.email.$t
   }
-  if(!jQuery.isEmptyObject(shelter.latitude) && !jQuery.isEmptyObject(shelter.longitude)){
+  console.log(shelter.latitude.$t + " " + shelter.longitude.$t)
+  if(shelter.latitude.$t && shelter.longitude.$t){
     newShelter['geoLocation'] = {'latitude' : shelter.latitude.$t, 'longitude' : shelter.longitude.$t} 
   }
   return newShelter
