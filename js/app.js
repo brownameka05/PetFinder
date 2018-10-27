@@ -8,6 +8,15 @@ const getData = async loc => {
   return petData
 }
 
+const setBackButtonCSS = offSetState => {
+  if (offSetState.from === 0) {
+    $("#btn-back").css("background", "lightgray")
+    $("#btn-back:active").css("background", "lightgray")
+  } else {
+    $("#btn-back").css("background", "#343a40")
+  }
+}
+
 const setUpButtons = petData => {
   $("#btn-apply").click(e => {
     $("#results").html("")
@@ -24,7 +33,7 @@ const setUpButtons = petData => {
   $("#btn-next").click(e => {
     $("#results").html("")
     offSetState = setOffSet(offSetState, 24)
-    setBackButtonCSS()
+    setBackButtonCSS(offSetState)
     populateSearchResults(
       petData.currentPets,
       petFilters,
@@ -36,7 +45,7 @@ const setUpButtons = petData => {
   $("#btn-back").click(e => {
     $("#results").html("")
     offSetState = setOffSet(offSetState, 24, "back")
-    setBackButtonCSS()
+    setBackButtonCSS(offSetState)
     populateSearchResults(
       petData.currentPets,
       petFilters,
@@ -64,25 +73,35 @@ const search = loc => {
 
 $("#select-location-form").submit(e => {
   e.preventDefault()
-  shelterFilters = setFilters(shelterFilters, {
-    location: e.currentTarget[0].value
-  })
-  shelterFilters = setFilters(shelterFilters, {
-    from: 0,
-    to: 24
-  })
-  $("#btn-filters").click(function(e) {
-    toggleFilter(e.target)
-  })
-  if ($("#map").height() === 0) {
-    $("#ball-container").show()
+  $("#errorDogContainer").hide()
+  if (/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(e.currentTarget[0].value)) {
+    $("#select-location").removeClass("error-border")
+    $("#input-error-message").hide()
+
+    shelterFilters = setFilters(shelterFilters, {
+      location: e.currentTarget[0].value
+    })
+    offSetState = resetOffSetState()
+    setBackButtonCSS(offSetState)
+
+    $("#btn-filters").click(function(e) {
+      toggleFilter(e.target)
+    })
+    if ($("#map").height() === 0) {
+      $("#ball-container").show()
+    }
+
+    updateMapFromZip(shelterFilters.location)
+    search(shelterFilters.location)
+  } else {
+    $("#input-error-message").show()
+    $("#select-location").addClass("error-border")
   }
-  updateMapFromZip(shelterFilters.location)
-  search(shelterFilters.location)
 })
 
 const onLoad = () => {
   $("#ball-container").hide()
+  $("#input-error-message").hide()
 }
 
 onLoad()

@@ -8,8 +8,10 @@
 }
 
 #container-next-btn {
+  display: flex;
+  justify-content: space-between;
   margin: 2em;
-  overflow: hidden;
+  width: 6em;
 }
 
 #btn-next,

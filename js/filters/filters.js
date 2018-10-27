@@ -27,6 +27,7 @@ const filtersHTML = /*html*/ `
     <input type="text" id="select-location" placeholder="zipcode">
     <button id="btn-search">Go</button>
     </form>
+    <div id="input-error-message">Invalid Zip Code</div>
   </div>
   <div id="filter-viewToggle">
 

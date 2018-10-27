@@ -1,0 +1,82 @@
+$teal: #1ecd97;
+$gray: #343a40;
+$off-white: #fafafa;
+
+.card {
+  border: 2px solid #d6d6d6;
+}
+
+.card-img {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: $off-white;
+  padding-bottom: 0.5em;
+}
+
+.card-body:hover {
+  background: darken($off-white, 3%);
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  padding-bottom: 1em;
+}
+
+.card-img {
+  height: 20em;
+  object-fit: cover;
+  object-position: 50% 0;
+  background: $off-white;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+.card-text {
+  font-size: 1em;
+  padding-top: 1em;
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  height: 5em;
+  width: 10em;
+}
+
+.btn-card-moreInfo {
+  background-color: transparent;
+  border: 2px solid $teal;
+  border-radius: 4px;
+  display: inline-block;
+  color: $teal;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  height: 5em;
+  letter-spacing: 1px;
+  margin: 5px;
+  overflow: hidden;
+  padding: 0 22px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $teal;
+    color: white;
+  }
+}

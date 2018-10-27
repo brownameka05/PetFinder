@@ -82,7 +82,7 @@
 @media screen and (max-width: 600px) {
   #filter-nav {
     display: grid;
-    grid-template: 'search search' 'filter toggle';
+    grid-template: "search search" "filter toggle";
   }
 }
 
@@ -99,6 +99,7 @@
 
 #select-location-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 @media screen and (max-width: 600px) {
@@ -112,6 +113,15 @@
   display: inherit;
   width: inherit;
   justify-content: center;
+}
+
+#input-error-message {
+  color: red;
+  padding-left: 0.5em;
+}
+
+.error-border {
+  border: 1px solid red;
 }
 
 #filter-viewToggle {
@@ -154,11 +164,11 @@
 #btn-search {
   border: none;
   outline: none;
-  background: #212121;
+  background: #343a40;
   border-radius: 3px;
   padding: 0.5em 1em 0.5em 1em;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1em;
   color: white;
 }
@@ -166,10 +176,13 @@
 #select-location {
   padding: 0.5em 1em 0.5em 1em;
   margin-right: 1em;
+  color: #343a40;
+  font-weight: 500;
 }
 @media screen and (max-width: 600px) {
   #select-location {
     width: 80%;
+    border: 1px solid lightgray;
   }
 }
 
@@ -177,7 +190,7 @@
 #btn-clear {
   border: none;
   outline: none;
-  background: #ffbc42;
+  background: #343a40;
   padding: 0.5em 1em;
   margin-top: 1em;
   border-radius: 3px;
@@ -188,12 +201,12 @@
 }
 
 #btn-apply {
-  background: #415e4a;
+  background: #1ecd97;
 }
 
 #btn-apply:hover,
 #btn-clear:hover {
-  background: orange;
+  filter: brightness(120%);
 }
 
 /* Start Burger Button */
