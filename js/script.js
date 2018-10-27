@@ -52,16 +52,22 @@ function populateSearchResults(currentPets, filter, from, to) {
     .map(pet => {
       petLiteral = `
         <div class="card">
-            <img class="card-img" src="${
-              pet.imgUrls ? pet.imgUrls[3] : "#"
-            }" alt="Card image cap">
+            <div class="card-img-container">
+              <img class="card-img" src="${
+                pet.imgUrls ? pet.imgUrls[3] : "#"
+              }" alt="Card image cap">
+            </div>
             <div class="card-body">
-                <h5 class="card-title">${pet.name}</h5>
-                <p class="card-text">Age: ${pet.age}</p>
-                <p class="card-text">Breed: ${pet.breed[0]}</p>
-                <button onclick="showMoreInfo(\'${pet.id}\')"">More about ${
-        pet.name
-      }</button>
+              <div class="card-info">
+                <div class="card-title">${pet.name}</div>
+                <div class="card-text">Age: ${pet.age}</div> 
+                <div class="card-text">Breed: ${pet.breed[0]}</div>
+              </div>
+              <div class="btn-wrap">
+                <button class="btn-card-moreInfo" onclick="showMoreInfo(\'${
+                  pet.id
+                }\')"">More about ${pet.name}</button>
+              </div>
             </div>
         </div> `
 
