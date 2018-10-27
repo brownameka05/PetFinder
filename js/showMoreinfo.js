@@ -27,7 +27,7 @@ function showMoreInfo(petID) {
       console.log(newPet)
       petLiteral = `
     <div class = "learnMore" id = ${newPet.id}>
-      <div>
+      <div id="btnDiv">
         <button onclick="closemyfunction(this)" id="btnInfo" > X </button>
       </div>
       <div id="basicInfo">
