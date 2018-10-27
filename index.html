@@ -18,8 +18,8 @@
   <link rel="stylesheet" href="css/filters.css">
 
   <link rel="stylesheet" href="css/search.css">
-  <link rel="stylesheet" type="text/css" href="css/map.css" />
-  <link rel="stylesheet" type="text/css" href="css/overflow.css" />
+  <link rel="stylesheet" type="text/css" href="css/map.css">
+  <link rel="stylesheet" type="text/css" href="css/overflow.css">
   <link rel="stylesheet" href="css/showInfo.css">
   <link rel="stylesheet" href="css/loadingBall.css">
   <link rel="stylesheet" href="css/noMoreResults.css">
@@ -30,6 +30,73 @@
 
 <body>
 
+    <!----------------------------- NAVBAR ---------------------------------->
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Pet Overflow</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#search">SEARCH</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#programs-services">PROGRAMS & SERVICES</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#get-involved">GET INVOLVED</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#about-us">ABOUT US</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+    
+    <!---------------------------------NAVBAR------------------------------------->
+    <!---------------------------------HEADER/CAROSEL------------------------------------->
+
+    <div class="home">
+        <div class="parallax-slider">
+            <div class="slider-wrapper">
+                <div class="slide slide1 slide-active">
+                    <div class="content">
+                        <div class="container">
+                            <div class="col-md-6 caption">
+                                <h1>SEARCH OUR DATABASE OF FURRY FRIENDS</h1>
+                                <p>Over 2 million sheltered animals have been <br>adopted though our site. For more information <br>about our process, click below.</p> 
+                                <button class="clickme" type="button"><a href="#search">Learn More</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide slide2">
+                    <div class="content">
+                        <div class="container">
+
+                            <div class="col-md-6 caption">
+                                <h1>VOLUNTEER AT AN ANIMAL SHELTER NEAR YOU</h1>
+                                <p>Support the dogs and cats that live at the shelter <br>by caring for their daily needs, socializing them, providing enrichment, and maintaining their living spaces. </p>
+                                <button class="clickme" type="button"><a href="#get-involved">Learn More</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide slide3">
+                    <div class="content">
+                        <div class="container">
+                            <div class="col-md-6 caption">
+                                <h1>RESCUE & REHABILITATION</h1>
+                                <p>“Every Animal Matters” is not just Pet Overflow shelter slogan, it sums up our philosophy. We routinely accept, rehabilitate, medically treat and adopt into loving homes, animals on whom other groups have given up.</p>
+                                <button class="clickme" type="button"><a href="#programs-services">Learn More</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
   <!----------------------------- NAVBAR ---------------------------------->
   <div class="fixed">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -64,59 +131,9 @@
 
 
 
-
-
   <!---------------------------------HEADER/CAROSEL------------------------------------->
 
-  <div class="home">
-    <div class="parallax-slider">
-      <div class="slider-wrapper">
-        <div class="slide slide1 slide-active">
-          <div class="content">
-            <div class="container">
-              <div class="col-md-6 caption">
-                <h1>SEARCH OUR DATABSE OF FURRY FRIENDS</h1>
-                <p>Over 2 million sheltered animals have been <br>adopted though our site. For more information <br>about
-                  our process, click below.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="slide slide2">
-          <div class="content">
-            <div class="container">
-
-              <div class="col-md-6 caption">
-                <h1>SEARCH OUR DATABSE OF FURRY FRIENDS</h1>
-                <p>Over 2 million sheltered animals have been <br>adopted though our site. For more information <br>about
-                  our
-                  process, click below.</p>
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="slide slide3">
-          <div class="content">
-            <div class="container">
-              <div class="col-md-6 caption">
-                <h1>SEARCH OUR DATABSE OF FURRY FRIENDS</h1>
-                <p>Over 2 million sheltered animals have been <br>adopted though our site. For more information <br>about
-                  our
-                  process, click below.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="slide-indicator">
-        <ol>
-          <li class="active"></li>
-          <li></li>
-          <li></li>
-        </ol>
-      </div>
-    </div>
+  
     <div class="container section2">
       <div class="row">
         <div class="col-md-12" style="margin-top:40px">
@@ -135,14 +152,6 @@
 
   <!----------------------------SEARCH CONTAINER------------------------------->
   <div id="section1">
-
-
-
-
-
-
-
-    <div id="search">
 
 
       <div id="search">
@@ -167,18 +176,46 @@
         </div>
       </div>
 
-      <!-- Show pet info page when clicked -->
-      <div id="pet"></div>
-      <div id="results"></div>
-    </div>
+
+            
+<!---------------------------- PROGRAMS AND SERVICES ---------------------------->         
+      
+       <div id="programs-services">
+            <h1 id="programs-title"><center>PROGRAMS & SERVICES</center></h1>  
+           <p id="programs-text">Enim fugiat quis cras odio ultricies dui. Justo sem voluptate duis mattis augue, amet purus adipiscing cursus, commodo lectus pede donec mauris donec, feugiat sit, nulla elementum porta. <br><br>Rutrum commodo mi sed quis, ligula suscipit, arcu fringilla, consectetuer id euismod, mauris dapibus. Feugiat integer mollis, vestibulum auctor malesuada id lobortis purus nunc, semper amet, habitasse tristique est tempor parturient. Ullamcorper eu neque, mus dolor morbi tempor. Qui urna. Massa in dignissim metus orci. </p>
+       </div> 
+
+     <div class="dogimg1"></div>
+<!---------------------------- GET INVOLVED ---------------------------->         
+         
+       <div id="get-involved">
+            <h1 id="involved-title"><center>GET INVOLVED</center></h1>  
+           <p id="involved-text">Quis egestas pellentesque vitae suspendisse, nunc mollis urna sit gravida et. Ipsum eleifend, volutpat maecenas turpis sed faucibus lorem amet, integer tempor suscipit inceptos congue diam, lorem dolor. Sem augue adipiscing eget quis duis, iaculis viverra vel quisque elit dictumst. Sed nec mattis viverra magna tristique suspendisse, ullamcorper at quisque, bibendum gravida mattis molestie nisl, suspendisse vel mauris scelerisque ultricies integer, in nibh interdum pretium.<br><br>Risus vel tortor massa, elementum dolor sapien sit commodo, natoque cum elementum faucibus tempus, dolor risus elementum tortor libero sed dolor. Wisi mollis pellentesque, nulla vestibulum tellus, risus lectus id sem risus, augue sem, sit justo.</p>
+       </div> 
+             
+            
+    <!------------------------------------------------------------------------->
+     <div class="dogimg2"></div>
+  <!----------------------------ABOUT US---------------------------->
+
+<div id="about-us">
+    <h1 id="about-title"><center>ABOUT US</center></h1>  
+    <p id="about-text">The mission of Pet Overflow is to improve the quality of life for all animals in Houston, especially those under the care of the City of Houston’s shelter & adoptions.
+
+    Donations to Pet Overflow directly benefit animals sheltered at, or otherwise cared for by us through purchases of medical, kennel, sanitary, and other supplies and equipment.
+
+    Pet Overflow‘s efforts are also focused on raising public awareness among all Houstonians about homeless and at-risk animals throughout our community.</p>
+ </div> 
+            
+            
+<img id="silhouette" src="images/hourAdoptGraphic2.png">
+
   </div>
   <!----------------------------SEARCH CONTAINER END---------------------------->
 
 
-  <img id="cat" src="images/hourAdoptGraphic2.png" width=300px>
-
-
   <!--------------------------------- FOOTER ----------------------------------->
+       
 
   <footer class="page-footer font-small teal pt-4">
 
@@ -192,11 +229,16 @@
         <div class="col-md-6 mt-md-0 mt-3">
 
           <!-- Content -->
-          <p class="text-uppercase font-weight-bold">Footer text 1</p>
+          <p class="text-uppercase font-weight-bold">Pet Care Topics</p>
           <div class="ft1">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
-              repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae
-              harum esse fugiat. Itaque, culpa?</p>
+            <ul>
+                <li><a href="https://www.aspca.org/pet-care/dog-care">Dog Care</a></li>
+                <li><a href="https://www.akc.org/dog-breeds">Dog Breeds</a></li>
+                <li><a href="https://www.aspca.org/pet-care/cat-care">Cat Care</a></li>
+                <li><a href="https://www.petmd.com/cat/breeds">Cat Breeds</a></li>
+                <li><a href="https://www.aspca.org/pet-care">All Pet Care</a></li>
+                <li><a href="https://www.youtube.com/">Pet Care Videos</a></li>
+            </ul>
           </div>
         </div>
         <!-- Grid column -->
@@ -207,11 +249,16 @@
         <div class="col-md-6 mb-md-0 mb-3">
 
           <!-- Content -->
-          <p class="text-uppercase font-weight-bold">Footer text 2</p>
+          <p class="text-uppercase font-weight-bold">Other Pet Topics</p>
           <div class="ft2">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi earum
-              commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam omnis quos ipsam, aspernatur id
-              excepturi hic.</p>
+            <ul>
+                <li><a href="https://www.care.com/pet-sitting-services">Finding a Pet Sitter</a></li>
+                <li><a href="http://www.humanesociety.org/animals/dogs/tips/dog_toys.html">Pet-safe Toys</a></li>
+                <li><a href="https://www.akc.org/expert-advice/nutrition/best-dog-food-choosing-whats-right-for-your-dog/">Choosing the right Pet Food</a></li>
+                <li><a href="https://www.amazon.com/dogs-collars-harnesses-leashes-training/b?ie=UTF8&node=2975339011">Collars & Leashes</a></li>
+                <li><a href="https://www.cesarsway.com/dog-training/obedience/5-essential-commands-you-can-teach-your-dog">Dog Training</a></li>
+                <li><a href="http://www.houstonspca.org/give/">Donate</a></li>
+            </ul>
           </div>
         </div>
         <!-- Grid column -->
@@ -223,7 +270,7 @@
     <!-- Footer Text -->
 
     <!-- Copyright -->
-    <div id="aboutus" class="footer-copyright text-center py-3">© 2018 Copyright:
+    <div id="aboutus" class="footer-copyright text-center py-3">© 2018 Copyright: PetOverflow.com
       <a href="https://mdbootstrap.com/bootstrap-tutorial/">PetOverflow.com</a>
       <div class="footer-copyright text-center py-3">© 2018 Copyright:
         <a href="https://mdbootstrap.com/bootstrap-tutorial/">AmekaBrown.com</a>
