@@ -44,38 +44,30 @@ const fineOne = (haystack, arr) => {
   })
 }
 
-function populateSearchResults(currentPets, filter) {
+function populateSearchResults(currentPets, filter, from, to) {
   const pets = filterPets(currentPets, filter)
   const petHtml = Object.keys(pets)
     .map(key => pets[key])
-    .slice(0, 25)
+    .slice(from, to)
     .map(pet => {
       petLiteral = `
         <div class="card">
-            <img class="card-imkg" src="${pet.imgUrls[2]}" alt="Card image cap">
+            <img class="card-img" src="${
+              pet.imgUrls ? pet.imgUrls[3] : "#"
+            }" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">${pet.name}</h5>
                 <p class="card-text">Age: ${pet.age}</p>
-                <button class = "learnMore" id = "${pet.id}">More about ${
+                <p class="card-text">Breed: ${pet.breed[0]}</p>
+                <button onclick="showMoreInfo(\'${pet.id}\')"">More about ${
         pet.name
       }</button>
             </div>
         </div> `
+
       return petLiteral
     })
   $("#results").html(
-    petHtml.length > 0 ? petHtml.reduce((a, b) => a + b) : "No matching pets :("
+    petHtml.length > 0 ? petHtml.reduce((a, b) => a + b) : noMoreResultsHTML
   )
 }
-
-initPage().then(petData => {
-  populateSearchResults(petData.currentPets, petFilters)
-  setSheltersOnMap(petData.shelters)
-
-  $("#btn-apply").click(e => {
-    $("#results").html("")
-    populateSearchResults(petData.currentPets, petFilters)
-  })
-
-  initializeBreedFilter(petData)
-})
