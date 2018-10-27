@@ -182,6 +182,7 @@
 @media screen and (max-width: 600px) {
   #select-location {
     width: 80%;
+    border: 1px solid lightgray;
   }
 }
 
