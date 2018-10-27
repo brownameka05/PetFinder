@@ -270,7 +270,7 @@ a {
 /************************ PROGRAMS AND SERVICES *************************/
 
 .dogimg1 {
-    background-image: url(/images/maxresdefault.jpg);
+    background-image: url("../images/maxresdefault.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover; 

@@ -36,6 +36,7 @@ function initMap() {
   geocoder = new google.maps.Geocoder()
 }
 
+
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos)
   infoWindow.setContent(

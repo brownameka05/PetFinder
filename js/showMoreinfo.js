@@ -1,16 +1,80 @@
+function closemyfunction(infoPet) {
+  infoPet.parentElement.parentElement.removeChild(infoPet.parentElement)
+}
 
+function popUpInfo(petID) {
+  let learnMoreDiv = document.getElementsByClassName("learnMore")[0]
+  if (learnMoreDiv) {
+    if (learnMoreDiv.id == petID) {
+      return
+    } else {
+      learnMoreDiv.parentElement.removeChild(learnMoreDiv)
+    }
+  }
+  showMoreInfo(petID)
+}
 
-function showmoreinfo(petID){
-    /** stuff that gets pet using petID */
-
-    infoLiteral = `
-    <div id="learnMore">
-    <img id="petPic" src="https://media.mwstatic.com/product-images/880x660/alt1/962/962441.jpg">
-    <h3>Name: Rex</h3>
-    <p>Age:3</p>
-    <div>
+function showMoreInfo(petID) {
+  getPet(petID)
+    .then(function(pet) {
+      return (thisPet = flattenPet(pet))
+    })
+    .then(function(newPet) {
+      petLiteral = `
+    <div class = "learnMore" id = ${newPet.id}>
+      <button onclick="closemyfunction(this)" id="btnInfo" > X </button>
+      <img id="petPic" src = \"${newPet.images[1].$t}\" />
+      <h3>Name: ${newPet.name}</h3>
+      <p>Breed: ${newPet.breed}</p>
+      <p>Sex: ${newPet.sex}</p>
+      <p>Size: ${newPet.size}</p>
+      <p>${newPet.description}</p>
+      <div id = "shelterInfo">
+        <h5>Shelter Info</h5>
+        <h6>Name: ${newPet.shelterInfo.name}</h6>
     `
-  $("#section1").append(infoLiteral)
+      if (!jQuery.isEmptyObject(newPet.shelterInfo.phone)) {
+        petLiteral += `     <p>Phone: ${newPet.shelterInfo.phone}</p>`
+      }
 
+      if (!jQuery.isEmptyObject(newPet.shelterInfo.email)) {
+        petLiteral += `      <p>Email: ${newPet.shelterInfo.email}</p>`
+      }
+      petLiteral += `
+      </div>
+    </div>
+    `
+      $("#section1").append(petLiteral)
+    })
+}
 
+function flattenPet(pet) {
+  let flatPet = {}
+  flatPet["name"] = pet.name
+  flatPet["id"] = pet.id
+  flatPet["images"] = pet.media.photos.photo
+  flatPet["breed"] = pet.breeds.breed.$t
+  flatPet["sex"] = pet.sex
+  flatPet["size"] = pet.size
+  flatPet["description"] = pet.description
+  return getShelter(pet.shelterId)
+    .then(function(response) {
+      flatPet["shelterInfo"] = flattenShelterResponse(response)
+    })
+    .then(function() {
+      return flatPet
+    })
+}
+
+function flattenShelterResponse(apiResponse) {
+  let shelter = apiResponse.petfinder.shelter
+  let newShelter = {}
+  newShelter["name"] = shelter.name.$t
+  if (!jQuery.isEmptyObject(shelter.phone)) {
+    newShelter["phone"] = shelter.phone
+  }
+  if (!jQuery.isEmptyObject(shelter.email)) {
+    newShelter["email"] = shelter.email.$t
+  }
+  return newShelter
 }
