@@ -7,7 +7,12 @@ function popUpInfo(petID) {
   if (learnMoreDiv) {
     if (learnMoreDiv.id == petID) {
       return
+<<<<<<< HEAD
     } else {
+=======
+    }
+    else {
+>>>>>>> f21c5a4e11f85457ddcf77da2dd2d9ccfd886649
       learnMoreDiv.parentElement.removeChild(learnMoreDiv)
     }
   }
