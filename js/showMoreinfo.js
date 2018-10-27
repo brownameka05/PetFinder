@@ -1,7 +1,8 @@
 
 
 function closemyfunction(infoPet){
-  infoPet.parentElement.parentElement.removeChild(infoPet.parentElement)
+  infoPet.parentElement.parentElement.parentElement.removeChild(infoPet.parentElement.parentElement)
+
 
 }
 
@@ -19,13 +20,21 @@ function showMoreInfo(petID){
 
     petLiteral = `
     <div id = "learnMore">
+    <div id="btnDiv">
       <button onclick="closemyfunction(this)" id="btnInfo" > X </button>
-      <img id="petPic" src = \"${newPet.images[1].$t}\" />
-      <h3>Name: ${newPet.name}</h3>
-      <p>Breed: ${newPet.breed}</p>
-      <p>Sex: ${newPet.sex}</p>
-      <p>Size: ${newPet.size}</p>
-      <p>${newPet.description}</p>
+    </div>
+
+      <div id="basicInfo">
+        <h3>Name: ${newPet.name}</h3>
+        <p>Breed: ${newPet.breed}</p>
+        <p>Sex: ${newPet.sex}</p>
+        <p>Size: ${newPet.size}</p>
+      </div>
+      <div id="imgDiv"><img id="petPic" src = \"${newPet.images[3].$t}\" />
+      </div>
+      <div id="description">
+        <p>${newPet.description}</p>
+      </div>
       <div id = "shelterInfo">
         <h5>Shelter Info</h5>
         <h6>Name: ${newPet.shelterInfo.name}</h6>
