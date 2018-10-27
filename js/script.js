@@ -64,7 +64,7 @@ function populateSearchResults(currentPets, filter, from, to) {
                 <div class="card-text">Breed: ${pet.breed[0]}</div>
               </div>
               <div class="btn-wrap">
-                <button class="btn-card-moreInfo" onclick="showMoreInfo(\'${
+                <button class="btn-card-moreInfo" onclick="popUpInfo(\'${
                   pet.id
                 }\')"">More about ${pet.name}</button>
               </div>
