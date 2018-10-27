@@ -11,7 +11,6 @@ function popUpInfo(petID){
       return
     }
     else {
-      console.log(learnMoreDiv)
       learnMoreDiv.parentElement.removeChild(learnMoreDiv)
     }
   }
