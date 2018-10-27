@@ -24,11 +24,12 @@ function showMoreInfo(petID) {
       return (thisPet = flattenPet(pet))
     })
     .then(function(newPet) {
+      console.log(newPet)
       petLiteral = `
     <div class = "learnMore" id = ${newPet.id}>
-      <button onclick="closemyfunction(this)" id="btnInfo" > X </button>
-    </div>
-
+      <div>
+        <button onclick="closemyfunction(this)" id="btnInfo" > X </button>
+      </div>
       <div id="basicInfo">
         <h3>Name: ${newPet.name}</h3>
         <p>Breed: ${newPet.breed}</p>
