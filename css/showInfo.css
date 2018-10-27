@@ -7,9 +7,8 @@
    background-color:white;
    padding: 30px;
    margin-right: 50%;
-
-
-   flex-direction: column;
+   display: flex;
+   flex-direction: row;
    align-content: center;
    justify-content: center;
    border: 2px solid white;
@@ -17,24 +16,35 @@
    float:left;
    border-radius: 15px 50px 30px 5px;
    border: 5px solid grey;
+   flex-wrap: wrap;
 
+}
 
+#basicInfo{
+  width: 40%;
 
+}
+#imgDiv{
+  width: 40%;
 
+}
+
+#description{
 
 }
 
 #petPic{
-  
-  height: auto;
+
+  width:70%;
   margin:0 auto;
   position: relative;
-
-
 }
 
 #btnInfo{
   width: 10%;
-  height: 10%;
+}
 
+#btnDiv{
+  width: 100%;
+  height: 30px;
 }
