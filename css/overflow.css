@@ -1,22 +1,20 @@
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   position: relative;
-    background-color: rgb(255, 255, 255);
-    
-    
+  background-color: rgb(255, 255, 255);
 }
 
 /************************** SIDE NAV & CAROUSEL**********************/
 
-.navbar-brand{
-    font-family: 'Permanent Marker', cursive;
-    font-size: 150%;
+.navbar-brand {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 150%;
 }
 
 .nav-link {
-    font-family: 'Permanent Marker', cursive;
-    font-weight: 100;
-    font-size: 14px;
+  font-family: 'Permanent Marker', cursive;
+  font-weight: 100;
+  font-size: 14px;
 }
 
 .nav-menu {
@@ -122,6 +120,7 @@ body {
 
 .parallax-slider {
   position: relative;
+  height: 90%;
 }
 
 .slider-wrapper {
@@ -171,7 +170,7 @@ body {
 }
 
 .slide::before {
-  content: "";
+  content: '';
   display: inline-block;
   height: 50%;
 }
@@ -205,14 +204,14 @@ p {
 }
 
 .clickme {
-    background-color: rgba(13, 13, 13, 0.4);
-    color: #ffffff;
-    margin-left: 55%;
-    transform: translatey(-9px);
+  background-color: rgba(13, 13, 13, 0.4);
+  color: #ffffff;
+  margin-left: 55%;
+  transform: translatey(-9px);
 }
 
 a {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .slide-active .caption {
@@ -225,19 +224,20 @@ a {
 }
 
 .slide1 {
-  background: url("../images/cat-and-dogs-for-adoption-minnesota.jpg") bottom center;
+  background: url('../images/cat-and-dogs-for-adoption-minnesota.jpg') bottom
+    center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .slide2 {
-  background: url("../images/saddoggy2_Fotor.jpg") center;
+  background: url('../images/saddoggy2_Fotor.jpg') center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .slide3 {
-  background: url("../images/DogsCatsSnuggling850_Fotor.jpg") center;
+  background: url('../images/DogsCatsSnuggling850_Fotor.jpg') center;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -266,109 +266,103 @@ a {
   margin-bottom: 3%;
 }
 
-
 /************************ PROGRAMS AND SERVICES *************************/
 
 .dogimg1 {
-    background-image: url("../images/maxresdefault.jpg");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-position: top;
-    height: 600px;
+  background-image: url('../images/maxresdefault.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  height: 600px;
 }
 
-
-
 #programs {
-    color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 #programs-title {
-    font-family: 'Permanent Marker', cursive;
-    margin-top: 2%;
-    font-size: 35px;
+  font-family: 'Permanent Marker', cursive;
+  margin-top: 2%;
+  font-size: 35px;
 }
 
-
 #programs-text {
-    margin-top: 4%;
-    margin-left: 12%;
-    margin-right: 12%;
-    font-size: 20px;
-    color: #000000;
-    margin-bottom: 5%;
+  margin-top: 4%;
+  margin-left: 12%;
+  margin-right: 12%;
+  font-size: 20px;
+  color: #000000;
+  margin-bottom: 5%;
 }
 
 /************************ Get Involved *************************/
 .dogimg2 {
-    background-image: url(/images/kitten.jpg);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-position: top;
-    height: 600px;
+  background-image: url('../images/kitten.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  height: 600px;
 }
-
 
 #involved-title {
-    margin-top: 5%;
-    color: rgb(5, 5, 5);
-    font-size: 35px;
-    font-family: 'Permanent Marker', cursive;
-    border-top: 2px solid black;
-    padding-top: 3%;
+  margin-top: 5%;
+  color: rgb(5, 5, 5);
+  font-size: 35px;
+  font-family: 'Permanent Marker', cursive;
+  border-top: 2px solid black;
+  padding-top: 3%;
 }
 
-
 #involved-text {
-    margin-top: 4%;
-    margin-left: 12%;
-    margin-right: 12%;
-    font-size: 20px;
-    color: #000000;
-    padding-bottom: 5%;
+  margin-top: 4%;
+  margin-left: 12%;
+  margin-right: 12%;
+  font-size: 20px;
+  color: #000000;
+  padding-bottom: 5%;
 }
 
 #volunteer {
-    width: 100%
+  width: 100%;
 }
 /************************ About Us *************************/
 
 #about-us {
-    color: #000000;
+  color: #000000;
 }
 
 #about-title {
-    margin-top: 5%;
-    color: rgb(5, 5, 5);
-    font-size: 35px;
-    font-family: 'Permanent Marker', cursive;
-    border-top: 2px solid black;
-    padding-top: 3%;
+  margin-top: 5%;
+  color: rgb(5, 5, 5);
+  font-size: 35px;
+  font-family: 'Permanent Marker', cursive;
+  border-top: 2px solid black;
+  padding-top: 3%;
 }
 #about-text {
-    margin-left: 12%;
-    margin-right: 12%;
-    font-size: 20px;
-    margin-top: 4%;
+  margin-left: 12%;
+  margin-right: 12%;
+  font-size: 20px;
+  margin-top: 4%;
 }
 
 #silhouette {
-    margin-left: 15%;
+  margin-left: 15%;
 }
 
 /************************ Footer *************************/
 
 .page-footer {
-    height: 232px;
+  height: 232px;
 }
 
 .teal {
-  background-color: #343a40;  
+  background-color: #343a40;
   color: #868686;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
